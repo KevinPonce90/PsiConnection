@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Verificación</title>
+    </head>
+    <body>
+        <h1>Verificación</h1>
+        <form action="{{ url_for('verify') }}" method="post">
+            <input type="hidden" name="csrf_token" value="{{csrf_token() }}">
+            <label for="code">Ingresa el código de verificación:</label><br>
+            <input type="text" id="code" name="code"><br><br>
+            <input type="submit" value="Verificar">
+        </form>
+    </body>
+</html>
