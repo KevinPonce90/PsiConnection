@@ -1,0 +1,317 @@
+/* ---------------------- Header ---------------------- */
+
+.fondo{
+  background-image: linear-gradient(rgba(191, 255, 177, 0.058), rgba(185, 255, 152, 0.068));
+}
+.section{
+  z-index: 999;
+}
+.dropdown-content {
+  left: -205px;
+  display: none;
+  position: absolute;
+  z-index: 1;
+  background-color: #f1f1f1;
+  border-radius: 15px;
+  padding: 15px;
+}
+
+.dropdown-content p {
+  padding: 5px 10px;
+  display: block;
+  white-space: nowrap;
+  font-weight: 500;
+  color: rgb(18, 103, 99);
+}
+
+.dropdown-content p:first-child {
+  padding-top: 15px;
+}
+
+.dropdown-content p:last-child {
+  padding-bottom: 15px;
+}
+
+.inte-content {
+  background-color: rgb(255, 255, 255);
+  padding: 3px;
+  border-radius: 10px;
+}
+
+.dropdown-content a {
+  display: block;
+  margin-top: -10px;
+  border-radius: 7px;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropbtn {
+  background-color: none;
+  padding: 12px 17px;
+  font-size: 16px;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  border-radius: 15px;
+}
+
+.fa {
+  font-size: 40px;
+}
+
+@media (max-width: 992px) {
+  .dropdown-content {
+    right: 0;
+    left: unset;
+  }
+}
+
+@media (min-width: 992px) {
+  .dropdown-content {
+    top: 47px;
+    right: 4%;
+    left: unset;
+  }
+}
+
+.custom-shape-divider-top-1682744544 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
+}
+
+.custom-shape-divider-top-1682744544 svg {
+  position: relative;
+  display: block;
+  width: calc(137% + 1.3px);
+  height: 156px;
+}
+
+.row .custom-shape-divider-top-1682744544 {
+  padding-right: unset;
+  padding-left: unset;
+}
+/* Color de la figura del header */
+.custom-shape-divider-top-1682744544 .shape-fill {
+  fill: #215A6D;
+}
+
+
+.imagen {
+  border-bottom-right-radius: 15px;
+  border-bottom-left-radius: 15px;
+  -webkit-box-shadow: 0px 5px 17px -7px rgba(24, 114, 22, 0.126);
+  box-shadow: 0px 5px 17px -7px rgba(12, 192, 150, 0.391);
+  background-repeat: no-repeat;
+  width: 100%;
+  height: auto;
+  position: absolute;
+}
+
+@media (max-width: 992px) {
+  .imagen {
+    height: 275px;
+  }
+}
+
+@media (min-width: 992px) {
+  .imagen {
+    height: 350px;
+  }
+}
+
+@media (max-width: 991px) {
+  .espacio {
+    height: 20px;
+  }
+}
+@media (min-width: 991px) {
+  .espacio {
+    height: 20px;
+  }
+}
+
+/* ---------------------- End Header ---------------------- */
+
+/* ---------------------- SVG's de fondo ---------------------- */
+.svg1 {
+  background-image: url('/static/img/svg1.svg');
+  background-size: 200px 200px;
+  background-repeat: repeat;
+  
+}
+
+.svg2 {
+  background-image: url('/static/img/svg2.svg');
+  background-size: 350px 350px;
+  background-repeat: repeat;
+
+}
+
+.svg3 {
+  background-image: url('/static/img/svg3.svg');
+  background-size: 700px 700px;
+  background-repeat: repeat;
+  opacity: .1;
+ 
+}
+
+.svg-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  opacity: .06;
+}
+
+.svg-background>div {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+}
+/* ---------------------- End SVG's de fondo ---------------------- */
+
+
+/* ---------------------- Card's ---------------------- */
+.sectmycardAdm {
+  width: 100%;
+  display: flex;
+  gap: 50px;
+  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 80px 80px 80px 80px;
+  justify-content: center;
+  align-items: center;
+  justify-items: center;
+}
+
+.mycard {
+  width: 350px;
+  padding: 20px;
+  box-shadow: 2px 2px 6px #3ca28c;
+  border: 4px groove #b6a25000;
+  border-radius: 10px;
+  background-color: rgb(255, 255, 255);
+}
+
+.mycard:hover {
+  border: 4px groove #42c5c5;
+}
+
+.mycard:hover .img-otro {
+  transform: rotate(0);
+}
+
+.img-otro {
+  width: 250px;
+  height: 200px;
+  border-radius: 3px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.703);
+  transform: rotate(-2.5deg);
+  transition: all .3s;
+  max-width: 250px;
+  max-height: 200px;
+  background-color: #00ceb613;
+}
+
+.nombre {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+hr {
+  width: 100%;
+  height: 4px;
+  background: #3ca2a2;
+  margin: 20px 5px;
+}
+
+.saber {
+  background: #3ca2a2;
+  padding: 9px 21px;
+  text-decoration: none;
+  font-size: 17px;
+  border-radius: 3px;
+  color: white;
+}
+
+.saber:hover {
+  background: #20541f;
+  color: azure;
+  padding: 8px 20px;
+  text-decoration: none;
+  box-shadow: 1px 1px 3px black;
+}
+
+.saber:active {
+  background: #20541f;
+  padding: 8px 20px;
+  text-decoration: none;
+}
+/* ----------------------  End Card's ---------------------- */
+
+
+/* ---------------------- Footer ---------------------- */
+.footer{
+  background-color: #215A6D;;
+  border-radius: 15px 15px 0px 0px;
+
+  -webkit-box-shadow: 0px -5px 17px -7px rgba(24, 114, 22, 0.126);
+box-shadow: 0px -5px 17px -7px rgba(12, 192, 117, 0.391);
+}
+#linkMail{
+color: unset;
+text-decoration: none;
+}
+#linkMail:hover{
+color: #608b32;
+}
+.textoclaro{
+  color: #DFECE6;
+}
+/* ---------------------- End Footer ---------------------- */
+
+
+/* Pacientes html */
+
+.navig{
+  margin-top: 70px !important;
+  margin-bottom: 70px !important;
+}
+
+.sect {
+  width: 100%;
+  gap: 50px;
+  flex-wrap: wrap;
+  display: grid;
+  padding: 80px 80px 80px 80px;
+  margin: none;
+  /* justify-content: center;
+  align-items: center;
+  justify-items: center; */
+}
+@media (max-width: 992px) {
+  .sect{
+    margin-top: none;
+  }
+}
+@media (min-width: 991px) {
+  .sect {
+    margin-top: 50px;
+  }
+}
