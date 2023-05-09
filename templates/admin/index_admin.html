@@ -4,27 +4,25 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>PsiConnection</title>
     <link rel="icon" href="/static/img/logo_Psi.png">
 
-    <!-- CSS FILES -->
-    <link rel="stylesheet" href="/static/css/personal.css">
-    <link href="/static/css/templatemo-first-portfolio-style.css" rel="stylesheet">
-
+    
     <!-- Extras -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Raleway:300,600" rel="stylesheet">
-
-
+    
     <!-- Bootsrap -->
     <link href="/static/css/bootstrap.min.css" rel="stylesheet">
     <link href="/static/css/bootstrap-icons.css" rel="stylesheet">
     <link href="/static/css/magnific-popup.css" rel="stylesheet">
-
+    
+    <!-- CSS FILES -->
+    <link rel="stylesheet" href="/static/css/personal.css">
+    <link href="/static/css/templatemo-first-portfolio-style.css" rel="stylesheet">
 
 </head>
 
@@ -40,8 +38,7 @@
 
             <div class="container">
 
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
@@ -81,11 +78,12 @@
                                 {{email}}
                             </p>
                             <a class="btn btn-a float-right mr-3" href=" {{ url_for('logout') }}"
-                                style="background-color: #008129; color: white;">Cerrar sesion
+                                style="background-color: #007b81; color: white;">Cerrar sesion
                             </a>
                         </div>
                     </div>
                 </div>
+                
                 <script>
                     function switchElements() {
                         const navbar = document.querySelector('.barNav');
@@ -153,10 +151,10 @@
 
         <section class="sectmycardAdm">
 
-            <div class="mycard">
-                <div class="nombre">
+            <div class="mycard card">
+                <div class="nombre ">
                     <img class="img-otro" src="/static/img/users-solid.svg">
-                    <h2>Pacientes</h2>
+                    <h2 >Pacientes</h2>
                     <hr>
                     <div>
                         <a href="/templates/admin/adm_pacie.html" class="saber">Acceder</a>
@@ -165,9 +163,9 @@
             </div>
 
             <div class="mycard">
-                <div class="nombre">
+                <div class="nombre ">
                     <img class="img-otro" src="/static/img/user-nurse-solid.svg">
-                    <h2>Practicantes</h2>
+                    <h2 >Practicantes</h2>
                     <hr>
                     <div>
                         <a href="/templates/admin/adm_pract.html" class="saber">Acceder</a>
@@ -175,10 +173,10 @@
                 </div>
             </div>
 
-            <div class="mycard">
-                <div class="nombre">
+            <div class="mycard ">
+                <div class="nombre ">
                     <img class="img-otro" src="/static/img/user-tie-solid.svg">
-                    <h2>Supervisores</h2>
+                    <h2 >Supervisores</h2>
                     <hr>
                     <div>
                         <a href="/templates/admin/adm_super.html" class="saber">Acceder</a>
@@ -186,10 +184,10 @@
                 </div>
             </div>
 
-            <div class="mycard">
-                <div class="nombre">
+            <div class="mycard ">
+                <div class="nombre ">
                     <img class="img-otro" src="/static/img/user-secret-solid.svg">
-                    <h2>Administradores</h2>
+                    <h2 >Administradores</h2>
                     <hr>
                     <div>
                         <a href="/templates/admin/adm_adm.html" class="saber">Acceder</a>
@@ -221,12 +219,11 @@
                     <ul class="list-unstyled d-flex flex-row justify-content-center">
                         <li>
                             <a class="text-white px-2" href="https://www.facebook.com/udgcucei" target="_blank">
-                                <i class="fab fa-facebook-square"></i>
+                                <img id="FabIcono" src="/static/img/facebook.svg" alt="">
                             </a>
                         </li>
                         <li>
-                            <a class="text-white px-2 textoclaro" href="http://www.cucei.udg.mx/" target="_blank"
-                                style="text-decoration: none;">
+                            <a class="text-white px-2 textoclaro" href="http://www.cucei.udg.mx/" target="_blank">
                                 CUCEI
                             </a>
                         </li>
@@ -241,16 +238,21 @@
 
                     <ul class="list-unstyled">
                         <li>
-                            <p class="textoclaro"><i class="fas fa-map-marker-alt pe-2"></i>Blvd. Marcelino García Barragán #1421, esq.
+                            <p class="textoclaro">
+                                    <img class="FotIcono" src="/static/img/location-dot-solid.svg" alt="">
+                                Blvd. Marcelino García Barragán #1421, esq.
                                 Calz. Olímpica, C.P. 44430
                                 Guadalajara, Jalisco, México</p>
                         </li>
                         <li>
-                            <p class="textoclaro"><i class="fas fa-phone pe-2"></i>+ 52 33 1378 5900</p>
+                            <p class="textoclaro">
+                                <img class="FotIcono" src="/static/img/phone-solid.svg" alt="">
+                                + 52 33 1378 5900</p>
                         </li>
                         <li>
-                            <p class="textoclaro"><i class="fas fa-envelope pe-2 mb-0"></i><a id="linkMail"
-                                    href="mailto:psi.connection09@gmail.com">psi.connection09@gmail.com</a></p>
+                            <p class="textoclaro">
+                                <img class="FotIcono" src="/static/img/envelope-solid.svg" alt="">
+                                <a id="linkMail" href="mailto:psi.connection09@gmail.com">psi.connection09@gmail.com</a></p>
                         </li>
                     </ul>
                 </div>
@@ -268,9 +270,6 @@
         <!-- Copyright -->
     </footer>
 
-
-
-
     <!-- JAVASCRIPT FILES -->
     <script src="/static/js/jquery.min.js"></script>
     <script src="/static/js/bootstrap.min.js"></script>
@@ -282,10 +281,6 @@
     <script src="https://kit.fontawesome.com/bcd45c0483.js" crossorigin="anonymous"></script>
 
     <script src="/static/js/jspersonal.js"></script>
-    <script src="/static/js/bootstrap.bundle.min.js"></script>
-    <script src="/static/js/main.j"></script>
-
-
 </body>
 
 </html>
