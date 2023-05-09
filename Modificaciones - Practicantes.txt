@@ -1,0 +1,13 @@
+09/05/23
+-Se sustituyo el titulo de letras "PsiConnection" por una imagen.
+-Se agrego la imagen de las LETRAS del logo a los archivos.
+-Se agrego el " ¡ " En el texto "Bienvenidos!".
+-Se modifico el CSS y se agrego el apartado "Letras-Fondo" para ajustar el tamaño de la imagen de LETRAS.
+
+00/05/23
+00/05/23
+00/05/23
+00/05/23
+00/05/23
+00/05/23
+00/05/23
