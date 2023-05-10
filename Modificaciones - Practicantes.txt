@@ -1,4 +1,4 @@
-09/05/23
+09/05/23    -Aviles
 -Se sustituyo el titulo de letras "PsiConnection" por una imagen.
 -Se agrego la imagen de las LETRAS del logo a los archivos.
 -Se agrego el " ¡ " En el texto "Bienvenidos!".
