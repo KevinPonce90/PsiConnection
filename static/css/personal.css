@@ -6,6 +6,24 @@
 .section{
   z-index: 999;
 }
+.Letras-Fondo{
+  width: 250px;
+  height: 60px;
+  padding: 2px 6px;
+  border-radius: 40px;
+  box-shadow: 0px 0px 15px -15px #000;
+  background-color: #f8f8f8ea;
+}
+@media (max-width: 992px) {
+  .Letras-Fondo {
+    margin: 0 auto;
+  }
+}
+@media (min-width: 992px) {
+  .Letras-Fondo {
+    margin: unset;
+  }
+}
 .dropdown-content {
   left: -205px;
   display: none;
@@ -103,7 +121,6 @@
   fill: #215A6D;
 }
 
-
 .imagen {
   border-bottom-right-radius: 15px;
   border-bottom-left-radius: 15px;
@@ -113,6 +130,7 @@
   width: 100%;
   height: auto;
   position: absolute;
+  object-fit: cover;
 }
 
 @media (max-width: 992px) {
@@ -141,28 +159,6 @@
 /* ---------------------- End Header ---------------------- */
 
 /* ---------------------- SVG's de fondo ---------------------- */
-.svg1 {
-  background-image: url('/static/img/svg1.svg');
-  background-size: 200px 200px;
-  background-repeat: repeat;
-  
-}
-
-.svg2 {
-  background-image: url('/static/img/svg2.svg');
-  background-size: 350px 350px;
-  background-repeat: repeat;
-
-}
-
-.svg3 {
-  background-image: url('/static/img/svg3.svg');
-  background-size: 700px 700px;
-  background-repeat: repeat;
-  opacity: .1;
- 
-}
-
 .svg-background {
   position: fixed;
   top: 0;
@@ -170,16 +166,57 @@
   width: 100%;
   height: 100%;
   z-index: -1;
-  opacity: .06;
+  opacity: .1;
 }
-
 .svg-background>div {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+  animation: figura 22s infinite; 
+  transition-timing-function: linear;
+}
+.svg-background .svg1 {
+  background-image: url('/static/img/svg1.svg');
+  background-size: 200px 200px;
+  background-repeat: repeat;
+  animation-duration: 30s;
+  animation-iteration-count: infinite;
+}
 
+.svg-background .svg2 {
+  background-image: url('/static/img/svg2.svg');
+  background-size: 350px 350px;
+  background-repeat: repeat;
+  animation-duration: 22s;
+  animation-iteration-count: infinite;
+}
+
+.svg-background .svg3 {
+  background-image: url('/static/img/svg3.svg');
+  background-size: 700px 700px;
+  background-repeat: repeat;
+  animation-duration: 35s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes figura {
+  0% {
+    transform: translateY(0) rotate(0)
+  }
+  25% {
+    transform: translateY(10px) rotate(-4deg);
+  }
+  50% {
+    transform: translateY(0) rotate(4deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(-5deg);
+  }
+  100% {
+    transform: translateY(0) rotate(0);
+  }
 }
 /* ---------------------- End SVG's de fondo ---------------------- */
 
@@ -283,6 +320,17 @@ color: #608b32;
 }
 .textoclaro{
   color: #DFECE6;
+}
+.FotIcono{
+  height: 20px;
+  width: 20px;
+  margin-bottom: 3px;
+  margin-right: 5px;
+}
+#FabIcono{
+  height: 23px;
+  width: 23px;
+  margin-top: -5px;
 }
 /* ---------------------- End Footer ---------------------- */
 
