@@ -27,7 +27,7 @@ h2 {
 }
 
 .fl-table {
-    border-radius: 5px;
+    border-radius: 15px;
     font-size: 12px;
     font-weight: normal;
     border: none;
@@ -53,7 +53,9 @@ h2 {
     color: #ffffff;
     background: #4FC3A1;
 }
-
+thead {
+border-radius: 15px 15px 0 0;
+}
 
 .fl-table thead th:nth-child(odd) {
     color: #ffffff;
