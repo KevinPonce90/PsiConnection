@@ -89,4 +89,11 @@ SVG fondo animacion
 
 	Se han puesto animaciones a los svg de fondo 
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-	
+	09/05/2023
+
+  Agrege las letras en imagen de Alan, y su respectiva clase "Letras-Fondo", además la modifique.
+  Se agrego en html.
+  
+ ///-------------------------///----------------------------///------------------------///
+
+  Solucionar detalles del nav, Cambios en JS, jspersonal y click.scroll. 

@@ -41,11 +41,9 @@
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-
-
-                <a href="/templates/admin/index_admin.html" class="navbar-brand mx-auto mx-lg-0">PsiConnection</a>
-
                 
+                <a href="/templates/admin/index_admin.html" class="navbar-brand mx-auto mx-lg-0"><img class="Letras-Fondo" src="/static/img/LETRAS-NO-FONDO-1.0.png" alt="PsiConnection"></a>
+     
                 <div class="collapse navbar-collapse barNav" id="navbarNav">
                     <ul class="navbar-nav ms-lg-5">
                         <li class="nav-item">
@@ -155,22 +153,22 @@
                 <input type="hidden" name="csrf_token" value="{{csrf_token() }}">
                 <div></div>
                 <div class="col-md-4">
-                    <label for="validationDefault01" class="form-label">Nombre</label>
-                    <input name="nombreAd" type="text" class="form-control border border-dark" id="validationDefault01"
+                    <label for="nombreAd" class="form-label">Nombre</label>
+                    <input name="nombreAd" type="text" class="form-control border border-dark" id="nombreAd"
                         value="" required
                         pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'\-]{2,35}"
                         title="Solo letras Minimo 2 Maximo 35" />
                 </div>
                 <div class="col-md-4">
-                    <label for="validationDefault02" class="form-label">Apellido Paterno</label>
-                    <input name="apellidoPAd" type="text" class="form-control border border-dark" id="validationDefault02"
+                    <label for="apellidoPAd" class="form-label">Apellido Paterno</label>
+                    <input name="apellidoPAd" type="text" class="form-control border border-dark" id="apellidoPAd"
                         value="" required
                         pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'\-]{2,25}"
                         title="Solo letras Minimo 2 Maximo 25" />
                 </div>
                 <div class="col-md-4">
-                    <label for="validationDefault02" class="form-label">Apellido Materno</label>
-                    <input name="apellidoMAd" type="text" class="form-control border border-dark" id="validationDefault02"
+                    <label for="apellidoMAd" class="form-label">Apellido Materno</label>
+                    <input name="apellidoMAd" type="text" class="form-control border border-dark" id="apellidoMAd"
                         value="" required
                         pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'\-]{2,25}"
                         title="Solo letras Minimo 2 Maximo 25" />
@@ -179,7 +177,7 @@
                 <div class="row justify-content-evenly">
                     <div class="col-4">
                         <label for="correoAd" class="form-label">Correo</label>
-                        <input id="correoAd" name="correoAd" type="email" class="form-control border border-dark" id="validationDefault02"
+                        <input id="correoAd" name="correoAd" type="email" class="form-control border border-dark" id="correoAd"
                             value="" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" size="29"
                             title="Correo inavlido" />
                     </div>
@@ -189,7 +187,7 @@
                     <div class="col-4">
                         <label for="contraAd" class="form-label">Contraseña</label>
                         <input iname="contraAd" type="password" class="form-control border border-dark"
-                            id="validationDefault03" required
+                            id="contraAd" required
                             pattern="^(?=.*?[A-Z])(?=(.*[a-z]){1,})(?=(.*[\d]){1,})(?=(.*[\W]){1,})(?!.*\s).{8,}$"
                             title="Escriba al menos 8 caracteres, 1 digito, 1 mayúscula, 1 minúscula, 1 carácter especial" />
                     </div>
