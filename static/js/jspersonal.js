@@ -13,3 +13,23 @@ for (var i = 0; i < navLinks.length; i++) {
 
     }
 }
+
+const cards = document.querySelectorAll('.Lcard');
+
+for (let i = 0; i < cards.length; i++) {
+  const card = cards[i];
+
+  card.addEventListener('mouseover', () => {
+    setTimeout(() => {
+      card.querySelector('.Ctexto').classList.toggle('display-none');
+      card.querySelector('.CtextoHover').classList.toggle('display-block');
+    }, 100);
+  });
+
+  card.addEventListener('mouseout', () => {
+    setTimeout(() => {
+      card.querySelector('.Ctexto').classList.toggle('display-none');
+      card.querySelector('.CtextoHover').classList.toggle('display-block');
+    }, 100);
+  });
+}
