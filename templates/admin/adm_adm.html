@@ -6,30 +6,29 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>PsiConnection</title>
+    <title>PsiConnection - Administradores</title>
     <link rel="icon" href="/static/img/logo_Psi.png">
-
-    
-    
-    <!-- Extras -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
-
-    <!-- Bootsrap -->
-    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/static/css/bootstrap-icons.css" rel="stylesheet">
-    <link href="/static/css/magnific-popup.css" rel="stylesheet">
 
     <!-- CSS FILES -->
     <link rel="stylesheet" href="/static/css/personal.css">
-    <link href="/static/css/templatemo-first-portfolio-style.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/static/css/templatemo-first-portfolio-style.css">
+    <link rel="stylesheet" href="/static/css/magnific-popup.css">
+
+    <!-- Extras -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap">
+
+    <!-- Bootsrap -->
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/bootstrap-icons.css">
+
+    <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> -->
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+
+
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
 
 </head>
 
@@ -45,12 +44,14 @@
 
             <div class="container">
 
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                
-                <a href="/templates/admin/index_admin.html" class="navbar-brand mx-auto mx-lg-0"><img class="Letras-Fondo" src="/static/img/LETRAS-NO-FONDO-1.0.png" alt="PsiConnection"></a>
-     
+
+                <a href="/templates/admin/index_admin.html" class="navbar-brand mx-auto mx-lg-0"><img
+                        class="Letras-Fondo" src="/static/img/LETRAS-NO-FONDO-1.0.png" alt="PsiConnection"></a>
+
                 <div class="collapse navbar-collapse barNav" id="navbarNav">
                     <ul class="navbar-nav ms-lg-5">
                         <li class="nav-item">
@@ -88,7 +89,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <script>
                     function switchElements() {
                         const navbar = document.querySelector('.barNav');
@@ -111,13 +112,13 @@
             <div class="container">
                 <div class="row">
 
-                   
+
                     <!-- Esta clase solo debe de estar en los index -->
                     <div class="col-lg-7 col-12">
                         <div class="hero-text">
                             <div class="espacio"></div>
                             <div class="hero-title-wrap d-flex align-items-center mb-4">
-                                <h1 class="hero-title ms-3 mb-0">Bienvenido!</h1>
+                                <h1 class="hero-title ms-3 mb-0">¡Bienvenido!</h1>
                             </div>
                             <h2 class="text-center">{{username}}</h2>
                         </div>
@@ -155,257 +156,302 @@
         <!-- Este section es lo que debe de cambiar en todos los html -->
 
         <section class="sect">
-             <body>
-                <div class="container">
-                    <div class="table-wrapper">
-                        <div class="table-title">
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <h2>Registro <b>administradores</b></h2>
-                                </div>
-                                <div class="col-sm-6">
-                                    <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i
-                                            class="material-icons">&#xE147;</i> <span>Agregar administrador</span></a>
+            <div class="container">
+                <div class="table-wrapper">
+                    <div class="table-title">
 
-                                </div>
+
+                        <div class="d-flex align-items-center mb-4">
+
+                            <div>
+                                <h2>Administradores</h2>
                             </div>
-                        </div>
-                        <table class="table table-striped table-hover">
-                            <thead>
-                                <tr>
+                            <div class="ms-5">
+                                <a href="" class="btn btn-success" data-bs-toggle="modal"
+                                    data-bs-target="#addEmployeeModal"><i class="material-icons">&#xE147;</i>
+                                    <span>Agregar administrador
+                                    </span></a>
 
-                                    <th>Nombre</th>
-                                    <th>apellido paterno</th>
-                                    <th>apellido materno</th>
-                                    <th>correo</th>
+                            </div>
 
-                                    <th>Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-
-                                    <td>Thomas </td>
-                                    <td>Lopez </td>
-                                    <td>Vazquez </td>
-                                    <td>thomashardy@mail.com</td>
-
-                                    <td>
-                                        <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i
-                                                class="material-icons" data-toggle="tooltip"
-                                                title="Edit">&#xE254;</i></a>
-                                        <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i
-                                                class="material-icons" data-toggle="tooltip"
-                                                title="Delete">&#xE872;</i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-
-                                    <td>Dominique Perrier</td>
-                                    <td>dominiqueperrier@mail.com</td>
-                                    <td>Obere Str. 57, Berlin, Germany</td>
-                                    <td>(313) 555-5735</td>
-                                    <td>
-                                        <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i
-                                                class="material-icons" data-toggle="tooltip"
-                                                title="Edit">&#xE254;</i></a>
-                                        <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i
-                                                class="material-icons" data-toggle="tooltip"
-                                                title="Delete">&#xE872;</i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-
-                                    <td>Maria Anders</td>
-                                    <td>mariaanders@mail.com</td>
-                                    <td>25, rue Lauriston, Paris, France</td>
-                                    <td>(503) 555-9931</td>
-                                    <td>
-                                        <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i
-                                                class="material-icons" data-toggle="tooltip"
-                                                title="Edit">&#xE254;</i></a>
-                                        <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i
-                                                class="material-icons" data-toggle="tooltip"
-                                                title="Delete">&#xE872;</i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-
-                                    <td>Fran Wilson</td>
-                                    <td>franwilson@mail.com</td>
-                                    <td>C/ Araquil, 67, Madrid, Spain</td>
-                                    <td>(204) 619-5731</td>
-                                    <td>
-                                        <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i
-                                                class="material-icons" data-toggle="tooltip"
-                                                title="Edit">&#xE254;</i></a>
-                                        <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i
-                                                class="material-icons" data-toggle="tooltip"
-                                                title="Delete">&#xE872;</i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-
-                                    <td>Martin Blank</td>
-                                    <td>martinblank@mail.com</td>
-                                    <td>Via Monte Bianco 34, Turin, Italy</td>
-                                    <td>(480) 631-2097</td>
-                                    <td>
-                                        <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i
-                                                class="material-icons" data-toggle="tooltip"
-                                                title="Edit">&#xE254;</i></a>
-                                        <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i
-                                                class="material-icons" data-toggle="tooltip"
-                                                title="Delete">&#xE872;</i></a>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-
-                    </div>
-                </div>
-                <!-- add Modal HTML -->
-
-                <div id="addEmployeeModal" class="modal fade">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-
-                            <div class="modal-header">
-                                <h4 class="modal-title">Agregar administrador</h4>
-                                <button type="button" class="close" data-dismiss="modal"
-                                    aria-hidden="true">&times;</button>
-                                <form class="row g-3" action="/CrearCuenta" method="POST" enctype="multipart/form-data">
-                                    <!-- Formulario -->
+                            <div class="ms-auto formSearch">
+                                <form class="d-flex" role="search" action="/BuscarAdministrador" method="POST">
                                     <input type="hidden" name="csrf_token" value="{{csrf_token() }}">
+                                    <input class="form-control mr-sm-2 border border-dark" type="text"
+                                        placeholder="Buscar administrador" name="busqueda" aria-label="Search" required
+                                        pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{1,50}"
+                                        title="Solo letras, maximo 50" />
+                                    <button class="btn btn-n btn-outline-success my-2 my-sm-0"
+                                        style="background-color: transparent; border-color: black;" type="submit"
+                                        value="submit"><img src="/static/img/buscar.svg" height="25px"
+                                            width="25px"></button>
+                                </form>
                             </div>
-                            <div class="modal-body">
-                                <div class="form-group">
-                                    <label for="nombreAd" class="form-label">Nombre</label>
-                                    <input name="nombreAd" type="text" class="form-control border border-dark"
-                                        id="nombreAd" value="" required
-                                        pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'\-]{2,35}"
-                                        title="Solo letras Minimo 2 Maximo 35" class="form-control" />
-                                </div>
-                                <div class="form-group">
-                                    <label for="apellidoPAd" class="form-label">Apellido Paterno</label>
-                                    <input name="apellidoPAd" type="text" class="form-control border border-dark"
-                                        id="apellidoPAd" value="" required
-                                        pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'\-]{2,25}"
-                                        title="Solo letras Minimo 2 Maximo 25" class="form-control" />
-                                </div>
-                                <div class="form-group">
-                                    <label for="apellidoMAd" class="form-label">Apellido Materno</label>
-                                    <input name="apellidoMAd" type="text" class="form-control border border-dark"
-                                        id="apellidoMAd" value="" required
-                                        pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'\-]{2,25}"
-                                        title="Solo letras Minimo 2 Maximo 25" class="form-control" />
-                                </div>
-                                <div class="form-group">
-                                    <label for="correoAd" class="form-label">Correo</label>
-                                    <input id="correoAd" name="correoAd" type="email"
-                                        class="form-control border border-dark" id="correoAd" value="" required
-                                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" size="29" class="form-control"
-                                        title="Correo inavlido" />
-                                </div>
-                                <div class="form-group">
-                                    <label for="contraAd" class="form-label">Contraseña</label>
-                                    <input iname="contraAd" type="password" class="form-control border border-dark"
-                                        id="contraAd" required
-                                        pattern="^(?=.*?[A-Z])(?=(.*[a-z]){1,})(?=(.*[\d]){1,})(?=(.*[\W]){1,})(?!.*\s).{8,}$"
-                                        title="Escriba al menos 8 caracteres, 1 digito, 1 mayúscula, 1 minúscula, 1 carácter especial" />
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                                <input type="submit" class="btn btn-info" value="Save">
-                            </div>
-                            </form>
+
                         </div>
+
+
+
                     </div>
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+
+                                <th>Nombre</th>
+                                <th>Apellido paterno</th>
+                                <th>Apellido materno</th>
+                                <th>Correo</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+
+                                <td>Thomas </td>
+                                <td>Lopez </td>
+                                <td>Vazquez </td>
+                                <td>thomashardy@mail.com</td>
+
+                                <td>
+                                    <!-- ------------------------ Tomar este para todos los botones ------------------------ -->
+
+                                    <a href="#editEmployeeModal" class="edit" data-bs-toggle="modal"><i
+                                            class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                                    <a href="#deleteEmployeeModal" class="delete" data-bs-toggle="modal"><i
+                                            class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+
+                                    <!-- ------------------------ Tomar este para todos los botones ------------------------ -->
+
+                                </td>
+                            </tr>
+                            <tr>
+
+                                <td>Dominique Perrier</td>
+                                <td>dominiqueperrier@mail.com</td>
+                                <td>Obere Str. 57, Berlin, Germany</td>
+                                <td>(313) 555-5735</td>
+                                <td>
+                                    <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i
+                                            class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                                    <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i
+                                            class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                                </td>
+                            </tr>
+                            <tr>
+
+                                <td>Maria Anders</td>
+                                <td>mariaanders@mail.com</td>
+                                <td>25, rue Lauriston, Paris, France</td>
+                                <td>(503) 555-9931</td>
+                                <td>
+                                    <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i
+                                            class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                                    <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i
+                                            class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                                </td>
+                            </tr>
+                            <tr>
+
+                                <td>Fran Wilson</td>
+                                <td>franwilson@mail.com</td>
+                                <td>C/ Araquil, 67, Madrid, Spain</td>
+                                <td>(204) 619-5731</td>
+                                <td>
+                                    <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i
+                                            class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                                    <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i
+                                            class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                                </td>
+                            </tr>
+                            <tr>
+
+                                <td>Martin Blank</td>
+                                <td>martinblank@mail.com</td>
+                                <td>Via Monte Bianco 34, Turin, Italy</td>
+                                <td>(480) 631-2097</td>
+                                <td>
+                                    <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i
+                                            class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                                    <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i
+                                            class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
-                <!-- Edit Modal HTML -->
-                <div id="editEmployeeModal" class="modal fade">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <form>
-                                <div class="modal-header">
-                                    <h4 class="modal-title">Editar administraor</h4>
-                                    <button type="button" class="close" data-dismiss="modal"
-                                        aria-hidden="true">&times;</button>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="form-group">
-                                        <label for="nombreAd" class="form-label">Nombre</label>
-                                        <input name="nombreAd" type="text" class="form-control border border-dark"
-                                            id="nombreAd" value="" required
-                                            pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'\-]{2,35}"
-                                            title="Solo letras Minimo 2 Maximo 35" class="form-control" />
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="apellidoPAd" class="form-label">Apellido Paterno</label>
-                                        <input name="apellidoPAd" type="text" class="form-control border border-dark"
-                                            id="apellidoPAd" value="" required
-                                            pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'\-]{2,25}"
-                                            title="Solo letras Minimo 2 Maximo 25" class="form-control" />
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="apellidoMAd" class="form-label">Apellido Materno</label>
-                                        <input name="apellidoMAd" type="text" class="form-control border border-dark"
-                                            id="apellidoMAd" value="" required
-                                            pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'\-]{2,25}"
-                                            title="Solo letras Minimo 2 Maximo 25" class="form-control" />
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="correoAd" class="form-label">Correo</label>
-                                        <input id="correoAd" name="correoAd" type="email"
-                                            class="form-control border border-dark" id="correoAd" value="" required
-                                            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" size="29"
-                                            class="form-control" title="Correo inavlido" />
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="contraAd" class="form-label">Contraseña</label>
-                                        <input iname="contraAd" type="password" class="form-control border border-dark"
-                                            id="contraAd" required
-                                            pattern="^(?=.*?[A-Z])(?=(.*[a-z]){1,})(?=(.*[\d]){1,})(?=(.*[\W]){1,})(?!.*\s).{8,}$"
-                                            title="Escriba al menos 8 caracteres, 1 digito, 1 mayúscula, 1 minúscula, 1 carácter especial" />
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                                    <input type="submit" class="btn btn-info" value="Save">
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                <!-- Delete Modal HTML -->
-                <div id="deleteEmployeeModal" class="modal fade">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <form>
-                                <div class="modal-header">
-                                    <h4 class="modal-title">Delete Employee</h4>
-                                    <button type="button" class="close" data-dismiss="modal"
-                                        aria-hidden="true">&times;</button>
-                                </div>
-                                <div class="modal-body">
-                                    <p>¿Esta seguro de eliminar este registro?</p>
-                                    <p class="text-warning"><small>Esta accion no se puede deshacer.</small></p>
-                                </div>
-                                <div class="modal-footer">
-                                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                                    <input type="submit" class="btn btn-danger" value="Delete">
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
+            </div>
         </section>
+
+        <!-- add Modal HTML -->
+        <div id="addEmployeeModal" class="modal fade" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="staticBackdropLabel">Agregar administrador</h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true"></button>
+                    </div>
+
+                    <div class="modal-body">
+
+                        <!-- Formulario -->
+                        <form class="row g-3" action="" method="POST" enctype="multipart/form-data">
+                            <input type="hidden" name="csrf_token" value="{{csrf_token() }}">
+
+                            <div class="form-group">
+                                <label for="nombreAd" class="form-label">Nombre</label>
+                                <input name="nombreAd" type="text" class="form-control border border-dark" id="nombreAd"
+                                    value="" required
+                                    pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'\-]{2,35}"
+                                    title="Solo letras Minimo 2 Maximo 35" class="form-control" />
+                            </div>
+                            <div class="form-group">
+                                <label for="apellidoPAd" class="form-label">Apellido Paterno</label>
+                                <input name="apellidoPAd" type="text" class="form-control border border-dark"
+                                    id="apellidoPAd" value="" required
+                                    pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'\-]{2,25}"
+                                    title="Solo letras Minimo 2 Maximo 25" class="form-control" />
+                            </div>
+                            <div class="form-group">
+                                <label for="apellidoMAd" class="form-label">Apellido Materno</label>
+                                <input name="apellidoMAd" type="text" class="form-control border border-dark"
+                                    id="apellidoMAd" value="" required
+                                    pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'\-]{2,25}"
+                                    title="Solo letras Minimo 2 Maximo 25" class="form-control" />
+                            </div>
+                            <div class="form-group">
+                                <label for="correoAd" class="form-label">Correo</label>
+                                <input id="correoAd" name="correoAd" type="email"
+                                    class="form-control border border-dark" id="correoAd" value="" required
+                                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" size="29" class="form-control"
+                                    title="Correo inavlido" />
+                            </div>
+                            <div class="form-group">
+                                <label for="contraAd" class="form-label">Contraseña</label>
+                                <input iname="contraAd" type="password" class="form-control border border-dark"
+                                    id="contraAd" required
+                                    pattern="^(?=.*?[A-Z])(?=(.*[a-z]){1,})(?=(.*[\d]){1,})(?=(.*[\W]){1,})(?!.*\s).{8,}$"
+                                    title="Escriba al menos 8 caracteres, 1 digito, 1 mayúscula, 1 minúscula, 1 carácter especial" />
+                            </div>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="button" class="btn btn-default" data-bs-dismiss="modal" value="Cancel">
+                        <input type="submit" class="btn btn-info" value="Save">
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- Edit Modal HTML -->
+        <div id="editEmployeeModal" class="modal fade" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="staticBackdropLabel">Editar administraor</h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true"></button>
+                    </div>
+
+                    <div class="modal-body">
+
+                        <form action="/ActualizarAdministrador" method="POST" enctype="multipart/form-data">
+
+                            <input type="hidden" name="csrf_token" value="{{csrf_token() }}">
+                            <input type="hidden" name="idAd" value="{{a.idAd}}">
+
+                            <h2 style="text-align: center;">Datos Personales</h2>
+                            <br>
+
+                            <div class="form-group">
+                                <label for="nombreAd" class="form-label">Nombre</label>
+                                <input name="nombreAd" type="text" class="form-control border border-dark" id="nombreAd"
+                                    value="" required
+                                    pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'\-]{2,35}"
+                                    title="Solo letras Minimo 2 Maximo 35" class="form-control" />
+                            </div>
+                            <div class="form-group">
+                                <label for="apellidoPAd" class="form-label">Apellido Paterno</label>
+                                <input name="apellidoPAd" type="text" class="form-control border border-dark"
+                                    id="apellidoPAd" value="" required
+                                    pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'\-]{2,25}"
+                                    title="Solo letras Minimo 2 Maximo 25" class="form-control" />
+                            </div>
+                            <div class="form-group">
+                                <label for="apellidoMAd" class="form-label">Apellido Materno</label>
+                                <input name="apellidoMAd" type="text" class="form-control border border-dark"
+                                    id="apellidoMAd" value="" required
+                                    pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'\-]{2,25}"
+                                    title="Solo letras Minimo 2 Maximo 25" class="form-control" />
+                            </div>
+                            <div class="form-group">
+                                <label for="correoAd" class="form-label">Correo</label>
+                                <input id="correoAd" name="correoAd" type="email"
+                                    class="form-control border border-dark" id="correoAd" value="" required
+                                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" size="29" class="form-control"
+                                    title="Correo inavlido" />
+                            </div>
+                            <div class="form-group">
+                                <label for="contraAd" class="form-label">Contraseña</label>
+                                <input iname="contraAd" type="password" class="form-control border border-dark"
+                                    id="contraAd" required
+                                    pattern="^(?=.*?[A-Z])(?=(.*[a-z]){1,})(?=(.*[\d]){1,})(?=(.*[\W]){1,})(?!.*\s).{8,}$"
+                                    title="Escriba al menos 8 caracteres, 1 digito, 1 mayúscula, 1 minúscula, 1 carácter especial" />
+                            </div>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="button" class="btn btn-default" data-bs-dismiss="modal" value="Cancel">
+                        <input type="submit" class="btn btn-info" value="Save">
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- Delete Modal HTML -->
+        <div id="deleteEmployeeModal" class="modal fade" class="modal fade" tabindex="-1" data-bs-backdrop="static"
+            data-bs-keyboard="false" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="staticBackdropLabel">Eliminar administrador</h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true"></button>
+                    </div>
+
+                    <div class="modal-body">
+                        <form action="/EliminarAdministrador" method="POST">
+                            <input type="hidden" name="csrf_token" value="{{csrf_token() }}">
+                            <input type="hidden" name="idAd" value="{{a.idAd}}">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <img src="/static/img/PELIGRO 2@2x.png" alt="Ver Expediente" width="80px"
+                                            style=" float: left; margin-right: 30px; margin-left: 20px;">
+                                    </div>
+
+                                    <div class="col-lg-6">
+                                        <p>¿Esta seguro de eliminar este registro?</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="text-warning"><small>Esta accion no se puede deshacer.</small></p>
+                    </div>
+                    
+                    <div class="modal-footer">
+                        <input type="button" class="btn btn-default" data-bs-dismiss="modal" value="Cancel">
+                        <input type="submit" class="btn btn-danger" value="Delete">
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
     </main>
 
     <footer class="footer text-center text-lg-start text-white">
         <!-- Grid container -->
-        <div class="container pt-2 pl-4 pr-4 textoclaro" >
+        <div class="container pt-2 pl-4 pr-4 textoclaro">
             <!--Grid row-->
             <div class="row my-4 ">
                 <div class="col-lg-6 col-md-6 mb-4 mb-md-0">
@@ -415,7 +461,8 @@
                         <img src="/static/img/logo_Psi.png" height="70" alt="" loading="lazy" />
                     </div>
 
-                    <p class="text-center textoclaro">PsiConnection es un sistema de citas para consultas de psicología presencial
+                    <p class="text-center textoclaro">PsiConnection es un sistema de citas para consultas de psicología
+                        presencial
                         o en línea. Conectamos a nuestros usuarios con psicólogos altamente capacitados y
                         experimentados. En Psiconnection, valoramos la privacidad y la confidencialidad de nuestros
                         usuarios y nos aseguramos de que todas las consultas sean seguras y protegidas. ¡Permítenos
@@ -444,20 +491,23 @@
                     <ul class="list-unstyled">
                         <li>
                             <p class="textoclaro">
-                                    <img class="FotIcono" src="/static/img/location-dot-solid.svg" alt="">
+                                <img class="FotIcono" src="/static/img/location-dot-solid.svg" alt="">
                                 Blvd. Marcelino García Barragán #1421, esq.
                                 Calz. Olímpica, C.P. 44430
-                                Guadalajara, Jalisco, México</p>
+                                Guadalajara, Jalisco, México
+                            </p>
                         </li>
                         <li>
                             <p class="textoclaro">
                                 <img class="FotIcono" src="/static/img/phone-solid.svg" alt="">
-                                + 52 33 1378 5900</p>
+                                + 52 33 1378 5900
+                            </p>
                         </li>
                         <li>
                             <p class="textoclaro">
                                 <img class="FotIcono" src="/static/img/envelope-solid.svg" alt="">
-                                <a id="linkMail" href="mailto:psi.connection09@gmail.com">psi.connection09@gmail.com</a></p>
+                                <a id="linkMail" href="mailto:psi.connection09@gmail.com">psi.connection09@gmail.com</a>
+                            </p>
                         </li>
                     </ul>
                 </div>
@@ -466,7 +516,7 @@
             <!--Grid row-->
         </div>
         <!-- Grid container -->
-        
+
         <!-- Copyright -->
         <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
             © 2023 Copyright:
@@ -476,8 +526,9 @@
     </footer>
 
     <!-- JAVASCRIPT FILES -->
-    <script src="/static/js/jquery.min.js"></script>
     <script src="/static/js/bootstrap.min.js"></script>
+    <script src="/static/js/bootstrap.bundle.js"></script>
+    <script src="/static/js/jquery.min.js"></script>
     <script src="/static/js/jquery.sticky.js"></script>
     <script src="/static/js/click-scroll.js"></script>
     <script src="/static/js/jquery.magnific-popup.min.js"></script>
