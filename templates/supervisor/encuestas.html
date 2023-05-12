@@ -134,95 +134,99 @@
             <div class="svg2"></div>
         </div>
 
-<!-- ***COLECCION DE DATOS FORMULARIO ******-->
-
         <section class="sect">
-            <h2 class="text-center">Registro de Practicantes</h2>
             <form class="row g-3 justify-content-center" action="/CrearCuenta" method="POST" enctype="multipart/form-data">
                 <input type="hidden" name="csrf_token" value="{{csrf_token() }}">
 
-                <div class="col-md-4">
-                   <label for="validationDefault01" class="form-group">Nombre(s)</label>
-                               <input name="nombreAd" type="text" class="form-control border border-dark" id="validationDefault01"
-                               value="" required pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'\-]{2,35}" 
-                               title="Solo letras Minimo 2 Maximo 35" required/>
-                </div>
-
-                <div class="col-md-4">
-                    <label for="validationDefault01" class="form-group">Apellido paterno</label>
-                                <input name="nombreAd" type="text" class="form-control border border-dark" id="validationDefault01"
-                                value="" required pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'\-]{2,35}" 
-                                title="Solo letras Minimo 2 Maximo 35" required/>
-                 </div>
-
-                 <div class="col-md-4">
-                    <label for="validationDefault01" class="form-group">Apellido Materno</label>
-                                <input name="nombreAd" type="text" class="form-control border border-dark" id="validationDefault01"
-                                value="" required pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'\-]{2,35}" 
-                                title="Solo letras Minimo 2 Maximo 35" required/>
-                 </div>
-
-                <div class="col-md-4">
-                    <label for="validationDefault02" class="form-group">Correo</label>
-                                <input name="correoAd" type="email" class="form-control border border-dark" id="validationDefault02"
-                                value="" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" size="29"title="Correo invalido "required/>
-                </div>
-
-                <div class="col-md-4">
-                      <label for="validationDefault02" class="form-group">Telefono Celular</label>
-                                <input name="telCelAd" type="text" class="form-control border border-dark"
-                                id="validationDefault02" 
-                                required pattern="^(\+|00)[1-9][0-9 \-\(\)\.]{10,15}$"title="Numero con lada, máximo 16 digitos" required />
-                </div>
-
-                <div class="col-md-4">
-                       <label for="validationDefault02" class="form-group">Código</label>
-                                <input name="codigoAd" type="text" class="form-control border border-dark"
-                                id="validationDefault02" pattern="[0-9]{9}" title="Código Escolar, máximo 9 digitos" required />
-                </div>
-                
-                <div class="col-xl-5 col-xl-5">
-                    <label for="inputBirthday" class="control-label" >Fecha de Nacimiento</label>
-                    <input name='birthday' type="date" class="form-control form-control border border-dark" id="birthday" value="" required>
-                </div>
-
-                <!-- <div class="row">
-                    <div class="col-auto me-auto">
-                </div> -->
-
-                <div class="col-xl-5 col-xl-5">
-                    <label for="inputBirthday" class="control-label " >Inserte tu Foto</label>
-                    
-                    <input type="file" name="" id="" class="form-control form-control border border-dark" required>
-                </div>
-
-                <div class="col-md-4" >
-                    <label for="inputBirthday" class="control-label">Sexo</label>
-                    <select class="form-select form-select-sm form-control border border-dark" aria-label=".form-select-sm example" required>
-                        <option selected></option>
-                        <option value="Hombre">Hombre</option>
-                        <option value="Hombre">Mujer</option>
-                        <option value="NoDecirlo">Prefiero no decirlo</option>
-                    </select> 
-                </div>
-
-                <div class="col-md-4">
-                    <label for="inputBirthday" class="control-label" >Quien es su supervisor</label>
-                    <select class="form-select form-select-sm form-control border border-dark" aria-label=".form-select-sm example" >
-                        <option value="">Supervisor</option>
-                    </select> 
-                </div>
-                
-                <div class="row  justify-content-center align-items-center ml-5">
-                    <div class="col-auto mt-5 ml-5"><a href="#"><button class="btn btn-secondary col-auto" type="button">Cancelar</button></a></div>
-                    <div class="col-auto mt-5 ml-5"><button class="btn btn-primary col-auto" type="submit">Enviar</button></div>
-                </div>
-                </div>
             </form>
+
+ <!--***Este section es lo que debe de cambiar en todos los html *****-->
+
+ <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CRUD</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script> src="/static/js/crud.js"</script>
+    
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>  
+</head>
+        <body>
+            <div class="container">
+                <div class="table-wrapper">
+                    <div class="table-title">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <h2>Encuestas Practicante</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                
+                                <th>Nombre</th>
+                                <th>Correo</th>
+                                <th>Dirección</th>
+                                <th>Código</th>
+                                <th>Calificación</th>                              
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                            <td>Thomas Hardy</td>
+                            <td>thomashardy@mail.com</td>
+                            <td>89 Chiaroscuro Rd, Portland, USA</td>
+                            <td>216144045</td>
+                            <td>carita buena o mala</td>
+                            </tr>
+
+                            <tr> 
+                            <td>Thomas Hardy</td>
+                            <td>thomashardy@mail.com</td>
+                            <td>89 Chiaroscuro Rd, Portland, USA</td>
+                            <td>216144045</td>
+                            <td>carita buena o mala</td>
+                            </tr>
+
+                            <tr>
+                            <td>Thomas Hardy</td>
+                            <td>thomashardy@mail.com</td>
+                            <td>89 Chiaroscuro Rd, Portland, USA</td>
+                            <td>216144045</td>
+                            <td>carita buena o mala</td>
+                            </tr>
+
+                            <tr>
+                            <td>Thomas Hardy</td>
+                            <td>thomashardy@mail.com</td>
+                            <td>89 Chiaroscuro Rd, Portland, USA</td>
+                            <td>216144045</td>
+                            <td>carita buena o mala</td>
+                            </tr>
+
+                            <tr>
+                            <td>Thomas Hardy</td>
+                            <td>thomashardy@mail.com</td>
+                            <td>89 Chiaroscuro Rd, Portland, USA</td>
+                            <td>216144045</td>
+                            <td>carita buena o mala</td>
+                            </tr> 
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+              
+ <!--**** Este section es lo que debe de cambiar en todos los html ******-->
+
         </section>
-
-<!-- ***COLECCION DE DATOS FORMULARIO ******-->
-
     </main>
 
     <footer class="footer text-center text-lg-start text-white">
