@@ -6,33 +6,71 @@ var navLinks = document.querySelectorAll('.nav-link.click-scroll');
 // Iteramos por cada enlace y comparamos su URL con la URL actual de la página
 for (var i = 0; i < navLinks.length; i++) {
 
-    if (navLinks[i].getAttribute('href') == currentUrl) {
-        // Si la URL del enlace coincide con la URL actual de la página, agregamos la clase 'active'
-        navLinks[i].classList.add('active');
+  if (navLinks[i].getAttribute('href') == currentUrl) {
+    // Si la URL del enlace coincide con la URL actual de la página, agregamos la clase 'active'
+    navLinks[i].classList.add('active');
 
 
-    }
+  }
+}
+// ------------------------------------ Cards index admin ------------------------------------ //
+if (currentUrl == "/templates/admin/index_admin.html") {
+  const cards = document.querySelectorAll('.Lcard');
+
+  for (let i = 0; i < cards.length; i++) {
+    const card = cards[i];
+
+    card.addEventListener('mouseover', () => {
+      setTimeout(() => {
+        card.querySelector('.Ctexto').classList.toggle('display-none');
+        card.querySelector('.CtextoHover').classList.toggle('display-block');
+      }, 100);
+    });
+
+    card.addEventListener('mouseout', () => {
+      setTimeout(() => {
+        card.querySelector('.Ctexto').classList.toggle('display-none');
+        card.querySelector('.CtextoHover').classList.toggle('display-block');
+      }, 100);
+    });
+  }
+}
+// ------------------------------------ End Cards index admin ------------------------------------ //
+
+// ------------------------------------ Agregar practicante ------------------------------------ //
+if (currentUrl == "/templates/supervisor/agregar_practicante.html") {
+  console.log(currentUrl);
+  const editableInput = document.getElementById('input-editable');
+  const readonlyInput = document.getElementById('input-readonly');
+  const combinedInput = document.getElementById('correoPrac');
+
+  // Función para combinar los valores de los dos inputs
+  function combineInputs() {
+    const editableValue = editableInput.value;
+    const readonlyValue = readonlyInput.value;
+    combinedInput.value = `${editableValue}${readonlyValue}`;
+    console.log(combinedInput.value);
+  }
+
+  // Asignar el valor del input combinado antes de hacer el submit
+  document.getElementById('agregarPacticante').addEventListener('submit', function (event) {
+    combineInputs();
+  });
+
+  // Escuchar cambios en los dos inputs y actualizar el input combinado
+  editableInput.addEventListener('input', combineInputs);
+  readonlyInput.addEventListener('input', combineInputs);
+
+  const formulario = document.getElementById('agregarPacticante');
+
+  formulario.addEventListener('submit', function (event) {
+    event.preventDefault(); // Evita que se realice el submit por defecto del formulario
+  });
 }
 
-const cards = document.querySelectorAll('.Lcard');
+// ------------------------------------ End Agregar practicante ------------------------------------ //
 
-for (let i = 0; i < cards.length; i++) {
-  const card = cards[i];
 
-  card.addEventListener('mouseover', () => {
-    setTimeout(() => {
-      card.querySelector('.Ctexto').classList.toggle('display-none');
-      card.querySelector('.CtextoHover').classList.toggle('display-block');
-    }, 100);
-  });
-  
-  card.addEventListener('mouseout', () => {
-    setTimeout(() => {
-      card.querySelector('.Ctexto').classList.toggle('display-none');
-      card.querySelector('.CtextoHover').classList.toggle('display-block');
-    }, 100);
-  });
-}
 ///////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////
 ///Hora y fecha
@@ -44,7 +82,7 @@ for (let i = 0; i < cards.length; i++) {
 // fechaInput.addEventListener('change', () => {
 //   const fechaSeleccionada = new Date(fechaInput.value);
 //   const hoy = new Date();
-  
+
 //   // Validar que la fecha seleccionada sea mayor o igual a la fecha actual
 //   if (fechaSeleccionada < hoy) {
 //     fechaInput.setCustomValidity('La fecha debe ser mayor o igual a la fecha actual');
@@ -56,11 +94,11 @@ for (let i = 0; i < cards.length; i++) {
 // // Añadir evento "change" al input de hora
 // horaInput.addEventListener('change', () => {
 //   const horaSeleccionada = horaInput.value;
-  
+
 //   // Obtener las horas y minutos de la hora seleccionada
 //   const hora = parseInt(horaSeleccionada.substring(0, 2));
 //   const minutos = parseInt(horaSeleccionada.substring(3));
-  
+
 //   // Validar que la hora seleccionada sea entre las 8am y las 7pm
 //   if (hora < 8 || hora > 19) {
 //     horaInput.setCustomValidity('La hora seleccionada no es válida');
@@ -70,7 +108,7 @@ for (let i = 0; i < cards.length; i++) {
 //     horaInput.classList.remove('hora-invalida');
 //   }
 // });
-     
+
 
 // const fechaHoraInput = document.getElementById("fecha-hora");
 // const submitBtn = document.getElementById("submit-btn");
@@ -176,39 +214,39 @@ for (let i = 0; i < cards.length; i++) {
 
 
 // Obtener elementos de la tabla y del formulario
-const tabla = document.getElementById("AdminTable");
-const form = document.querySelector("#editEmployeeModal form");
-const nombreInput = form.querySelector("#nombreAd");
-const apellidoPInput = form.querySelector("#apellidoPAd");
-const apellidoMInput = form.querySelector("#apellidoMAd");
-const correoInput = form.querySelector("#correoAd");
+// const tabla = document.getElementById("AdminTable");
+// const form = document.querySelector("#editEmployeeModal form");
+// const nombreInput = form.querySelector("#nombreAd");
+// const apellidoPInput = form.querySelector("#apellidoPAd");
+// const apellidoMInput = form.querySelector("#apellidoMAd");
+// const correoInput = form.querySelector("#correoAd");
 
 
-// Función para mostrar el modal y transferir los datos de la fila correspondiente
-function mostrarFormulario(boton) {
-  // Obtener la fila correspondiente al botón presionado
-  const fila = boton.closest("tr");
-  
-  // Obtener los datos de la fila y asignarlos a los campos del formulario
-  const nombre    = fila.querySelector("td:nth-child(1)").textContent;
-  const apellidoP = fila.querySelector("td:nth-child(2)").textContent;
-  const apellidoM = fila.querySelector("td:nth-child(3)").textContent;
-  const correo    = fila.querySelector("td:nth-child(4)").textContent;
-  
-  nombreInput.value    = nombre;
-  apellidoPInput.value = apellidoP;
-  apellidoMInput.value = apellidoM;
-  correoInput.value    = correo;
+// // Función para mostrar el modal y transferir los datos de la fila correspondiente
+// function mostrarFormulario(boton) {
+//   // Obtener la fila correspondiente al botón presionado
+//   const fila = boton.closest("tr");
+
+//   // Obtener los datos de la fila y asignarlos a los campos del formulario
+//   const nombre = fila.querySelector("td:nth-child(1)").textContent;
+//   const apellidoP = fila.querySelector("td:nth-child(2)").textContent;
+//   const apellidoM = fila.querySelector("td:nth-child(3)").textContent;
+//   const correo = fila.querySelector("td:nth-child(4)").textContent;
+
+//   nombreInput.value = nombre;
+//   apellidoPInput.value = apellidoP;
+//   apellidoMInput.value = apellidoM;
+//   correoInput.value = correo;
 
 
-  // Mostrar el modal
-  const modal = document.getElementById("editEmployeeModal");
-  modal.style.display = "block";
-}
+//   // Mostrar el modal
+//   const modal = document.getElementById("editEmployeeModal");
+//   modal.style.display = "block";
+// }
 
-// Cerrar el modal cuando se envíe el formulario
-form.addEventListener("submit", (event) => {
-  event.preventDefault();
-  const modal = document.getElementById("editEmployeeModal");
-  modal.style.display = "none";
-});
+// // Cerrar el modal cuando se envíe el formulario
+// form.addEventListener("submit", (event) => {
+//   event.preventDefault();
+//   const modal = document.getElementById("editEmployeeModal");
+//   modal.style.display = "none";
+// });
