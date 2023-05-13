@@ -15,6 +15,7 @@ import pdfkit
 import os
 import random
 import secrets
+import re
 
 
 PCapp                                   = Flask(__name__)
@@ -31,8 +32,8 @@ PCapp.config['UPLOAD_FOLDER_PDF']       = './static/pdf/'
 
 PCapp.config['MAIL_SERVER']='smtp.gmail.com'
 PCapp.config['MAIL_PORT'] = 465
-PCapp.config['MAIL_USERNAME'] = 'jsecardenas120@gmail.com'
-PCapp.config['MAIL_PASSWORD'] = 'gfpsmrtwpqwrafqz'
+PCapp.config['MAIL_USERNAME'] = 'psi.connection09@gmail.com'
+PCapp.config['MAIL_PASSWORD'] = 'togieyicxqyzseil'
 PCapp.config['MAIL_USE_TLS'] = False
 PCapp.config['MAIL_USE_SSL'] = True
 mail = Mail(PCapp)
@@ -74,10 +75,32 @@ def auth():
         #Registro
         elif action == 'register':
             #Falta Hacer HASH a toda la informacion personal del usuario
+            #Validar el nombre
             name = request.form['name']
+            if len(name.strip()) == 0:
+                flash("Por favor ingrese su nombre completo", 'danger')
+                return redirect(url_for('auth'))
+            
             email = request.form['email']
+             # Validar el correo electrónico
+            if len(email.strip()) == 0:
+                flash("Por favor ingrese su correo electrónico", 'danger')
+                return redirect(url_for('auth'))
+            
+            if not re.match(r'^[^\s@]+@(udg\.com\.mx|alumnos\.udg\.mx|academicos\.udg\.mx)$', email):
+                # Si el correo electrónico no es válido, mostrar un mensaje de error
+                flash("Por favor ingrese un correo electrónico válido con uno de los dominios permitidos", 'danger')
+                return redirect(url_for('auth'))
+            
+
             tel = request.form['phone']
+          
+            
             password = request.form['password']
+            if len(password.strip()) < 8:
+                flash("Por favor ingrese una contraseña de al menos 8 caracteres", 'danger')
+                return redirect(url_for('auth'))
+            
             hashed_password = bcryptObj.generate_password_hash(password).decode('utf-8')
             
             # Verificar si el correo ya está registrado en la base de datos
@@ -99,8 +122,9 @@ def auth():
             cur.close()
             
             # Enviar el código de verificación por correo electrónico
-            msg = Message('Código de verificación', sender='jsecardenas120@gmail.com', recipients=[email])
-            msg.body = f"¡Bienvenido! Gracias por registrarte a PSICONNECTION.\n\nTu código de verificación es: {verification_code}\n\n¿No has sido tú? No te preocupes, simplemente haz caso omiso a este correo.\n"
+            msg = Message('Código de verificación', sender=PCapp.config['MAIL_USERNAME'], recipients=[email])
+            msg.body = render_template('layoutmail.html', name=name ,  verification_code=verification_code)
+            msg.html = render_template('layoutmail.html', name=name ,verification_code=verification_code)
             mail.send(msg)
             
             # Redirigir al usuario a la página de verificación
@@ -108,7 +132,6 @@ def auth():
             return redirect(url_for('verify'))
 
     return render_template('login.html')
-    
 
 
 @PCapp.route('/verify', methods=['GET', 'POST'])

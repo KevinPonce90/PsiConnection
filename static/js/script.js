@@ -4,9 +4,9 @@ $(document).ready(function () {
     'use strict';
 
     var usernameError = true,
-        emailError    = true,
+        emailError = true,
         passwordError = true,
-        passConfirm   = true;
+        passConfirm = true;
 
     // Detect browser for css purpose
     if (navigator.userAgent.toLowerCase().indexOf('firefox') > -1) {
@@ -35,6 +35,7 @@ $(document).ready(function () {
                 usernameError = false;
             }
         }
+        /*
         // Email
         if ($(this).hasClass('email')) {
             if ($(this).val().length == '') {
@@ -45,7 +46,20 @@ $(document).ready(function () {
                 emailError = false;
             }
         }
-
+        */
+        // Email
+        if ($(this).hasClass('email')) {
+            if ($(this).val().length == '') {
+                $(this).siblings('span.error').text('Porfavor ingrese su correo electronico').fadeIn().parent('.form-group').addClass('hasError');
+                emailError = true;
+            } else if (!/^[^\s@]+@(udg\.com\.mx|alumnos\.udg\.mx|academicos\.udg\.mx)$/i.test($(this).val())) {
+                $(this).siblings('span.error').text('Porfavor ingrese un correo electrónico válido con uno de los dominios permitidos').fadeIn().parent('.form-group').addClass('hasError');
+                emailError = true;
+            } else {
+                $(this).siblings('.error').text('').fadeOut().parent('.form-group').removeClass('hasError');
+                emailError = false;
+            }
+        }
         // PassWord
         if ($(this).hasClass('pass')) {
             if ($(this).val().length < 8) {
@@ -88,20 +102,22 @@ $(document).ready(function () {
     });
 
 
-    $(document).ready(function() {
+    //Alertas
+
+    $(document).ready(function () {
         // Mostrar las alertas con animación
-        $('.flashes li').each(function() {
-          $(this).addClass('show');
+        $('.flashes li').each(function () {
+            $(this).addClass('show');
         });
-      
+
         // Ocultar las alertas con animación después de 5 segundos
-        setTimeout(function() {
-          $('.flashes li').removeClass('show');
-          setTimeout(function() {
-            $('.flashes li').remove();
-          }, 500);
+        setTimeout(function () {
+            $('.flashes li').removeClass('show');
+            setTimeout(function () {
+                $('.flashes li').remove();
+            }, 500);
         }, 5000);
-      });
+    });
 
 
 
@@ -110,9 +126,11 @@ $(document).ready(function () {
 });
 
 
+
+
 /* Form submit
 $('form.signup-form').submit(function (event) {
-    event.preventDefault();
+    
 
     if (usernameError == true || emailError == true || passwordError == true || passConfirm == true) {
         $('.name, .email, .pass, .passConfirm').blur();

@@ -1,6 +1,6 @@
 body {
   font-family: "Montserrat", sans-serif;
-  background: #f7edd5;
+  background: #215A6D;
 }
 
 .container {
@@ -54,7 +54,8 @@ section#formHolder {
   z-index: -1;
 }
 .brand a.logo {
-  color: #f95959;
+  /*color: #f95959;*/
+  color: #92c7a3;
   font-size: 20px;
   font-weight: 700;
   text-decoration: none;
@@ -111,7 +112,7 @@ section#formHolder {
   font-size: 12px;
   text-transform: uppercase;
   padding: 8px 30px;
-  background: #f95959;
+  /*background: #f95959;*/
   text-decoration: none;
   color: #fff;
   border-radius: 30px;
@@ -210,6 +211,20 @@ section#formHolder {
   right: 0;
   display: none;
 }
+
+.form form span.error {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  font-size: 12px;
+  color: red;
+}
+.hasError span.error2 {
+  display: block;
+}
+
+
 .form form input[type=password] {
   color: #f95959;
 }
@@ -220,7 +235,7 @@ section#formHolder {
   font-size: 12px;
   text-transform: uppercase;
   padding: 5px 30px;
-  background: #f95959;
+  background: #92c7a3;
   color: #fff;
   border-radius: 30px;
   margin-right: 20px;
@@ -236,7 +251,7 @@ section#formHolder {
   transition: all 0.3s;
 }
 .form form .CTA a.switch:hover {
-  color: #f95959;
+  color: #92c7a3;
 }
 
 footer {
@@ -334,7 +349,7 @@ footer p a:hover, footer p a:focus:hover {
   border: 1px solid #eee;
   border-radius: 5px;
   background-color: #000000;
-  color: #fdfdfd;
+  color: #0000;
   font-size: 16px;
   opacity: 0;
   transition: opacity 0.5s ease-in-out;
@@ -345,5 +360,5 @@ footer p a:hover, footer p a:focus:hover {
 }
 
 .flashes li.error {
-  color: #f95959;
+  color: #92c7a3;
 }
