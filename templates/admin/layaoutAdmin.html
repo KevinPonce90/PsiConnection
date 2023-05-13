@@ -9,19 +9,20 @@
 
     <link rel="icon" href="/static/img/logo_Psi.png">
 
+    <!-- CSS FILES -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/personal.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/templatemo-first-portfolio-style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/magnific-popup.css') }}" >
+   
     <!-- Extras -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" >
     
     <!-- Bootsrap -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap-icons.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/magnific-popup.css') }}" >
     
-    <!-- CSS FILES -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/personal.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/templatemo-first-portfolio-style.css') }}">
 </head>
 <body class="fondo">
     <header class="section">
@@ -131,3 +132,40 @@
     <div class="pb-4 pt-4"></div>
 </body>
 </html>
+
+
+
+
+row 
+class="mb-2 text-center"d-flex 
+
+
+<!-- Normal -->
+<div class="d-flex align-items-center mb-4">
+
+    <div >
+        <h2>Administradores</h2>
+    </div>
+    <div class="ms-4 align-items-center">
+        <a href="" class="btn btn-success" data-bs-toggle="modal"
+            data-bs-target="#addEmployeeModal"><i class="material-icons">&#xE147;</i>
+            <span>Agregar administrador
+            </span></a>
+
+    </div>
+
+    <div class="ms-auto formSearch">
+        <form class="d-flex" role="search" action="/BuscarAdministrador" method="POST">
+            <input type="hidden" name="csrf_token" value="{{csrf_token() }}">
+            <input class="form-control mr-sm-2 border border-dark" type="text"
+                placeholder="Buscar administrador" name="busqueda" aria-label="Search" required
+                pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{1,50}"
+                title="Solo letras, maximo 50" />
+            <button class="btn btn-n btn-outline-success my-2 my-sm-0"
+                style="background-color: transparent; border-color: black;" type="submit"
+                value="submit"><img src="/static/img/buscar.svg" height="25px"
+                    width="25px"></button>
+        </form>
+    </div>
+
+</div>
