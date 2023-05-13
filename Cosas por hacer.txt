@@ -1,0 +1,31 @@
+Corregir el boton que despliega el menu del header cuando la vista esta reducida.
+
+Vistas
+
+	General -  cambiar colores.
+		Opcional - Cambiar diseño de las cartas, footer.
+
+-Administrador
+	Vista de pacientes 		 - Modificar, eliminar.
+	Vista de practicantes 		 - Modificar (tambien va eliminar o modificar la cita), eliminar.
+	Vista de supervisores		 - Crear, modificar, eliminar.
+	Vista de administradores 	 - Crear, modificar, eliminar.
+
+-Paciente
+	Cancelar cita 			- Solo cancela la cita ya que solo tiene una.
+	Agendar cita 			- Modal en donde "se muestren los datos del practicante  o fecha -> hora -> Practicante"
+	Historial de citas		- Se muestran los registros de las citas que ha tenido. (Fecha - Practicante - Modalidad - o lugar de cita)
+	Encuestas			- Apartado para contestar la encuesta.
+	Apartado que mencione que 
+	tiene una encuesta pendiente.	- Condicional que verifique si ya respondio la encuesta, si esta respondida deja agendar, sino muestra un mensaje 					  para que responda la encuesta pendiente.
+
+-Practicantes
+	Cancelar cita			- Se elige la fecha y hora (segun esto le llega un mensaje al supervisor o admnistrador para cancelarlo)
+	Ver citas pendientes 		- Tabla - Select from de todas las citas pendientes. (Fecha - Paciente - Modalidad -link o lugar de cita)
+	Historial de citas 		- Tabla - Select from de todas las citas pasadas.  (Fecha - Paciente - Modalidad - o lugar de cita)
+
+-Supervisor
+ 	Cancelar cita de practicante	- Cancela la cita del practicante.
+	Ver resultados de encuestas 	- Tabla - Practicante - Fecha - Modalidad - Resultado de encuesta.
+	Calificar			- Modal de la en tabla de resultados para calificar al practicante.
+	Vista de sus Practicantes	- Agregar, modificar, eliminar practicante  -  Tabla - Datos del practicantes. 
