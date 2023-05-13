@@ -13,3 +13,33 @@ for (var i = 0; i < navLinks.length; i++) {
 
     }
 }
+
+if (currentUrl == "/templates/supervisor/agregar_practicante.html") {
+    console.log(currentUrl);
+    const editableInput = document.getElementById('input-editable');
+    const readonlyInput = document.getElementById('input-readonly');
+    const combinedInput = document.getElementById('correoPrac');
+
+    // Función para combinar los valores de los dos inputs
+    function combineInputs() {
+        const editableValue = editableInput.value;
+        const readonlyValue = readonlyInput.value;
+        combinedInput.value = `${editableValue}${readonlyValue}`;
+        console.log(combinedInput.value);
+    }
+
+    // Asignar el valor del input combinado antes de hacer el submit
+    document.getElementById('agregarPacticante').addEventListener('submit', function (event) {
+        combineInputs();
+    });
+
+    // Escuchar cambios en los dos inputs y actualizar el input combinado
+    editableInput.addEventListener('input', combineInputs);
+    readonlyInput.addEventListener('input', combineInputs);
+
+    const formulario = document.getElementById('agregarPacticante');
+
+    formulario.addEventListener('submit', function (event) {
+        event.preventDefault(); // Evita que se realice el submit por defecto del formulario
+    });
+}

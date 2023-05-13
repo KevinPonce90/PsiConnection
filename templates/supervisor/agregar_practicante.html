@@ -9,17 +9,17 @@
     <title>PsiConnection</title>
     <link rel="icon" href="/static/img/logo_Psi.png">
 
-    
+
     <!-- Extras -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
-    
+
     <!-- Bootsrap -->
     <link href="/static/css/bootstrap.min.css" rel="stylesheet">
     <link href="/static/css/bootstrap-icons.css" rel="stylesheet">
     <link href="/static/css/magnific-popup.css" rel="stylesheet">
-    
+
     <!-- CSS FILES -->
     <link rel="stylesheet" href="/static/css/personal.css">
     <link href="/static/css/templatemo-first-portfolio-style.css" rel="stylesheet">
@@ -38,23 +38,25 @@
 
             <div class="container">
 
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                
-                <a href="/templates/admin/index_admin.html" class="navbar-brand mx-auto mx-lg-0"><img class="Letras-Fondo" src="/static/img/LETRAS-NO-FONDO-1.0.png" alt="PsiConnection"></a>
-     
+
+                <a href="/templates/supervisor/index_supervisor.html" class="navbar-brand mx-auto mx-lg-0"><img
+                        class="Letras-Fondo" src="/static/img/LETRAS-NO-FONDO-1.0.png" alt="PsiConnection"></a>
+
                 <div class="collapse navbar-collapse barNav" id="navbarNav">
                     <ul class="navbar-nav ms-lg-5">
                         <li class="nav-item">
-                            <a class="nav-link click-scroll" href="/templates/admin/index_admin.html">Home</a>
+                            <a class="nav-link click-scroll" href="/templates/supervisor/index_supervisor.html">Home</a>
                         </li>
-                       
+
                     </ul>
                 </div>
                 <div class="d-lg-flex align-items-center ms-auto dropdown">
                     <button class="dropbtn">
-                        Nombre
+                        {{username}}
                     </button>
                     <div class="dropdown-content">
                         <div class="inte-content">
@@ -70,7 +72,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <script>
                     function switchElements() {
                         const navbar = document.querySelector('.barNav');
@@ -93,13 +95,13 @@
             <div class="container">
                 <div class="row">
 
-                   
+
                     <!-- Esta clase solo debe de estar en los index -->
                     <div class="col-lg-7 col-12">
                         <div class="hero-text">
                             <div class="espacio"></div>
                             <div class="hero-title-wrap d-flex align-items-center mb-4">
-                                <h1 class="hero-title ms-3 mb-0">Bienvenido!</h1>
+                                <h1 class="hero-title ms-3 mb-0">¡Bienvenido!</h1>
                             </div>
                             <h2 class="text-center">{{username}}</h2>
                         </div>
@@ -120,8 +122,6 @@
         </section>
     </header>
 
-    <div class="pb-4 pt-4"></div>
-
     <main>
 
         <!-- Esto es para las figuras de fondo -->
@@ -134,100 +134,117 @@
             <div class="svg2"></div>
         </div>
 
-<!-- ***COLECCION DE DATOS FORMULARIO ******-->
 
         <section class="sect">
             <h2 class="text-center">Registro de Practicantes</h2>
-            <form class="row g-3 justify-content-center" action="/CrearCuenta" method="POST" enctype="multipart/form-data">
+            <form id="agregarPacticante" class="row g-3 justify-content-center" action="/CrearPracticante" method="POST"
+                enctype="multipart/form-data">
                 <input type="hidden" name="csrf_token" value="{{csrf_token() }}">
+                <input type="hidden" name="idSup" value="{{a.idSup}}">
 
                 <div class="col-md-4">
-                   <label for="validationDefault01" class="form-group">Nombre(s)</label>
-                               <input name="nombreAd" type="text" class="form-control border border-dark" id="validationDefault01"
-                               value="" required pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'\-]{2,35}" 
-                               title="Solo letras Minimo 2 Maximo 35" required/>
+                    <label for="nombrePrac" class="form-group">Nombre(s)</label>
+                    <input name="nombrePrac" id="nombrePrac" type="text" class="form-control border border-dark"
+                        required
+                        pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'\-]{2,35}"
+                        title="Solo letras Minimo 2 Maximo 35"/>
                 </div>
 
                 <div class="col-md-4">
-                    <label for="validationDefault01" class="form-group">Apellido paterno</label>
-                                <input name="nombreAd" type="text" class="form-control border border-dark" id="validationDefault01"
-                                value="" required pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'\-]{2,35}" 
-                                title="Solo letras Minimo 2 Maximo 35" required/>
-                 </div>
-
-                 <div class="col-md-4">
-                    <label for="validationDefault01" class="form-group">Apellido Materno</label>
-                                <input name="nombreAd" type="text" class="form-control border border-dark" id="validationDefault01"
-                                value="" required pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'\-]{2,35}" 
-                                title="Solo letras Minimo 2 Maximo 35" required/>
-                 </div>
-
-                <div class="col-md-4">
-                    <label for="validationDefault02" class="form-group">Correo</label>
-                                <input name="correoAd" type="email" class="form-control border border-dark" id="validationDefault02"
-                                value="" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" size="29"title="Correo invalido "required/>
+                    <label for="apellidoPPrac" class="form-group">Apellido paterno</label>
+                    <input name="apellidoPPrac" id="apellidoPPrac" type="text" class="form-control border border-dark"
+                        required
+                        pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'\-]{2,35}"
+                        title="Solo letras Minimo 2 Maximo 35"/>
                 </div>
 
                 <div class="col-md-4">
-                      <label for="validationDefault02" class="form-group">Telefono Celular</label>
-                                <input name="telCelAd" type="text" class="form-control border border-dark"
-                                id="validationDefault02" 
-                                required pattern="^(\+|00)[1-9][0-9 \-\(\)\.]{10,15}$"title="Numero con lada, máximo 16 digitos" required />
+                    <label for="apellidoMPrac" class="form-group">Apellido Materno</label>
+                    <input name="apellidoMPrac" id="apellidoMPrac" type="text" class="form-control border border-dark"
+                        required
+                        pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'\-]{2,35}"
+                        title="Solo letras Minimo 2 Maximo 35"/>
                 </div>
 
                 <div class="col-md-4">
-                       <label for="validationDefault02" class="form-group">Código</label>
-                                <input name="codigoAd" type="text" class="form-control border border-dark"
-                                id="validationDefault02" pattern="[0-9]{9}" title="Código Escolar, máximo 9 digitos" required />
-                </div>
-                
-                <div class="col-xl-5 col-xl-5">
-                    <label for="inputBirthday" class="control-label" >Fecha de Nacimiento</label>
-                    <input name='birthday' type="date" class="form-control form-control border border-dark" id="birthday" value="" required>
-                </div>
-
-                <!-- <div class="row">
-                    <div class="col-auto me-auto">
-                </div> -->
-
-                <div class="col-xl-5 col-xl-5">
-                    <label for="inputBirthday" class="control-label " >Inserte tu Foto</label>
+                    <label for="correoPrac" class="form-group">Correo</label>
                     
-                    <input type="file" name="" id="" class="form-control form-control border border-dark" required>
+                    <div id="correo-conrtainer">
+
+                        <input name="input-editable" id="input-editable" type="text" class="left-input form-control border border-dark" placeholder="Nombre de usuario" pattern="^[a-z]+\.[a-z]+\d{4}$"
+                        required title="Correo invalido">
+                        
+                        <input name="input-readonly" id="input-readonly" type="text" class="right-input form-control border border-dark" 
+                        value="@alumnos.udg.mx" readonly/>
+                        
+                        <input type="hidden" name="correoPrac" id="correoPrac">
+                    </div>
                 </div>
 
-                <div class="col-md-4" >
-                    <label for="inputBirthday" class="control-label">Sexo</label>
-                    <select class="form-select form-select-sm form-control border border-dark" aria-label=".form-select-sm example" required>
+
+
+                <div class="col-md-4">
+                    <label for="telCelPrac" class="form-group">Telefono Celular</label>
+                    <input name="telCelPrac" id="telCelPrac" type="text" class="form-control border border-dark"
+                        required pattern="^(\+|00)[1-9][0-9 \-\(\)\.]{10,15}$"
+                        title="Numero con lada, máximo 16 digitos"/>
+                </div>
+
+                <div class="col-md-4">
+                    <label for="codigoPrac" class="form-group">Código</label>
+                    <input name="codigoPrac" id="codigoPrac" type="text" class="form-control border border-dark"
+                        pattern="[0-9]{9}" title="Código Escolar, máximo 9 digitos" inputmode="numeric"/>
+                </div>
+
+                <div class="col-xl-5 col-xl-5">
+                    <label for="fechaPrac" class="control-label">Fecha de Nacimiento</label>
+                    <input name="fechaPrac" id="fechaPrac" type="date"
+                        class="form-control form-control border border-dark" required>
+                </div>
+
+                <div class="col-xl-5 col-xl-5">
+                    <label for="fotoPrac" class="control-label ">Inserte tu Foto</label>
+                    <input name="fotoPrac" id="fotoPrac" type="file"
+                        class="form-control form-control border border-dark" accept="image/*" required>
+                </div>
+
+                <div class="col-md-4">
+                    <label for="sexoPrac" class="control-label">Sexo</label>
+                    <select name="sexoPrac" id="sexoPrac"
+                        class="form-select form-select-sm form-control border border-dark"
+                        aria-label=".form-select-sm example" required>
                         <option selected></option>
                         <option value="Hombre">Hombre</option>
                         <option value="Hombre">Mujer</option>
                         <option value="NoDecirlo">Prefiero no decirlo</option>
-                    </select> 
+                    </select>
                 </div>
 
                 <div class="col-md-4">
-                    <label for="inputBirthday" class="control-label" >Quien es su supervisor</label>
-                    <select class="form-select form-select-sm form-control border border-dark" aria-label=".form-select-sm example" >
+                    <label for="inputBirthday" class="control-label">Quien es su supervisor</label>
+                    <select class="form-select form-select-sm form-control border border-dark"
+                        aria-label=".form-select-sm example">
                         <option value="">Supervisor</option>
-                    </select> 
+                    </select>
                 </div>
-                
+
                 <div class="row  justify-content-center align-items-center ml-5">
-                    <div class="col-auto mt-5 ml-5"><a href="#"><button class="btn btn-secondary col-auto" type="button">Cancelar</button></a></div>
-                    <div class="col-auto mt-5 ml-5"><button class="btn btn-primary col-auto" type="submit">Enviar</button></div>
+                    <div class="col-auto mt-5 ml-5"><a href="/templates/supervisor/index_supervisor.html"><button class="btn btn-secondary col-auto"
+                                type="button">Cancelar</button></a></div>
+                    <div class="col-auto mt-5 ml-5"><button class="btn btn-primary col-auto"
+                            type="submit">Enviar</button></div>
                 </div>
                 </div>
             </form>
         </section>
 
-<!-- ***COLECCION DE DATOS FORMULARIO ******-->
+        <!-- ***COLECCION DE DATOS FORMULARIO ******-->
 
     </main>
 
     <footer class="footer text-center text-lg-start text-white">
         <!-- Grid container -->
-        <div class="container pt-2 pl-4 pr-4 textoclaro" >
+        <div class="container pt-2 pl-4 pr-4 textoclaro">
             <!--Grid row-->
             <div class="row my-4 ">
                 <div class="col-lg-6 col-md-6 mb-4 mb-md-0">
@@ -237,7 +254,8 @@
                         <img src="/static/img/logo_Psi.png" height="70" alt="" loading="lazy" />
                     </div>
 
-                    <p class="text-center textoclaro">PsiConnection es un sistema de citas para consultas de psicología presencial
+                    <p class="text-center textoclaro">PsiConnection es un sistema de citas para consultas de psicología
+                        presencial
                         o en línea. Conectamos a nuestros usuarios con psicólogos altamente capacitados y
                         experimentados. En Psiconnection, valoramos la privacidad y la confidencialidad de nuestros
                         usuarios y nos aseguramos de que todas las consultas sean seguras y protegidas. ¡Permítenos
@@ -266,20 +284,23 @@
                     <ul class="list-unstyled">
                         <li>
                             <p class="textoclaro">
-                                    <img class="FotIcono" src="/static/img/location-dot-solid.svg" alt="">
+                                <img class="FotIcono" src="/static/img/location-dot-solid.svg" alt="">
                                 Blvd. Marcelino García Barragán #1421, esq.
                                 Calz. Olímpica, C.P. 44430
-                                Guadalajara, Jalisco, México</p>
+                                Guadalajara, Jalisco, México
+                            </p>
                         </li>
                         <li>
                             <p class="textoclaro">
                                 <img class="FotIcono" src="/static/img/phone-solid.svg" alt="">
-                                + 52 33 1378 5900</p>
+                                + 52 33 1378 5900
+                            </p>
                         </li>
                         <li>
                             <p class="textoclaro">
                                 <img class="FotIcono" src="/static/img/envelope-solid.svg" alt="">
-                                <a id="linkMail" href="mailto:psi.connection09@gmail.com">psi.connection09@gmail.com</a></p>
+                                <a id="linkMail" href="mailto:psi.connection09@gmail.com">psi.connection09@gmail.com</a>
+                            </p>
                         </li>
                     </ul>
                 </div>
@@ -288,7 +309,7 @@
             <!--Grid row-->
         </div>
         <!-- Grid container -->
-        
+
         <!-- Copyright -->
         <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
             © 2023 Copyright:
