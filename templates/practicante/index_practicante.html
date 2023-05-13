@@ -9,21 +9,19 @@
     <title>PsiConnection - Praticante</title>
     <link rel="icon" href="/static/img/logo_Psi.png">
 
-    <!-- CSS FILES -->
-    <link rel="stylesheet" href="/static/css/personal.css">
-    <link href="/static/css/templatemo-first-portfolio-style.css" rel="stylesheet">
-
     <!-- Extras -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Raleway:300,600" rel="stylesheet">
-
-
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap">
+    
     <!-- Bootsrap -->
-    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/static/css/bootstrap-icons.css" rel="stylesheet">
-    <link href="/static/css/magnific-popup.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/bootstrap-icons.css">
+    
+    <!-- CSS FILES -->
+    <link rel="stylesheet" href="/static/css/personal.css">
+    <link rel="stylesheet" href="/static/css/templatemo-first-portfolio-style.css">
+    <link rel="stylesheet" href="/static/css/magnific-popup.css">
 
 
 </head>
@@ -46,24 +44,23 @@
                 </button>
 
 
-                  <a href="/templates/practicante/index_practicante.html" class="navbar-brand mx-auto mx-lg-0"><img class="Letras-Fondo" src="/static/img/LETRAS-NO-FONDO.png" alt="PsiConnection"
-                    href="/templates/paciente/index_pacientes.html"></a>
-                
+                <a href="/templates/practicante/index_practicante.html" class="navbar-brand mx-auto mx-lg-0"><img
+                        class="Letras-Fondo" src="/static/img/LETRAS-NO-FONDO.png" alt="PsiConnection"
+                        href="/templates/paciente/index_pacientes.html"></a>
 
-                
+
+
                 <div class="collapse navbar-collapse barNav" id="navbarNav">
                     <ul class="navbar-nav ms-lg-5">
                         <li class="nav-item">
-                            <a class="nav-link click-scroll" href="/templates/practicante/index_practicante.html">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link click-scroll" href="/templates/">Pacientes</a>
+                            <a class="nav-link click-scroll"
+                                href="/templates/practicante/index_practicante.html">Home</a>
                         </li>
                     </ul>
                 </div>
                 <div class="d-lg-flex align-items-center ms-auto dropdown">
                     <button class="dropbtn">
-                        Nombre
+                        {{username}}
                     </button>
                     <div class="dropdown-content">
                         <div class="inte-content">
@@ -74,7 +71,7 @@
                                 {{email}}
                             </p>
                             <a class="btn btn-a float-right mr-3" href=" {{ url_for('logout') }}"
-                                style="background-color: #008129; color: white;">Cerrar sesion
+                                style="background-color: #007b81; color: white;">Cerrar sesion
                             </a>
                         </div>
                     </div>
@@ -101,7 +98,7 @@
             <div class="container">
                 <div class="row">
 
-                   
+
                     <!-- Esta clase solo debe de estar en los index -->
                     <div class="col-lg-7 col-12">
                         <div class="hero-text">
@@ -113,7 +110,7 @@
                         </div>
                     </div>
 
-                    
+
                     <div class="custom-shape-divider-top-1682744544">
                         <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"
                             preserveAspectRatio="none">
@@ -127,8 +124,6 @@
             </div>
         </section>
     </header>
-
-    <div class="pb-4 pt-4"></div>
 
     <main>
 
@@ -145,198 +140,167 @@
         <!-- Este section es lo que debe de cambiar en todos los html -->
         <section class="sect">
 
-        </section>
-        
-        <div class="container">
-            <div class="table-wrapper">
-                <div class="table-title">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <h2>Historial De Citas</h2>
+            <div class="container">
+                <div class="table-wrapper">
+                    <div class="table-title">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <h2 class="textoPresentacion">Citas Pendientes</h2>
+                            </div>
                         </div>
-                        <!--    <div class="col-sm-6">
+                    </div>
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <!---->
+                                <th>Nombre</th>
+                                <th>FECHA</th>
+                                <th>HORA</th>
+                                <th>MODALIDAD</th>
+                                <th>UBICACIÓN</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+
+                                <td>1</td>
+                                <td>1_@mail.com</td>
+                                <td>1, Guadalajara, MEX</td>
+                                <td>211111111</td>
+                                <td>1</td>
+
+                                <td>
+                                    <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i
+                                            class="material-icons" data-toggle="tooltip" title="Editar">&#xE254;</i></a>
+                                    <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i
+                                            class="material-icons" data-toggle="tooltip"
+                                            title="Eliminar">&#xE872;</i></a>
+                                </td>
+                            </tr>
+                            <tr>
+
+                                <td>2</td>
+                                <td>2_@mail.com</td>
+                                <td>2, Guadalajara, MEX</td>
+                                <td>222222222</td>
+                                <td>2</td>
+                                <td>
+                                    <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i
+                                            class="material-icons" data-toggle="tooltip" title="Editar">&#xE254;</i></a>
+                                    <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i
+                                            class="material-icons" data-toggle="tooltip"
+                                            title="Eliminar">&#xE872;</i></a>
+                                </td>
+                            </tr>
+                            <tr>
+
+                                <td>3</td>
+                                <td>3_@mail.com</td>
+                                <td>3, Guadalajara, MEX</td>
+                                <td>233333333</td>
+                                <td>3</td>
+                                <td>
+                                    <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i
+                                            class="material-icons" data-toggle="tooltip" title="Editar">&#xE254;</i></a>
+                                    <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i
+                                            class="material-icons" data-toggle="tooltip"
+                                            title="Eliminar">&#xE872;</i></a>
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+
+            <!------------------------------------------        -->
+
+
+            <div class="container">
+                <div class="table-wrapper">
+                    <div class="table-title">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <h2 class="textoPresentacion">Historial De Citas</h2>
+                            </div>
+                            <!--    <div class="col-sm-6">
                                     <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i
                                              </i> class="material-icons">&#xE147;</i> <span>Agregar Practicante</span></a> -->
-        
-                        <!--  </div> -->
-                    </div>
-                </div>
-                <table class="table table-striped table-hover">
-                    <thead>
-                        <tr>
-        
-                            <th>Nombre</th>
-                            <th>FECHA</th>
-                            <th>HORA</th>
-                            <th>MODALIDAD</th>
-                            <th>UBICACIÓN</th>
-                            <th>Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-        
-                            <td>1</td>
-                            <td>1_@mail.com</td>
-                            <td>1, Guadalajara, MEX</td>
-                            <td>211111111</td>
-                            <td>1</td>
-        
-                            <td>
-                                <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons"
-                                        data-toggle="tooltip" title="Editar">&#xE254;</i></a>
-                                <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons"
-                                        data-toggle="tooltip" title="Eliminar">&#xE872;</i></a>
-                            </td>
-                        </tr>
-                        <tr>
-        
-                            <td>2</td>
-                            <td>2_@mail.com</td>
-                            <td>2, Guadalajara, MEX</td>
-                            <td>222222222</td>
-                            <td>2</td>
-                            <td>
-                                <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons"
-                                        data-toggle="tooltip" title="Editar">&#xE254;</i></a>
-                                <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons"
-                                        data-toggle="tooltip" title="Eliminar">&#xE872;</i></a>
-                            </td>
-                        </tr>
-                        <tr>
-        
-                            <td>3</td>
-                            <td>3_@mail.com</td>
-                            <td>3, Guadalajara, MEX</td>
-                            <td>233333333</td>
-                            <td>3</td>
-                            <td>
-                                <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons"
-                                        data-toggle="tooltip" title="Editar">&#xE254;</i></a>
-                                <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons"
-                                        data-toggle="tooltip" title="Eliminar">&#xE872;</i></a>
-                            </td>
-                        </tr>
-                        <tr>
-        
-                            <td>4</td>
-                            <td>4_@mail.com</td>
-                            <td>4, Guadalajara, MEX</td>
-                            <td>244444444</td>
-                            <td>4</td>
-                            <td>
-                                <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons"
-                                        data-toggle="tooltip" title="Editar">&#xE254;</i></a>
-                                <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons"
-                                        data-toggle="tooltip" title="Eliminar">&#xE872;</i></a>
-                            </td>
-                        </tr>
-                        <tr>
-        
-                            <td>5</td>
-                            <td>5_@mail.com</td>
-                            <td>5, Guadalajara, MEX</td>
-                            <td>255555555</td>
-                            <td>5</td>
-                            <td>
-                                <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons"
-                                        data-toggle="tooltip" title="Editar">&#xE254;</i></a>
-                                <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons"
-                                        data-toggle="tooltip" title="Elimar">&#xE872;</i></a>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-        
-            </div>
-        </div>
 
-
-        <!------------------------------------------        -->
-
-        <div class="container">
-            <div class="table-wrapper">
-                <div class="table-title">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <h2>Citas Pendientes</h2>
+                            <!--  </div> -->
                         </div>
-                        <!--    <div class="col-sm-6">
-                                            <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i
-                                                     </i> class="material-icons">&#xE147;</i> <span>Agregar Practicante</span></a> -->
-        
-                        <!--  </div> -->
                     </div>
-                </div>
-                <table class="table table-striped table-hover">
-                    <thead>
-                        <tr>
-                            <!---->
-                            <th>Nombre</th>
-                            <th>FECHA</th>
-                            <th>HORA</th>
-                            <th>MODALIDAD</th>
-                            <th>UBICACIÓN</th>
-                            <th>Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-        
-                            <td>1</td>
-                            <td>1_@mail.com</td>
-                            <td>1, Guadalajara, MEX</td>
-                            <td>211111111</td>
-                            <td>1</td>
-        
-                            <td>
-                                <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons"
-                                        data-toggle="tooltip" title="Editar">&#xE254;</i></a>
-                                <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons"
-                                        data-toggle="tooltip" title="Eliminar">&#xE872;</i></a>
-                            </td>
-                        </tr>
-                        <tr>
-        
-                            <td>2</td>
-                            <td>2_@mail.com</td>
-                            <td>2, Guadalajara, MEX</td>
-                            <td>222222222</td>
-                            <td>2</td>
-                            <td>
-                                <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons"
-                                        data-toggle="tooltip" title="Editar">&#xE254;</i></a>
-                                <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons"
-                                        data-toggle="tooltip" title="Eliminar">&#xE872;</i></a>
-                            </td>
-                        </tr>
-                        <tr>
-        
-                            <td>3</td>
-                            <td>3_@mail.com</td>
-                            <td>3, Guadalajara, MEX</td>
-                            <td>233333333</td>
-                            <td>3</td>
-                            <td>
-                                <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons"
-                                        data-toggle="tooltip" title="Editar">&#xE254;</i></a>
-                                <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons"
-                                        data-toggle="tooltip" title="Eliminar">&#xE872;</i></a>
-                            </td>
-                        </tr>
-                        
-                    </tbody>
-                </table>
-        
-            </div>
-        </div>
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <tr>
 
-        <!------------------------------------------        -->
+                                <th>Nombre</th>
+                                <th>FECHA</th>
+                                <th>HORA</th>
+                                <th>MODALIDAD</th>
+                                <th>UBICACIÓN</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+
+                                <td>1</td>
+                                <td>1_@mail.com</td>
+                                <td>1, Guadalajara, MEX</td>
+                                <td>211111111</td>
+                                <td>1</td>
+
+
+                            </tr>
+                            <tr>
+
+                                <td>2</td>
+                                <td>2_@mail.com</td>
+                                <td>2, Guadalajara, MEX</td>
+                                <td>222222222</td>
+                                <td>2</td>
+
+                            </tr>
+                            <tr>
+
+                                <td>3</td>
+                                <td>3_@mail.com</td>
+                                <td>3, Guadalajara, MEX</td>
+                                <td>233333333</td>
+                                <td>3</td>
+
+                            </tr>
+                            <tr>
+
+                                <td>4</td>
+                                <td>4_@mail.com</td>
+                                <td>4, Guadalajara, MEX</td>
+                                <td>244444444</td>
+                                <td>4</td>
+
+                            </tr>
+                            <tr>
+
+                                <td>5</td>
+                                <td>5_@mail.com</td>
+                                <td>5, Guadalajara, MEX</td>
+                                <td>255555555</td>
+                                <td>5</td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </section>
     </main>
 
     <footer class="footer text-center text-lg-start text-white">
         <!-- Grid container -->
-        <div class="container pt-2 pl-4 pr-4 textoclaro" >
+        <div class="container pt-2 pl-4 pr-4 textoclaro">
             <!--Grid row-->
             <div class="row my-4 ">
                 <div class="col-lg-6 col-md-6 mb-4 mb-md-0">
@@ -346,7 +310,8 @@
                         <img src="/static/img/logo_Psi.png" height="70" alt="" loading="lazy" />
                     </div>
 
-                    <p class="text-center textoclaro">PsiConnection es un sistema de citas para consultas de psicología presencial
+                    <p class="text-center textoclaro">PsiConnection es un sistema de citas para consultas de psicología
+                        presencial
                         o en línea. Conectamos a nuestros usuarios con psicólogos altamente capacitados y
                         experimentados. En Psiconnection, valoramos la privacidad y la confidencialidad de nuestros
                         usuarios y nos aseguramos de que todas las consultas sean seguras y protegidas. ¡Permítenos
@@ -355,12 +320,11 @@
                     <ul class="list-unstyled d-flex flex-row justify-content-center">
                         <li>
                             <a class="text-white px-2" href="https://www.facebook.com/udgcucei" target="_blank">
-                                <i class="fab fa-facebook-square"></i>
+                                <img id="FabIcono" src="/static/img/facebook.svg" alt="">
                             </a>
                         </li>
                         <li>
-                            <a class="text-white px-2 textoclaro" href="http://www.cucei.udg.mx/" target="_blank"
-                                style="text-decoration: none;">
+                            <a class="text-white px-2 textoclaro" href="http://www.cucei.udg.mx/" target="_blank">
                                 CUCEI
                             </a>
                         </li>
@@ -375,16 +339,24 @@
 
                     <ul class="list-unstyled">
                         <li>
-                            <p class="textoclaro"><i class="fas fa-map-marker-alt pe-2"></i>Blvd. Marcelino García Barragán #1421, esq.
+                            <p class="textoclaro">
+                                <img class="FotIcono" src="/static/img/location-dot-solid.svg" alt="">
+                                Blvd. Marcelino García Barragán #1421, esq.
                                 Calz. Olímpica, C.P. 44430
-                                Guadalajara, Jalisco, México</p>
+                                Guadalajara, Jalisco, México
+                            </p>
                         </li>
                         <li>
-                            <p class="textoclaro"><i class="fas fa-phone pe-2"></i>+ 52 33 1378 5900</p>
+                            <p class="textoclaro">
+                                <img class="FotIcono" src="/static/img/phone-solid.svg" alt="">
+                                + 52 33 1378 5900
+                            </p>
                         </li>
                         <li>
-                            <p class="textoclaro"><i class="fas fa-envelope pe-2 mb-0"></i><a id="linkMail"
-                                    href="mailto:psi.connection09@gmail.com">psi.connection09@gmail.com</a></p>
+                            <p class="textoclaro">
+                                <img class="FotIcono" src="/static/img/envelope-solid.svg" alt="">
+                                <a id="linkMail" href="mailto:psi.connection09@gmail.com">psi.connection09@gmail.com</a>
+                            </p>
                         </li>
                     </ul>
                 </div>
@@ -393,7 +365,7 @@
             <!--Grid row-->
         </div>
         <!-- Grid container -->
-        
+
         <!-- Copyright -->
         <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
             © 2023 Copyright:
@@ -401,9 +373,6 @@
         </div>
         <!-- Copyright -->
     </footer>
-
-
-
 
     <!-- JAVASCRIPT FILES -->
     <script src="/static/js/jquery.min.js"></script>
@@ -414,10 +383,8 @@
     <script src="/static/js/magnific-popup-options.js"></script>
     <script src="/static/js/custom.js"></script>
     <script src="https://kit.fontawesome.com/bcd45c0483.js" crossorigin="anonymous"></script>
-    
+
     <script src="/static/js/jspersonal.js"></script>
-    <script src="/static/js/bootstrap.bundle.min.js"></script>
-    <script src="/static/js/main.j"></script>
 
 
 </body>
