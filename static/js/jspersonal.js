@@ -68,6 +68,43 @@ if (currentUrl == "/templates/supervisor/agregar_practicante.html") {
   });
 }
 
+/* para confirmar la contraseñaaaaa y para ver  */
+
+
+                    function checkPasswordMatch() {
+                      var password = document.getElementById("password").value;
+                      var confirmPassword = document.getElementById("confirmPassword").value;
+                      
+                      if (password !== confirmPassword) {
+                        document.getElementById("confirmPassword").setCustomValidity("Las contraseñas no coinciden");
+                      } else {
+                        document.getElementById("confirmPassword").setCustomValidity("");
+                      }
+                    }
+
+                    
+              /* para boton de ocultar contraseña */    
+                
+  function togglePasswordVisibility(inputId, buttonId) {
+    var passwordInput = document.getElementById(inputId);
+    var toggleButton = document.getElementById(buttonId);
+    
+    if (passwordInput.type === "password") {
+      passwordInput.type = "text";
+      toggleButton.textContent = "Ocultar";
+    } else {
+      passwordInput.type = "password";
+      toggleButton.textContent = "Mostrar";
+    }
+  }
+                  
+                
+                  
+
+
+
+
+
 // ------------------------------------ End Agregar practicante ------------------------------------ //
 
 

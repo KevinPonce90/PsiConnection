@@ -560,3 +560,26 @@ hr {
   border-color: red;
 }
 /* -------------------------------- End Input hora -------------------------------- */
+
+/* para confirmar contraseñaaa */
+  .password-toggle-container {
+    position: relative;
+  }
+
+  .password-toggle-button {
+    position: absolute;
+    right: 19px;
+    top: 68%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    padding: 0 5px;
+    background-color: transparent;
+    border: 3px solid;
+    border-color: #14B789;
+    border-radius: 7px;
+    margin:auto 0;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    -ms-border-radius: 7px;
+    -o-border-radius: 7px;
+}

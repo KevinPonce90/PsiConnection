@@ -181,10 +181,27 @@
                     </div>
                 </div>
 
+                <div class="col-md-4 password-toggle-container">
+                    <label for="contraseña" class="form-group">Contraseña</label>
+                    <input name="password" id="password" type="password" class="form-control border border-dark"
+                        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+}{'?/:;.,]).{8,}"
+                        required
+                        title="Debe tener al menos 8 caracteres, una mayúscula y un carácter especial">
+                        <button type="button" id="togglePassword" class="password-toggle-button" onclick="togglePasswordVisibility('password', 'togglePassword')">Mostrar</button>
 
+                </div>
+
+                <div class="col-md-4 password-toggle-container">
+                    <label for="contraseña" class="form-group">confirmar Contraseña</label>
+                    <input name="confirmPassword" id="confirmPassword" type="password" class="form-control border border-dark"
+                        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+}{'?/:;.,]).{8,}"
+                        required oninput="checkPasswordMatch()"
+                        title="Debe tener al menos 8 caracteres, una mayúscula y un carácter especial">
+                        <button type="button" id="toggleConfirmPassword" class="password-toggle-button" onclick="togglePasswordVisibility('confirmPassword', 'toggleConfirmPassword')">Mostrar</button>
+                </div>     
 
                 <div class="col-md-4">
-                    <label for="telCelPrac" class="form-group">Telefono Celular</label>
+                    <label for="telCelPrac" class="form-group">Teléfono Celular</label>
                     <input name="telCelPrac" id="telCelPrac" type="text" class="form-control border border-dark"
                         required pattern="^(\+|00)[1-9][0-9 \-\(\)\.]{10,15}$"
                         title="Numero con lada, máximo 16 digitos"/>
