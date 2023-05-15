@@ -188,17 +188,25 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
 
-                            <td>Thomas </td>
-                            <td>Lopez </td>
-                            <td>Vazquez </td>
-                            <td>thomashardy@mail.com</td>
+
+
+                        <!--  {% for   in   %}-->
+                        <!-- id de algun supervisor -->
+                        <!-- <tr data-id="{{ idSup }}"> -->
+                        <tr data-id="1">
+
+                            <td>{{a.nombrePrac}}</td>
+                            <td>{{a.apellidoPPrac}}</td>
+                            <td>{{a.apellidoMSPrac}}</td>
+                            <td>{{a.correoPrac}}</td>
 
                             <td>
                                 <!-- ------------------------ Tomar este para todos los botones ------------------------ -->
 
-                                <a href="#editEmployeeModal" class="edit linkIcono" data-bs-toggle="modal"><img class="Icono" src="/static/img/edit.svg" alt="Editar"></a>
+                                <a href="#editEmployeeModal" class="btn-edit edit linkIcono" data-bs-toggle="modal">
+                                    <img class="Icono" src="/static/img/edit.svg" alt="Editar">
+                                </a>
                                 <a href="#deleteEmployeeModal" class="delete linkIcono" data-bs-toggle="modal">
                                     <img class="Icono" src="/static/img/trash.svg" alt="Editar">
                                 </a>
@@ -207,6 +215,7 @@
 
                             </td>
                         </tr>
+                        <!--  {% endfor  %}-->
                         <tr>
 
                             <td>Dominique Perrier</td>
@@ -276,10 +285,10 @@
                     </div>
 
                     <div class="modal-body">
-                        <form action="/ActualizarSupervisor" method="POST" enctype="multipart/form-data">
+                        <form id="editPrac" action="/ActualizarSupervisor" method="POST" enctype="multipart/form-data">
 
                             <input type="hidden" name="csrf_token" value="{{csrf_token() }}">
-                            <input type="hidden" name="idSup" value="{{a.idPrac}}">
+                            <input type="hidden" name="idPrac">
 
                             <h2 class="textoPresentacion text-center">Datos Personales</h2>
                             
@@ -307,8 +316,8 @@
                            
                     </div>
                     <div class="modal-footer">
-                        <input type="button" class="btn btn-default" data-bs-dismiss="modal" value="Cancel">
-                        <input type="submit" class="btn btn-info" value="Save">
+                        <input type="button" class="btn btn-default" data-bs-dismiss="modal" value="Cancelar">
+                        <input type="submit" class="btn btn-info" value="Guardar">
                     </div>
                     </form>
                 </div>
@@ -325,9 +334,9 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true"></button>
                     </div>
                     <div class="modal-body">
-                        <form action="/EliminarPracticante" method="POST">
+                        <form id="deletePrac" action="/EliminarPracticante" method="POST">
                             <input type="hidden" name="csrf_token" value="{{csrf_token() }}">
-                            <input type="hidden" name="idPrac" value="{{a.idPrac}}">
+                            <input type="hidden" name="idPrac" value="">
                             <div class="container">
                                 <div class="row">
                                     <div class="col-lg-6">
@@ -340,12 +349,13 @@
                                     </div>
                                 </div>
                             </div>
+                            <input disabled type="text" name="nombre">
                             <p class="text-warning"><small>Esta accion no se puede deshacer.</small></p>
                     </div>
 
                     <div class="modal-footer">
-                        <input type="button" class="btn btn-default" data-bs-dismiss="modal" value="Cancel">
-                        <input type="submit" class="btn btn-danger" value="Delete">
+                        <input type="button" class="btn btn-default" data-bs-dismiss="modal" value="Cancelar">
+                        <input type="submit" class="btn btn-danger" value="Borrar">
                     </div>
                     </form>
                 </div>
