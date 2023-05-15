@@ -293,44 +293,51 @@
                             <input type="hidden" name="csrf_token" value="{{csrf_token() }}">
 
                             <div class="form-group">
-                                <label for="nombreAd" class="form-label">Nombre</label>
-                                <input name="nombreAd" type="text" class="form-control border border-dark" id="nombreAd"
+                                <label for="nombreSup" class="form-label">Nombre</label>
+                                <input name="nombreSup" type="text" class="form-control border border-dark" id="nombreSup"
                                     value="" required
                                     pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'\-]{2,35}"
                                     title="Solo letras Minimo 2 Maximo 35" class="form-control" />
                             </div>
                             <div class="form-group">
-                                <label for="apellidoPAd" class="form-label">Apellido Paterno</label>
-                                <input name="apellidoPAd" type="text" class="form-control border border-dark"
-                                    id="apellidoPAd" value="" required
+                                <label for="apellidoPSup" class="form-label">Apellido Paterno</label>
+                                <input name="apellidoPSup" type="text" class="form-control border border-dark"
+                                    id="apellidoPSup" value="" required
                                     pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'\-]{2,25}"
                                     title="Solo letras Minimo 2 Maximo 25" class="form-control" />
                             </div>
                             <div class="form-group">
-                                <label for="apellidoMAd" class="form-label">Apellido Materno</label>
-                                <input name="apellidoMAd" type="text" class="form-control border border-dark"
-                                    id="apellidoMAd" value="" required
+                                <label for="apellidoMSup" class="form-label">Apellido Materno</label>
+                                <input name="apellidoMSup" type="text" class="form-control border border-dark"
+                                    id="apellidoMSup" value="" required
                                     pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'\-]{2,25}"
                                     title="Solo letras Minimo 2 Maximo 25" class="form-control" />
                             </div>
                             <div class="form-group">
-                                <label for="correoAd" class="form-label">Correo</label>
-                                <input id="correoAd" name="correoAd" type="email"
+                                <label for="correoSup" class="form-label">Correo</label>
+                                <input id="correoSup" name="correoSup" type="email"
                                     class="form-control border border-dark" id="correoAd" value="" required
                                     pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" size="29" class="form-control"
                                     title="Correo inavlido" />
                             </div>
                             <div class="form-group">
-                                <label for="contraAd" class="form-label">Contraseña</label>
-                                <input iname="contraAd" type="password" class="form-control border border-dark"
-                                    id="contraAd" required
-                                    pattern="^(?=.*?[A-Z])(?=(.*[a-z]){1,})(?=(.*[\d]){1,})(?=(.*[\W]){1,})(?!.*\s).{8,}$"
+                                <label for="contraSup" class="form-label">Contraseña</label>
+                                <input iname="contraSup" type="password" class="form-control border border-dark"
+                                    id="contraSup" required
+                                    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+}{'?/:;.,]).{8,}"
                                     title="Escriba al menos 8 caracteres, 1 digito, 1 mayúscula, 1 minúscula, 1 carácter especial" />
+                            </div>
+                            <div class="form-group">
+                                <label for="confirmPasswordSu" class="form-label">Confirmar Contraseña</label>
+                                <input name="confirmPasswordSu" id="confirmPasswordSu" type="password" class="form-control border border-dark"
+                                    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+}{'?/:;.,]).{8,}"
+                                    required oninput="checkPasswordMatch()"
+                                    title="Debe tener al menos 8 caracteres, una mayúscula y un carácter especial">
                             </div>
                     </div>
                     <div class="modal-footer">
-                        <input type="button" class="btn btn-default" data-bs-dismiss="modal" value="Cancel">
-                        <input type="submit" class="btn btn-info" value="Save">
+                        <input type="button" class="btn btn-default" data-bs-dismiss="modal" value="Cancelar">
+                        <input type="submit" class="btn btn-info" value="Guardar">
                     </div>
                     </form>
                 </div>

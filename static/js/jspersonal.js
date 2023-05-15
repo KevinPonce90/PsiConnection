@@ -354,3 +354,30 @@ if (currentUrl == "/templates/admin/adm_adm.html") {
 // ------------------------------------------- End Paciente  ------------------------------------------- //
 // ------------------------------------------- End Paciente  ------------------------------------------- //
 // ------------------------------------------- End Paciente  ------------------------------------------- //
+
+
+// ----------------------------------------- Contraseñas ----------------------------------------- //
+
+function checkPasswordMatch1() { //administrador
+  var password = document.getElementById("contraAd").value;
+  var confirmPassword = document.getElementById("confirmPassword").value;
+  
+  if (password !== confirmPassword) {
+    document.getElementById("confirmPassword").setCustomValidity("Las contraseñas no coinciden");
+  } else {
+    document.getElementById("confirmPassword").setCustomValidity("");
+  }
+}
+
+function checkPasswordMatch() { //supervisor
+  var password = document.getElementById("contraSup").value;
+  var confirmPassword = document.getElementById("confirmPasswordSu").value;
+  
+  if (password !== confirmPassword) {
+    document.getElementById("confirmPasswordSu").setCustomValidity("Las contraseñas no coinciden");
+  } else {
+    document.getElementById("confirmPasswordSu").setCustomValidity("");
+  }
+}
+
+// ----------------------------------------- End Contraseñas ----------------------------------------- //
