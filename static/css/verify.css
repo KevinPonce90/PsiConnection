@@ -53,3 +53,39 @@ body {
   button[type="submit"]:hover {
     background-color: #555;
   } 
+
+  .flashes {
+    margin: 3px 300px;
+    
+    padding: 0;
+    list-style: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+  
+  
+  }
+  
+  .flashes li {
+    margin: 0;
+    padding: 10px;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    background-color: #000000;
+    color: #0000;
+    font-size: 16px;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    z-index: 9999;
+  }
+  
+  .flashes li.show {
+    opacity: 1;
+  }
+  
+  .flashes li.error {
+    color: #92c7a3;
+  }
+  

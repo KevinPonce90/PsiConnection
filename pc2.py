@@ -81,6 +81,24 @@ def auth():
                 flash("Por favor ingrese su nombre completo", 'danger')
                 return redirect(url_for('auth'))
             
+            apellidop = request.form['apellidop']
+            #Validar el apellido paterno
+            if len(name.strip()) == 0:
+                flash("Porfavor ingrese su Apellido Paterno", 'danger')
+                return redirect(url_for('auth'))
+            
+            apellidom = request.form['apellidom']
+            #validar el apellido materno
+            if len(name.strip()) == 0:
+                flash("Porfavor ingrese su Apellido Materno", 'danger')
+                return redirect(url_for('auth'))            
+            
+            sexo = request.form.get('genero', None)
+            #Validar el genero
+            if len(name.strip()) == 0:
+                flash("Porfavor ingrese su Genero", 'danger')
+                return redirect(url_for('auth'))            
+            
             email = request.form['email']
              # Validar el correo electrónico
             if len(email.strip()) == 0:
@@ -92,9 +110,6 @@ def auth():
                 flash("Por favor ingrese un correo electrónico válido con uno de los dominios permitidos", 'danger')
                 return redirect(url_for('auth'))
             
-
-            tel = request.form['phone']
-          
             
             password = request.form['password']
             if len(password.strip()) < 8:
@@ -117,7 +132,7 @@ def auth():
             cur = mysql.connection.cursor()
             
             # Guardar el usuario y el código de verificación en la base de datos
-            cur.execute("INSERT INTO user(nombreAd, correoAd, telCelAd, passAd, verification_code) VALUES(%s, %s, %s, %s, %s)", (name, email, tel, hashed_password, verification_code))
+            cur.execute("INSERT INTO user(nombreAd, apellidop, apellidom, genero , correoAd, passAd, verification_code) VALUES(%s, %s, %s, %s, %s, %s, %s)", (name, apellidop, apellidom , sexo , email, hashed_password, verification_code))
             mysql.connection.commit()
             cur.close()
             
@@ -127,8 +142,7 @@ def auth():
             msg.html = render_template('layoutmail.html', name=name ,verification_code=verification_code)
             mail.send(msg)
             
-            # Redirigir al usuario a la página de verificación
-            flash("Revisa tu correo electrónico para obtener tu código de verificación", 'success')
+
             return redirect(url_for('verify'))
 
     return render_template('login.html')
@@ -137,6 +151,7 @@ def auth():
 @PCapp.route('/verify', methods=['GET', 'POST'])
 def verify():
     if request.method == 'POST':
+        flash("Revisa tu correo electrónico para obtener tu código de verificación", 'success')
         # Obtener el código ingresado por el usuario
         user_code = request.form['code']
         

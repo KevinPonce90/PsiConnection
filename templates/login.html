@@ -78,20 +78,38 @@
                   <input type="hidden" name="action" value="register">
 
                   <div class="form-group">
-                     <label for="name">Nombre Completo</label>
+                     <label for="name">Nombre(s)</label>
                      <input type="text" name="name" id="name" class="name">
                      <span class="error"></span>
                   </div>
 
                   <div class="form-group">
-                     <label for="email">Correo Electronico</label>
-                     <input type="email" name="email" id="email" class="email">
+                     <label for="apellidop">Apellido Paterno</label>
+                     <input type="text" name="apellidop" id="apellidop" class="apellidop">
                      <span class="error"></span>
                   </div>
 
                   <div class="form-group">
-                     <label for="phone">Numero de Telefono - <small>Opcional</small></label>
-                     <input type="text" name="phone" id="phone">
+                     <label for="apellidom">Apellido Materno</label>
+                     <input type="text" name="apellidom" id="apellidom" class="apellidom">
+                     <span class="error"></span>
+                  </div>
+                  
+                  <div class="form-group">
+                     <label for="genero" class="form-label"></label>
+                     <select name="genero" id="genero" class="name">
+                         <option value="" selected disabled hidden>Sexo</option>
+                         <option value="Masculino">Masculino</option>
+                         <option value="Femenino">Femenino</option>
+                         <option value="Prefiero no decirlo">Prefiero no decirlo</option>
+                     </select>
+                     <span class="error"></span>
+                 </div>
+
+                  <div class="form-group">
+                     <label for="email">Correo Electronico</label>
+                     <input type="email" name="email" id="email" class="email">
+                     <span class="error"></span>
                   </div>
 
                   <div class="form-group">

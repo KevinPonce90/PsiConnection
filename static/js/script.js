@@ -4,6 +4,9 @@ $(document).ready(function () {
     'use strict';
 
     var usernameError = true,
+        namepError = true,
+        namemError = true,
+        sexoError = true,
         emailError = true,
         passwordError = true,
         passConfirm = true;
@@ -35,18 +38,46 @@ $(document).ready(function () {
                 usernameError = false;
             }
         }
-        /*
-        // Email
-        if ($(this).hasClass('email')) {
-            if ($(this).val().length == '') {
-                $(this).siblings('span.error').text('Porfavor ingrese su correo electronico').fadeIn().parent('.form-group').addClass('hasError');
-                emailError = true;
+
+        // Apellido Paterno
+        if ($(this).hasClass('apellidop')) {
+            if ($(this).val().length === 0) {
+                $(this).siblings('span.error').text('Porfavor ingrese su Apellido Paterno').fadeIn().parent('.form-group').addClass('hasError');
+                namepError = true;
+            } else if ($(this).val().length > 1 && $(this).val().length <= 1) {
+                $(this).siblings('span.error').text('Porfavor ingrese al menos 6 caracteres').fadeIn().parent('.form-group').addClass('hasError');
+                namepError = true;
             } else {
                 $(this).siblings('.error').text('').fadeOut().parent('.form-group').removeClass('hasError');
-                emailError = false;
+                namepError = false;
             }
         }
-        */
+
+         // Apellido Materno
+        if ($(this).hasClass('apellidom')) {
+            if ($(this).val().length === 0) {
+                $(this).siblings('span.error').text('Porfavor ingrese su Apellido Materno').fadeIn().parent('.form-group').addClass('hasError');
+                namemError = true;
+            } else if ($(this).val().length > 1 && $(this).val().length <= 1) {
+                $(this).siblings('span.error').text('Porfavor ingrese al menos 6 caracteres').fadeIn().parent('.form-group').addClass('hasError');
+                namemError = true;
+            } else {
+                $(this).siblings('.error').text('').fadeOut().parent('.form-group').removeClass('hasError');
+                namemError = false;
+            }
+        }
+
+        // Sexo, el valor de sexo es un select
+        if ($(this).hasClass('sexo')) {
+            if ($(this).val().length === 0) {
+                $(this).siblings('span.error').text('Porfavor seleccione su sexo').fadeIn().parent('.form-group').addClass('hasError');
+                sexoError = true;
+            } else {
+                $(this).siblings('.error').text('').fadeOut().parent('.form-group').removeClass('hasError');
+                sexoError = false;
+            }
+        }
+
         // Email
         if ($(this).hasClass('email')) {
             if ($(this).val().length == '') {
