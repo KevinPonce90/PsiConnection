@@ -70,7 +70,10 @@ def auth():
                 else:
                     flash("Contraseña incorrecta", 'danger')
             else:
+                #Hacer varias consultas para las diferentes tablas PACIENTES/PRACTICANTES/SUPERVISORES/ADMINISTRADORES
                 flash("Email no registrado", 'danger')
+                
+            
                 
         #Registro
         elif action == 'register':
@@ -92,13 +95,7 @@ def auth():
             if len(name.strip()) == 0:
                 flash("Porfavor ingrese su Apellido Materno", 'danger')
                 return redirect(url_for('auth'))            
-            
-            sexo = request.form.get('genero', None)
-            #Validar el genero
-            if len(name.strip()) == 0:
-                flash("Porfavor ingrese su Genero", 'danger')
-                return redirect(url_for('auth'))            
-            
+                      
             email = request.form['email']
              # Validar el correo electrónico
             if len(email.strip()) == 0:
@@ -112,11 +109,18 @@ def auth():
             
             
             password = request.form['password']
-            if len(password.strip()) < 8:
-                flash("Por favor ingrese una contraseña de al menos 8 caracteres", 'danger')
+            passwordCon = request.form['passwordCon']
+
+            if password != passwordCon:
+                flash("Las contraseñas no coinciden. Por favor, inténtelo de nuevo.", 'danger')
                 return redirect(url_for('auth'))
-            
+
+            if not re.search(r'^(?=.*[A-Z])(?=.*[!@#$%^&*()_+|}{":?><,./;\'\[\]])[A-Za-z\d!@#$%^&*()_+|}{":?><,./;\'\[\]]{8,}$', password):
+                flash("La contraseña debe tener al menos 8 caracteres, una mayúscula y un carácter especial (. ? { } [ ] ; , ! # $ @ % ” ’)", 'danger')
+                return redirect(url_for('auth'))
+
             hashed_password = bcryptObj.generate_password_hash(password).decode('utf-8')
+
             
             # Verificar si el correo ya está registrado en la base de datos
             cur = mysql.connection.cursor()
@@ -132,7 +136,7 @@ def auth():
             cur = mysql.connection.cursor()
             
             # Guardar el usuario y el código de verificación en la base de datos
-            cur.execute("INSERT INTO user(nombreAd, apellidop, apellidom, genero , correoAd, passAd, verification_code) VALUES(%s, %s, %s, %s, %s, %s, %s)", (name, apellidop, apellidom , sexo , email, hashed_password, verification_code))
+            cur.execute("INSERT INTO user(nombreAd, apellidop, apellidom, genero , correoAd, passAd, verification_code) VALUES(%s, %s, %s, %s, %s, %s, %s)", (name, apellidop, apellidom , "NULL" , email, hashed_password, verification_code))
             mysql.connection.commit()
             cur.close()
             
@@ -159,6 +163,7 @@ def verify():
         cur = mysql.connection.cursor()
         result = cur.execute("SELECT * FROM user WHERE verification_code=%s", [user_code])
         if result > 0:
+            
             # Si el código es correcto, actualizar el campo "verificado" a 1
             cur.execute("UPDATE user SET verificado = %s WHERE verification_code = %s", (1, user_code))
             mysql.connection.commit()
@@ -178,7 +183,7 @@ def home():
     # Check if user is loggedin
     if 'login' in session:
         # User is loggedin show them the home page
-        return render_template('index.html', username=session['name'])
+        return render_template('index.html', username=session['name'], )
     
     # User is not loggedin redirect to login page
     return redirect(url_for('auth'))
