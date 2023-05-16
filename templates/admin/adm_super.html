@@ -13,16 +13,16 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap">
-    
+
     <!-- Bootsrap -->
     <link rel="stylesheet" href="/static/css/bootstrap.min.css">
     <link rel="stylesheet" href="/static/css/bootstrap-icons.css">
-    
+
     <!-- CSS FILES -->
     <link rel="stylesheet" href="/static/css/personal.css">
     <link rel="stylesheet" href="/static/css/templatemo-first-portfolio-style.css">
     <link rel="stylesheet" href="/static/css/magnific-popup.css">
-    
+
 </head>
 
 <body class="fondo">
@@ -159,7 +159,8 @@
                             <div class="ms-4">
                                 <a href="" class="btn btn-success align-items-center" data-bs-toggle="modal"
                                     data-bs-target="#addEmployeeModal">
-                                    <img class="align-items-center"src="/static/img/plus.svg" alt="" width="20px" height="20px" style="margin-top:-2px;">
+                                    <img class="align-items-center" src="/static/img/plus.svg" alt="" width="20px"
+                                        height="20px" style="margin-top:-2px;">
                                     <span>Agregar supervisor</span></a>
                             </div>
 
@@ -229,7 +230,8 @@
                             <td>Obere Str. 57, Berlin, Germany</td>
                             <td>(313) 555-5735</td>
                             <td>
-                                <a href="#editEmployeeModal" class="edit linkIcono" data-bs-toggle="modal"><img class="Icono" src="/static/img/edit.svg" alt="Editar"></a>
+                                <a href="#editEmployeeModal" class="edit linkIcono" data-bs-toggle="modal"><img
+                                        class="Icono" src="/static/img/edit.svg" alt="Editar"></a>
                                 <a href="#deleteEmployeeModal" class="delete linkIcono" data-bs-toggle="modal">
                                     <img class="Icono" src="/static/img/trash.svg" alt="Editar">
                                 </a>
@@ -289,93 +291,10 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true"></button>
                     </div>
                     <div class="modal-body">
-                        <form class="row g-3" action="/AgregarSupervisor" id="AgregarSupervisor" method="POST" enctype="multipart/form-data">
+                        <form class="row g-3" action="/AgregarSupervisor" id="AgregarSupervisor" method="POST"
+                            enctype="multipart/form-data">
                             <input type="hidden" name="csrf_token" value="{{csrf_token() }}">
 
-                            <div class="form-group">
-                                <label for="nombreSup" class="form-label">Nombre</label>
-                                <input name="nombreSup" type="text" class="form-control border border-dark" id="nombreSup"
-                                    value="" required
-                                    pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'\-]{2,35}"
-                                    title="Solo letras Minimo 2 Maximo 35" class="form-control" />
-                            </div>
-                            <div class="form-group">
-                                <label for="apellidoPSup" class="form-label">Apellido Paterno</label>
-                                <input name="apellidoPSup" type="text" class="form-control border border-dark"
-                                    id="apellidoPSup" value="" required
-                                    pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'\-]{2,25}"
-                                    title="Solo letras Minimo 2 Maximo 25" class="form-control" />
-                            </div>
-                            <div class="form-group">
-                                <label for="apellidoMSup" class="form-label">Apellido Materno</label>
-                                <input name="apellidoMSup" type="text" class="form-control border border-dark"
-                                    id="apellidoMSup" value="" required
-                                    pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'\-]{2,25}"
-                                    title="Solo letras Minimo 2 Maximo 25" class="form-control" />
-                            </div>
-
-                             <div class="form-group">
-                    <label for="correoSup" class="form-group">Correo</label>
-                    
-                    <div id="correo-conrtainer">
-
-                        <input name="input-editable" id="input-editable" type="text" class="left-input form-control border border-dark" placeholder="Nombre de usuario" pattern="^[a-z]+\.[a-z]+\d{4}$"
-                        required title="Correo invalido">
-                        
-                        <input name="input-readonly" id="input-readonly" type="text" class="right-input form-control border border-dark" 
-                        value="@alumnos.udg.mx" readonly/>
-                        
-                        <input type="hidden" name="correoSup" id="correoSup">
-                    </div>
-                </div>
-                    
-                    <div class="form-group password-toggle-container">
-                        <label for="contraSup" class="form-group">Contraseña</label>
-                        <input name="contraSup" id="contraSup" type="password" class="form-control border border-dark"
-                            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+}{'?/:;.,]).{8,}"
-                            required
-                            title="Debe tener al menos 8 caracteres, una mayúscula y un carácter especial">
-                            <button type="button" id="togglePassword" class="password-toggle-button" onclick="togglePasswordVisibility('contraSup', 'togglePassword')">Mostrar</button>
-    
-                    </div>
-    
-                    <div class="form-group password-toggle-container">
-                        <label for="contraSup_confirm" class="form-group">confirmar Contraseña</label>
-                        <input name="contraSup_confirm" id="contraSup_confirm" type="password" class="form-control border border-dark"
-                            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+}{'?/:;.,]).{8,}"
-                            required oninput="checkPasswordMatch()"
-                            title="Debe tener al menos 8 caracteres, una mayúscula y un carácter especial">
-                            <button type="button" id="toggleConfirmPassword" class="password-toggle-button" onclick="togglePasswordVisibility('contraSup_confirm', 'toggleConfirmPassword')">Mostrar</button>
-                    </div> 
-
-                    <div class="modal-footer">
-                        <input type="button" class="btn btn-default" data-bs-dismiss="modal" value="Cancelar">
-                        <input type="submit" class="btn btn-info" value="Guardar">
-                    </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-
-        <!-- Edit Modal HTML -->
-        <div id="editEmployeeModal" class="modal fade" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false"
-            aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-
-                    <div class="modal-header">
-                        <h4 class="modal-title" id="staticBackdropLabel">Editar supervisor</h4>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true"></button>
-                    </div>
-
-                    <div class="modal-body">
-                        <form id="editSup" action="/ActualizarSupervisor" method="POST" enctype="multipart/form-data">
-
-                            <input type="hidden" name="csrf_token" value="{{csrf_token() }}">
-                            <input type="hidden" name="idSup">
-
-                            <h2 class="textoPresentacion text-center">Datos Personales</h2>
-                            
                             <div class="form-group">
                                 <label for="nombreSup" class="form-label">Nombre</label>
                                 <input name="nombreSup" type="text" class="form-control border border-dark"
@@ -397,7 +316,96 @@
                                     pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'\-]{2,25}"
                                     title="Solo letras Minimo 2 Maximo 25" class="form-control" />
                             </div>
-                          
+                            <div class="form-group">
+                                <label for="correoSup" class="form-group">Correo</label>
+
+                                <div id="correo-conrtainer">
+
+                                    <input name="input-editable" id="input-editable" type="text"
+                                        class="left-input form-control border border-dark"
+                                        placeholder="Nombre de usuario" pattern="^[a-z]+\.[a-z]+\d{4}$" required
+                                        title="Correo invalido">
+
+                                    <input name="input-readonly" id="input-readonly" type="text"
+                                        class="right-input form-control border border-dark" value="@alumnos.udg.mx"
+                                        readonly />
+
+                                    <input type="hidden" name="correoSup" id="correoSup">
+                                </div>
+                            </div>
+
+                            <div class="form-group password-toggle-container">
+                                <label for="contraSup" class="form-group">Contraseña</label>
+                                <input name="contraSup" id="contraSup" type="password"
+                                    class="form-control border border-dark"
+                                    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+}{'?/:;.,]).{8,}" required
+                                    title="Debe tener al menos 8 caracteres, una mayúscula y un carácter especial">
+                                <button type="button" id="togglePassword" class="password-toggle-button"
+                                    onclick="togglePasswordVisibility('contraSup', 'togglePassword')">Mostrar</button>
+
+                            </div>
+
+                            <div class="form-group password-toggle-container">
+                                <label for="contraSup_confirm" class="form-group">confirmar Contraseña</label>
+                                <input name="contraSup_confirm" id="contraSup_confirm" type="password"
+                                    class="form-control border border-dark"
+                                    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+}{'?/:;.,]).{8,}" required
+                                    oninput="checkPasswordMatch()"
+                                    title="Debe tener al menos 8 caracteres, una mayúscula y un carácter especial">
+                                <button type="button" id="toggleConfirmPassword" class="password-toggle-button"
+                                    onclick="togglePasswordVisibility('contraSup_confirm', 'toggleConfirmPassword')">Mostrar</button>
+                            </div>
+
+                            <div class="modal-footer">
+                                <input type="button" class="btn btn-default" data-bs-dismiss="modal" value="Cancelar">
+                                <input type="submit" class="btn btn-info" value="Guardar">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Edit Modal HTML -->
+        <div id="editEmployeeModal" class="modal fade" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="staticBackdropLabel">Editar supervisor</h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true"></button>
+                    </div>
+
+                    <div class="modal-body">
+                        <form id="editSup" action="/ActualizarSupervisor" method="POST" enctype="multipart/form-data">
+
+                            <input type="hidden" name="csrf_token" value="{{csrf_token() }}">
+                            <input type="hidden" name="idSup">
+
+                            <h2 class="textoPresentacion text-center">Datos Personales</h2>
+
+                            <div class="form-group">
+                                <label for="nombreSup" class="form-label">Nombre</label>
+                                <input name="nombreSup" type="text" class="form-control border border-dark"
+                                    id="nombreSup" value="" required
+                                    pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'\-]{2,35}"
+                                    title="Solo letras Minimo 2 Maximo 35" class="form-control" />
+                            </div>
+                            <div class="form-group">
+                                <label for="apellidoPSup" class="form-label">Apellido Paterno</label>
+                                <input name="apellidoPSup" type="text" class="form-control border border-dark"
+                                    id="apellidoPSup" value="" required
+                                    pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'\-]{2,25}"
+                                    title="Solo letras Minimo 2 Maximo 25" class="form-control" />
+                            </div>
+                            <div class="form-group">
+                                <label for="apellidoMSup" class="form-label">Apellido Materno</label>
+                                <input name="apellidoMSup" type="text" class="form-control border border-dark"
+                                    id="apellidoMSup" value="" required
+                                    pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'\-]{2,25}"
+                                    title="Solo letras Minimo 2 Maximo 25" class="form-control" />
+                            </div>
+
                     </div>
                     <div class="modal-footer">
                         <input type="button" class="btn btn-default" data-bs-dismiss="modal" value="Cancelar">
