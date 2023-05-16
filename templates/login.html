@@ -77,26 +77,43 @@
                      }}">
                   <input type="hidden" name="action" value="register">
 
-                  <div class="form-group">
+                  <div class="form-group signupName">
                      <label for="name">Nombre(s)</label>
                      <input type="text" name="name" id="name" class="name">
                      <span class="error"></span>
                   </div>
 
-                  <div class="form-group">
-                     <label for="apellidop">Apellido Paterno</label>
-                     <input type="text" name="apellidop" id="apellidop" class="apellidop">
-                     <span class="error"></span>
+                  <div class="apellidocontainer">
+                     <div class="form-group">
+                        <label for="apellidop ">Apellido Paterno</label>
+                        <input type="text" name="apellidop" id="apellidop" class="apellidop">
+                        <span class="error"></span>
+                     </div>
+
+                     <div class="form-group apellidoM">
+                        <label for="apellidom">Apellido Materno</label>
+                        <input type="text" name="apellidom" id="apellidom" class="apellidom">
+                        <span class="error"></span>
+                     </div>
                   </div>
 
                   <div class="form-group">
-                     <label for="apellidom">Apellido Materno</label>
-                     <input type="text" name="apellidom" id="apellidom" class="apellidom">
+                      <label for="fecha_nacimiento">Fecha de Nacimiento</label>
+                      <input type="date" name="fecha_nacimiento" id="fecha_nacimiento" class="fecha_nacimiento" placeholder="">
+                      <span class="error"></span>
+                   </div>
+                   
+                  <div class="form-group">
+                     <label for="gender" class="invisible-label">Gender</label>
+                     <select name="gender" id="gender" class="gender">
+                       <option value="" selected disabled hidden>Genero</option>
+                       <option value="male">Male</option>
+                       <option value="female">Female</option>
+                       <option value="not-specified">Prefer not to say</option>
+                     </select>
                      <span class="error"></span>
-                  </div>
+                   </div>
                   
-
-
                   <div class="form-group">
                      <label for="email">Correo Electronico</label>
                      <input type="email" name="email" id="email" class="email">
@@ -130,4 +147,7 @@
    </section>
 
 </div>
+
+
+
 {% endblock %}

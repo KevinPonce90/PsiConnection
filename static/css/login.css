@@ -150,12 +150,17 @@ section#formHolder {
   width: 100%;
   left: 0;
 }
+
+.invisible-label {
+  opacity: 0;
+}
+
 .form form {
   padding: 0 33px;
   margin: 0;
   width: 70%;
   position: absolute;
-  top: 47%;
+  top: 50%;
   left: 60%;
   transform: translate(-50%, -50%);
 }
@@ -201,6 +206,11 @@ section#formHolder {
   font-size: 15px;
   font-family: "Montserrat", sans-serif;
   z-index: 1;
+}
+
+
+.form form input[type="date"]:not(.has-value) {
+  color: transparent;
 }
 
 .form form input:not([type=submit]).hasError {
@@ -366,4 +376,15 @@ footer p a:hover, footer p a:focus:hover {
 .flashes li.error {
   z-index: 9999;
   color: #92c7a3;
+}
+
+.signupName{
+  margin-top: -25px;
+}
+.apellidocontainer{
+  display: flex;
+  margin-bottom: 15px;
+}
+.apellidoM{
+  margin-left: 15px;
 }

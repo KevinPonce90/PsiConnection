@@ -24,7 +24,7 @@ csrf=CSRFProtect()
 PCapp.config['MYSQL_HOST']              = 'localhost'
 PCapp.config['MYSQL_USER']              = 'root'
 PCapp.config['MYSQL_PASSWORD']          = 'antolin1'
-PCapp.config['MYSQL_DB']                = 'rm'
+PCapp.config['MYSQL_DB']                = 'psiconnection'
 PCapp.config['MYSQL_CURSORCLASS']       = 'DictCursor'
 PCapp.config['UPLOAD_FOLDER']           = './static/img/'
 PCapp.config['UPLOAD_FOLDER_PDF']       = './static/pdf/'
@@ -40,7 +40,13 @@ mail = Mail(PCapp)
 
 bcryptObj = Bcrypt(PCapp)
 
-
+def login_required(f):
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        if 'login' not in session:
+            return redirect(url_for('auth'))
+        return f(*args, **kwargs)
+    return decorated_function
 
 #El Def auth controla si inicia sesion o es nuevo usuario
 
@@ -52,15 +58,15 @@ def auth():
             email = request.form['email']
             password = request.form['password'].encode('utf-8')
             cur = mysql.connection.cursor()
-            result = cur.execute("SELECT * FROM user WHERE correoAd=%s ", [email])
+            result = cur.execute("SELECT * FROM paciente WHERE correoPaci=%s ", [email])
             if result > 0:
                 data = cur.fetchone()
-                if bcrypt.checkpw(password, data['passAd'].encode('utf-8')):
-                    if data['verificado'] == 1:
+                if bcrypt.checkpw(password, data['contraPaci'].encode('utf-8')):
+                    if data['veriPaci'] == 1:
                         #Falta agregar sessions ( los adecuados )
                         
                         session["login"] = True
-                        session['name'] = data['nombreAd']
+                        session['name'] = data['nombrePaci']
                         flash("Inicio de Sesión exitoso", 'success')
                         cur.close()
                         return redirect(url_for('home'))
@@ -70,10 +76,62 @@ def auth():
                 else:
                     flash("Contraseña incorrecta", 'danger')
             else:
-                #Hacer varias consultas para las diferentes tablas PACIENTES/PRACTICANTES/SUPERVISORES/ADMINISTRADORES
-                flash("Email no registrado", 'danger')
                 
-            
+                result = cur.execute("SELECT * FROM practicante WHERE correoPrac=%s ", [email])
+                if result > 0:
+                    data = cur.fetchone()
+                    if bcrypt.checkpw(password, data['contraPrac'].encode('utf-8')):
+                        if data['veriPrac'] == 2:
+                            #Falta agregar sessions ( los adecuados )
+                            
+                            session["login"] = True
+                            session['name'] = data['nombrePrac']
+                            flash("Inicio de Sesión exitoso", 'success')
+                            cur.close()
+                            return redirect(url_for('home'))
+                        else:
+                            # El usuario no está verificado, mostrar mensaje de error
+                            flash("Debes verificar tu cuenta antes de iniciar sesión", 'warning')
+                    else:
+                        flash("Contraseña incorrecta", 'danger')
+                else:
+                    result = cur.execute("SELECT * FROM supervisor WHERE correoSup=%s ", [email])
+                    if result > 0:
+                        data = cur.fetchone()
+                        if bcrypt.checkpw(password, data['contraSup'].encode('utf-8')):
+                            if data['veriSup'] == 2:
+                                #Falta agregar sessions ( los adecuados )
+                                
+                                session["login"] = True
+                                session['name'] = data['nombreSup']
+                                flash("Inicio de Sesión exitoso", 'success')
+                                cur.close()
+                                return redirect(url_for('home'))
+                            else:
+                                # El usuario no está verificado, mostrar mensaje de error
+                                flash("Debes verificar tu cuenta antes de iniciar sesión", 'warning')
+                        else:
+                            flash("Contraseña incorrecta", 'danger')
+                    else:
+                        result = cur.execute("SELECT * FROM admin WHERE correoAd=%s ", [email])
+                        if result > 0:
+                            data = cur.fetchone()
+                            if bcrypt.checkpw(password, data['contraAd'].encode('utf-8')):
+                                if data['veriAd'] == 2:
+                                    #Falta agregar sessions ( los adecuados )
+                                    
+                                    session["login"] = True
+                                    session['name'] = data['nombreAd']
+                                    flash("Inicio de Sesión exitoso", 'success')
+                                    cur.close()
+                                    return redirect(url_for('home'))
+                                else:
+                                    # El usuario no está verificado, mostrar mensaje de error
+                                    flash("Debes verificar tu cuenta antes de iniciar sesión", 'warning')
+                            else:
+                                flash("Contraseña incorrecta", 'danger')
+                        else:
+                           flash("Email no registrado", 'danger')
                 
         #Registro
         elif action == 'register':
@@ -86,16 +144,28 @@ def auth():
             
             apellidop = request.form['apellidop']
             #Validar el apellido paterno
-            if len(name.strip()) == 0:
+            if len(apellidop.strip()) == 0:
                 flash("Porfavor ingrese su Apellido Paterno", 'danger')
                 return redirect(url_for('auth'))
             
             apellidom = request.form['apellidom']
             #validar el apellido materno
-            if len(name.strip()) == 0:
+            if len(apellidom.strip()) == 0:
                 flash("Porfavor ingrese su Apellido Materno", 'danger')
                 return redirect(url_for('auth'))            
                       
+            genero = request.form['gender']
+            #Validar el genero
+            if len(genero.strip()) == 0:
+                flash("Porfavor ingrese su genero", 'danger')
+                return redirect(url_for('auth'))
+            
+            edad = request.form['fecha_nacimiento']
+            #Validar la edad
+            if len(edad.strip()) == 0:
+                flash("Porfavor ingrese su edad", 'danger')
+                return redirect(url_for('auth'))
+            
             email = request.form['email']
              # Validar el correo electrónico
             if len(email.strip()) == 0:
@@ -121,10 +191,9 @@ def auth():
 
             hashed_password = bcryptObj.generate_password_hash(password).decode('utf-8')
 
-            
             # Verificar si el correo ya está registrado en la base de datos
             cur = mysql.connection.cursor()
-            result = cur.execute("SELECT * FROM user WHERE correoAd=%s", [email])
+            result = cur.execute("SELECT * FROM paciente WHERE correoPaci=%s", [email])
             if result > 0:
                 # Si el correo ya está registrado, mostrar un mensaje de error
                 flash("El correo ya está registrado", 'danger')
@@ -136,7 +205,7 @@ def auth():
             cur = mysql.connection.cursor()
             
             # Guardar el usuario y el código de verificación en la base de datos
-            cur.execute("INSERT INTO user(nombreAd, apellidop, apellidom, genero , correoAd, passAd, verification_code) VALUES(%s, %s, %s, %s, %s, %s, %s)", (name, apellidop, apellidom , "NULL" , email, hashed_password, verification_code))
+            cur.execute("INSERT INTO paciente(fechaNacPaci, nombrePaci, apellidoPPaci , apellidoMPaci, correoPaci, sexoPaci, contraPaci, codVeriPaci, activoPaci, veriPaci) VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)", (edad, name, apellidop, apellidom, email, genero, hashed_password, verification_code, 0, 0))
             mysql.connection.commit()
             cur.close()
             
@@ -151,8 +220,8 @@ def auth():
 
     return render_template('login.html')
 
-
 @PCapp.route('/verify', methods=['GET', 'POST'])
+@login_required
 def verify():
     if request.method == 'POST':
         flash("Revisa tu correo electrónico para obtener tu código de verificación", 'success')
@@ -161,42 +230,59 @@ def verify():
         
         # Verificar si el código es correcto
         cur = mysql.connection.cursor()
-        result = cur.execute("SELECT * FROM user WHERE verification_code=%s", [user_code])
+        result = cur.execute("SELECT * FROM paciente WHERE codVeriPaci=%s", [user_code])
         if result > 0:
             
             # Si el código es correcto, actualizar el campo "verificado" a 1
-            cur.execute("UPDATE user SET verificado = %s WHERE verification_code = %s", (1, user_code))
+            cur.execute("UPDATE paciente SET veriPaci = %s, activoPaci = %s WHERE codVeriPaci = %s", (1, 1, user_code))
             mysql.connection.commit()
             flash("Registro completado con éxito", 'success')
             cur.close()
             return redirect(url_for('home'))
         else:
-            flash("Código de verificación incorrecto", 'danger')
-            cur.close()
-        
+            result = cur.execute("SELECT * FROM practicante WHERE codVeriPaci=%s", [user_code])
+            if result > 0:
+            
+                # Si el código es correcto, actualizar el campo "verificado" a 2
+                cur.execute("UPDATE practicante SET veriPrac = %s, activoPrac = %s WHERE codVeriPrac = %s", (2, 1, user_code))
+                mysql.connection.commit()
+                flash("Registro completado con éxito", 'success')
+                cur.close()
+                return redirect(url_for('home'))
+            else:
+                result = cur.execute("SELECT * FROM supervisor WHERE codVeriPaci=%s", [user_code])
+                if result > 0:
+                
+                    # Si el código es correcto, actualizar el campo "verificado" a 2
+                    cur.execute("UPDATE supervisor SET veriSup = %s, activoSup = %s WHERE codVeriSup = %s", (2, 1, user_code))
+                    mysql.connection.commit()
+                    flash("Registro completado con éxito", 'success')
+                    cur.close()
+                    return redirect(url_for('home'))
+                else:
+                    result = cur.execute("SELECT * FROM admin WHERE codVeriAd=%s", [user_code])
+                    if result > 0:
+                    
+                        # Si el código es correcto, actualizar el campo "verificado" a 2
+                        cur.execute("UPDATE admin SET veriSup = %s, activoSup = %s WHERE codVeriSup = %s", (2, 1, user_code))
+                        mysql.connection.commit()
+                        flash("Registro completado con éxito", 'success')
+                        cur.close()
+                        return redirect(url_for('home'))
+                    else:
+                        flash("Código de verificación incorrecto", 'danger')
+                        cur.close()        
     return render_template('verify.html')
 
-
-
 @PCapp.route('/')
+@login_required
 def home():
-    # Check if user is loggedin
-    if 'login' in session:
-        # User is loggedin show them the home page
-        return render_template('index.html', username=session['name'], )
-    
-    # User is not loggedin redirect to login page
-    return redirect(url_for('auth'))
-
+    return render_template('index.html', username=session['name'])
 
 @PCapp.route('/logout')
 def logout():
-    # Remove session data, this will log the user out
-   session.pop('login', None)
-   session.pop('userid', None)
-   session.pop('email', None)
-   # Redirect to login page
-   return redirect(url_for('auth'))
+    session.clear()
+    return redirect(url_for('auth'))
 
 @PCapp.route('/protected')
 @login_required
@@ -207,7 +293,7 @@ def status_401(error):
     return redirect(url_for('login'))
 
 def status_404(error):
-    return "<h1>Pagina no encontrada </h1>", 404
+    return render_template('404.html'), 404
 
 if __name__ == '__main__':
     PCapp.secret_key = '123'

@@ -67,6 +67,19 @@ $(document).ready(function () {
             }
         }
 
+
+        //Fecha_de_nacimiento, el tipo de input es un date
+        if ($(this).hasClass('fecha_nacimiento')) {
+            if ($(this).val().length === 0) {
+                $(this).siblings('span.error').text('Porfavor ingrese su fecha de nacimiento').fadeIn().parent('.form-group').addClass('hasError');
+                fechaError = true;
+            } else {
+                $(this).siblings('.error').text('').fadeOut().parent('.form-group').removeClass('hasError');
+                fechaError = false;
+            }
+        }
+
+
         // Sexo, el valor de sexo es un select
         if ($(this).hasClass('sexo')) {
             if ($(this).val().length === 0) {
@@ -150,6 +163,20 @@ $(document).ready(function () {
         }, 5000);
     });
 
+    // Crear una variable que almacene el elemento input
+    var inputFecha = document.getElementById("fecha_nacimiento");
+
+    // Añadir un evento "change" al elemento input
+    inputFecha.addEventListener("change", function() {
+    // Dentro de la función, comprobar si el valor es una cadena vacía
+    if (inputFecha.value === "") {
+        // Si es así, cambiar el estilo del elemento input a transparente
+        inputFecha.style.color = "transparent";
+    } else {
+        // Si no, cambiar el estilo del elemento input a rojo
+        inputFecha.style.color = "black";
+    }
+    });
 
 
 
