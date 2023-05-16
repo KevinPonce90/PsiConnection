@@ -18,7 +18,7 @@
 
 
     <div class="container">
-      <h1>Verificación de Código</h1>
+      <h1>Verificación de Código </h1>
       <form action="{{ url_for('verify') }}" method="post">
         <input type="hidden" name="csrf_token" value="{{csrf_token() }}">
         <label for="code">Introduce tu código aquí:</label>
