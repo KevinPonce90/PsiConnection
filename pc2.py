@@ -78,7 +78,6 @@ def auth():
                         flash("Inicio de Sesión exitoso", 'success')
                         cur.close()
                         return redirect(url_for('home'))
-
                 else:
                     flash("Contraseña incorrecta", 'danger')
             else:
@@ -87,18 +86,13 @@ def auth():
                 if result > 0:
                     data = cur.fetchone()
                     if bcrypt.checkpw(password, data['contraPrac'].encode('utf-8')):
-                        if data['veriPrac'] == 2:
                             #Falta agregar sessions ( los adecuados )
-                            
                             session["login"] = True
                             session['name'] = data['nombrePrac']
-                            session['verificado'] = True
+                            session['verificado'] = data['veriPrac']
                             flash("Inicio de Sesión exitoso", 'success')
                             cur.close()
                             return redirect(url_for('home'))
-                        else:
-                            # El usuario no está verificado, mostrar mensaje de error
-                            flash("Debes verificar tu cuenta antes de iniciar sesión", 'warning')
                     else:
                         flash("Contraseña incorrecta", 'danger')
                 else:
@@ -106,19 +100,13 @@ def auth():
                     if result > 0:
                         data = cur.fetchone()
                         if bcrypt.checkpw(password, data['contraSup'].encode('utf-8')):
-                            if data['veriSup'] == 2:
-                                #Falta agregar sessions ( los adecuados )
-                                
+                                #Falta agregar sessions ( los adecuados )                                
                                 session["login"] = True
                                 session['name'] = data['nombreSup']
-                                session['verificado'] = True
+                                session['verificado'] = data['veriSup']
                                 flash("Inicio de Sesión exitoso", 'success')
                                 cur.close()
                                 return redirect(url_for('home'))
-                            else:
-                                # El usuario no está verificado, mostrar mensaje de error
-                                flash("Debes verificar tu cuenta antes de iniciar sesión", 'warning')
-                                return redirect(url_for('verify'))
                         else:
                             flash("Contraseña incorrecta", 'danger')
                     else:
@@ -126,18 +114,13 @@ def auth():
                         if result > 0:
                             data = cur.fetchone()
                             if bcrypt.checkpw(password, data['contraAd'].encode('utf-8')):
-                                if data['veriAd'] == 2:
-                                    #Falta agregar sessions ( los adecuados )
-                                    
+                                    #Falta agregar sessions ( los adecuados )                                    
                                     session["login"] = True
                                     session['name'] = data['nombreAd']
-                                    session['verificado'] = True
+                                    session['verificado'] = data['veriAd']
                                     flash("Inicio de Sesión exitoso", 'success')
                                     cur.close()
                                     return redirect(url_for('home'))
-                                else:
-                                    # El usuario no está verificado, mostrar mensaje de error
-                                    flash("Debes verificar tu cuenta antes de iniciar sesión", 'warning')
                             else:
                                 flash("Contraseña incorrecta", 'danger')
                         else:
@@ -233,7 +216,7 @@ def auth():
 @PCapp.route('/verify', methods=['GET', 'POST'])
 def verify():
     if 'login' in session:
-        if session['verificado'] == 1:
+        if session['verificado'] == 2:
             return redirect(url_for('home'))
         else:
             if request.method == 'POST':
@@ -247,14 +230,14 @@ def verify():
                 if result > 0:
                     
                     # Si el código es correcto, actualizar el campo "verificado" a 1
-                    cur.execute("UPDATE paciente SET veriPaci = %s, activoPaci = %s WHERE codVeriPaci = %s", (1, 1, user_code))
+                    cur.execute("UPDATE paciente SET veriPaci = %s, activoPaci = %s WHERE codVeriPaci = %s", (2, 1, user_code))
                     mysql.connection.commit()
                     flash("Registro completado con éxito", 'success')
                     cur.close()
                     session.clear()
                     return redirect(url_for('auth'))
                 else:
-                    result = cur.execute("SELECT * FROM practicante WHERE codVeriPaci=%s", [user_code])
+                    result = cur.execute("SELECT * FROM practicante WHERE codVeriPrac=%s", [user_code])
                     if result > 0:                    
                         # Si el código es correcto, actualizar el campo "verificado" a 2
                         cur.execute("UPDATE practicante SET veriPrac = %s, activoPrac = %s WHERE codVeriPrac = %s", (2, 1, user_code))
@@ -264,7 +247,7 @@ def verify():
                         session.clear()
                         return redirect(url_for('auth'))
                     else:
-                        result = cur.execute("SELECT * FROM supervisor WHERE codVeriPaci=%s", [user_code])
+                        result = cur.execute("SELECT * FROM supervisor WHERE codVeriSup=%s", [user_code])
                         if result > 0:
                         
                             # Si el código es correcto, actualizar el campo "verificado" a 2
@@ -279,7 +262,7 @@ def verify():
                             if result > 0:
                             
                                 # Si el código es correcto, actualizar el campo "verificado" a 2
-                                cur.execute("UPDATE admin SET veriSup = %s, activoSup = %s WHERE codVeriSup = %s", (2, 1, user_code))
+                                cur.execute("UPDATE admin SET veriAd = %s, activoAd = %s WHERE codVeriAd = %s", (2, 1, user_code))
                                 mysql.connection.commit()
                                 flash("Registro completado con éxito", 'success')
                                 cur.close()
