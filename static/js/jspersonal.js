@@ -68,7 +68,7 @@ if (currentUrl == "/templates/supervisor/agregar_practicante.html") {
     event.preventDefault(); // Evita que se realice el submit por defecto del formulario
   });
 
-  
+
   // ------------------------------------ Contraseña practicante ------------------------------------ //
 
   function checkPasswordMatch() {
@@ -103,29 +103,29 @@ if (currentUrl == "/templates/supervisor/agregar_practicante.html") {
 
 
 // ----------------------------------------- Contraseñas Administrador ----------------------------------------- //
-if( currentUrl == "/templates/admin/adm_adm.html")
-function checkPasswordMatch1() { //administrador
-  var password = document.getElementById("contraAd").value;
-  var confirmPassword = document.getElementById("confirmPassword").value;
-  
-  if (password !== confirmPassword) {
-    document.getElementById("confirmPassword").setCustomValidity("Las contraseñas no coinciden");
-  } else {
-    document.getElementById("confirmPassword").setCustomValidity("");
+if (currentUrl == "/templates/admin/adm_adm.html") {
+  function checkPasswordMatch1() { //administrador
+    var password = document.getElementById("contraAd").value;
+    var confirmPassword = document.getElementById("confirmPassword").value;
+
+    if (password !== confirmPassword) {
+      document.getElementById("confirmPassword").setCustomValidity("Las contraseñas no coinciden");
+    } else {
+      document.getElementById("confirmPassword").setCustomValidity("");
+    }
+  }
+
+  function checkPasswordMatch() { //supervisor
+    var password = document.getElementById("contraSup").value;
+    var confirmPassword = document.getElementById("confirmPasswordSu").value;
+
+    if (password !== confirmPassword) {
+      document.getElementById("confirmPasswordSu").setCustomValidity("Las contraseñas no coinciden");
+    } else {
+      document.getElementById("confirmPasswordSu").setCustomValidity("");
+    }
   }
 }
-
-function checkPasswordMatch() { //supervisor
-  var password = document.getElementById("contraSup").value;
-  var confirmPassword = document.getElementById("confirmPasswordSu").value;
-  
-  if (password !== confirmPassword) {
-    document.getElementById("confirmPasswordSu").setCustomValidity("Las contraseñas no coinciden");
-  } else {
-    document.getElementById("confirmPasswordSu").setCustomValidity("");
-  }
-}
-
 // ----------------------------------------- End Contraseñas Administrador ----------------------------------------- //
 
 
