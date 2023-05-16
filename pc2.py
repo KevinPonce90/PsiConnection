@@ -17,7 +17,6 @@ import random
 import secrets
 import re
 
-
 PCapp                                   = Flask(__name__)
 mysql                                   = MySQL(PCapp)
 csrf=CSRFProtect()
@@ -72,19 +71,14 @@ def auth():
             if result > 0:
                 data = cur.fetchone()
                 if bcrypt.checkpw(password, data['contraPaci'].encode('utf-8')):
-                    if data['veriPaci'] == 1:
                         #Falta agregar sessions ( los adecuados )
-                        
                         session["login"] = True
                         session['name'] = data['nombrePaci']
-                        session['verificado'] = True
+                        session['verificado'] = data['veriPaci']
                         flash("Inicio de Sesión exitoso", 'success')
                         cur.close()
                         return redirect(url_for('home'))
-                    else:
-                        # El usuario no está verificado, mostrar mensaje de error
-                        flash("Debes verificar tu cuenta antes de iniciar sesión", 'warning')
-                        return redirect(url_for('verify'))
+
                 else:
                     flash("Contraseña incorrecta", 'danger')
             else:
@@ -231,64 +225,73 @@ def auth():
             msg.html = render_template('layoutmail.html', name=name ,verification_code=verification_code)
             mail.send(msg)
             
-
+            flash("Revisa tu correo electrónico para ver los pasos para completar tu registro!", 'success')
             return redirect(url_for('verify'))
 
     return render_template('login.html')
 
 @PCapp.route('/verify', methods=['GET', 'POST'])
 def verify():
-    if request.method == 'POST':
-        flash("Revisa tu correo electrónico para obtener tu código de verificación", 'success')
-        # Obtener el código ingresado por el usuario
-        user_code = request.form['code']
-        
-        # Verificar si el código es correcto
-        cur = mysql.connection.cursor()
-        result = cur.execute("SELECT * FROM paciente WHERE codVeriPaci=%s", [user_code])
-        if result > 0:
-            
-            # Si el código es correcto, actualizar el campo "verificado" a 1
-            cur.execute("UPDATE paciente SET veriPaci = %s, activoPaci = %s WHERE codVeriPaci = %s", (1, 1, user_code))
-            mysql.connection.commit()
-            flash("Registro completado con éxito", 'success')
-            cur.close()
+    if 'login' in session:
+        if session['verificado'] == 1:
             return redirect(url_for('home'))
         else:
-            result = cur.execute("SELECT * FROM practicante WHERE codVeriPaci=%s", [user_code])
-            if result > 0:
-            
-                # Si el código es correcto, actualizar el campo "verificado" a 2
-                cur.execute("UPDATE practicante SET veriPrac = %s, activoPrac = %s WHERE codVeriPrac = %s", (2, 1, user_code))
-                mysql.connection.commit()
-                flash("Registro completado con éxito", 'success')
-                cur.close()
-                return redirect(url_for('home'))
-            else:
-                result = cur.execute("SELECT * FROM supervisor WHERE codVeriPaci=%s", [user_code])
-                if result > 0:
+            if request.method == 'POST':
+                flash("Revisa tu correo electrónico para obtener tu código de verificación", 'success')
+                # Obtener el código ingresado por el usuario
+                user_code = request.form['code']
                 
-                    # Si el código es correcto, actualizar el campo "verificado" a 2
-                    cur.execute("UPDATE supervisor SET veriSup = %s, activoSup = %s WHERE codVeriSup = %s", (2, 1, user_code))
+                # Verificar si el código es correcto
+                cur = mysql.connection.cursor()
+                result = cur.execute("SELECT * FROM paciente WHERE codVeriPaci=%s", [user_code])
+                if result > 0:
+                    
+                    # Si el código es correcto, actualizar el campo "verificado" a 1
+                    cur.execute("UPDATE paciente SET veriPaci = %s, activoPaci = %s WHERE codVeriPaci = %s", (1, 1, user_code))
                     mysql.connection.commit()
                     flash("Registro completado con éxito", 'success')
                     cur.close()
-                    return redirect(url_for('home'))
+                    session.clear()
+                    return redirect(url_for('auth'))
                 else:
-                    result = cur.execute("SELECT * FROM admin WHERE codVeriAd=%s", [user_code])
-                    if result > 0:
-                    
+                    result = cur.execute("SELECT * FROM practicante WHERE codVeriPaci=%s", [user_code])
+                    if result > 0:                    
                         # Si el código es correcto, actualizar el campo "verificado" a 2
-                        cur.execute("UPDATE admin SET veriSup = %s, activoSup = %s WHERE codVeriSup = %s", (2, 1, user_code))
+                        cur.execute("UPDATE practicante SET veriPrac = %s, activoPrac = %s WHERE codVeriPrac = %s", (2, 1, user_code))
                         mysql.connection.commit()
                         flash("Registro completado con éxito", 'success')
                         cur.close()
-                        return redirect(url_for('home'))
+                        session.clear()
+                        return redirect(url_for('auth'))
                     else:
-                        flash("Código de verificación incorrecto", 'danger')
-                        cur.close()        
-    return render_template('verify.html')
-
+                        result = cur.execute("SELECT * FROM supervisor WHERE codVeriPaci=%s", [user_code])
+                        if result > 0:
+                        
+                            # Si el código es correcto, actualizar el campo "verificado" a 2
+                            cur.execute("UPDATE supervisor SET veriSup = %s, activoSup = %s WHERE codVeriSup = %s", (2, 1, user_code))
+                            mysql.connection.commit()
+                            flash("Registro completado con éxito", 'success')
+                            cur.close()
+                            session.clear()
+                            return redirect(url_for('auth'))
+                        else:
+                            result = cur.execute("SELECT * FROM admin WHERE codVeriAd=%s", [user_code])
+                            if result > 0:
+                            
+                                # Si el código es correcto, actualizar el campo "verificado" a 2
+                                cur.execute("UPDATE admin SET veriSup = %s, activoSup = %s WHERE codVeriSup = %s", (2, 1, user_code))
+                                mysql.connection.commit()
+                                flash("Registro completado con éxito", 'success')
+                                cur.close()
+                                session.clear()
+                                return redirect(url_for('auth'))
+                            else:
+                                flash("Código de verificación incorrecto", 'danger')
+                                cur.close()        
+            return render_template('verify.html')  
+    else:
+        return redirect(url_for('auth'))  
+    
 
 @PCapp.route('/')
 @login_required
@@ -302,7 +305,6 @@ def logout():
     return redirect(url_for('auth'))
 
 @PCapp.route('/protected')
-@login_required
 @verified_required
 def protected ():
     return "<h1>Esta es una vista protegida, solo para usuarios autenticados.</h1>"
