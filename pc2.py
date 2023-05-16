@@ -48,6 +48,16 @@ def login_required(f):
         return f(*args, **kwargs)
     return decorated_function
 
+def verified_required(f):
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        # Asumiendo que el estado de verificación se guarda en la sesión del usuario
+        if 'verificado' not in session or not session['verificado']:
+            flash("Por favor, verifica tu cuenta antes de continuar", 'warning')
+            return redirect(url_for('verify'))
+        return f(*args, **kwargs)
+    return decorated_function
+
 #El Def auth controla si inicia sesion o es nuevo usuario
 
 @PCapp.route('/pythonlogin/', methods=['GET', 'POST'])
@@ -67,12 +77,14 @@ def auth():
                         
                         session["login"] = True
                         session['name'] = data['nombrePaci']
+                        session['verificado'] = True
                         flash("Inicio de Sesión exitoso", 'success')
                         cur.close()
                         return redirect(url_for('home'))
                     else:
                         # El usuario no está verificado, mostrar mensaje de error
                         flash("Debes verificar tu cuenta antes de iniciar sesión", 'warning')
+                        return redirect(url_for('verify'))
                 else:
                     flash("Contraseña incorrecta", 'danger')
             else:
@@ -86,6 +98,7 @@ def auth():
                             
                             session["login"] = True
                             session['name'] = data['nombrePrac']
+                            session['verificado'] = True
                             flash("Inicio de Sesión exitoso", 'success')
                             cur.close()
                             return redirect(url_for('home'))
@@ -104,12 +117,14 @@ def auth():
                                 
                                 session["login"] = True
                                 session['name'] = data['nombreSup']
+                                session['verificado'] = True
                                 flash("Inicio de Sesión exitoso", 'success')
                                 cur.close()
                                 return redirect(url_for('home'))
                             else:
                                 # El usuario no está verificado, mostrar mensaje de error
                                 flash("Debes verificar tu cuenta antes de iniciar sesión", 'warning')
+                                return redirect(url_for('verify'))
                         else:
                             flash("Contraseña incorrecta", 'danger')
                     else:
@@ -122,6 +137,7 @@ def auth():
                                     
                                     session["login"] = True
                                     session['name'] = data['nombreAd']
+                                    session['verificado'] = True
                                     flash("Inicio de Sesión exitoso", 'success')
                                     cur.close()
                                     return redirect(url_for('home'))
@@ -221,7 +237,6 @@ def auth():
     return render_template('login.html')
 
 @PCapp.route('/verify', methods=['GET', 'POST'])
-@login_required
 def verify():
     if request.method == 'POST':
         flash("Revisa tu correo electrónico para obtener tu código de verificación", 'success')
@@ -274,8 +289,10 @@ def verify():
                         cur.close()        
     return render_template('verify.html')
 
+
 @PCapp.route('/')
 @login_required
+@verified_required
 def home():
     return render_template('index.html', username=session['name'])
 
@@ -286,6 +303,7 @@ def logout():
 
 @PCapp.route('/protected')
 @login_required
+@verified_required
 def protected ():
     return "<h1>Esta es una vista protegida, solo para usuarios autenticados.</h1>"
 
