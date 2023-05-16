@@ -69,7 +69,40 @@ if (currentUrl == "/templates/supervisor/agregar_practicante.html") {
   });
 }
 
-// ------------------------------------ End Agregar practicante ------------------------------------ //
+// ------------------------------------ End Agregar Practicante ------------------------------------ //
+
+// ------------------------------------ Agregar Supervidor ------------------------------------ //
+if (currentUrl == "/templates/supervisor/AgregarSupervisor.html") {
+  console.log(currentUrl);
+  const editableInput = document.getElementById('input-editable');
+  const readonlyInput = document.getElementById('input-readonly');
+  const combinedInput = document.getElementById('correoSup');
+
+  // Función para combinar los valores de los dos inputs
+  function combineInputs() {
+    const editableValue = editableInput.value;
+    const readonlyValue = readonlyInput.value;
+    combinedInput.value = `${editableValue}${readonlyValue}`;
+    console.log(combinedInput.value);
+  }
+
+  // Asignar el valor del input combinado antes de hacer el submit
+  document.getElementById('AgregarSupervisor').addEventListener('submit', function (event) {
+    combineInputs();
+  });
+
+  // Escuchar cambios en los dos inputs y actualizar el input combinado
+  editableInput.addEventListener('input', combineInputs);
+  readonlyInput.addEventListener('input', combineInputs);
+
+  const formulario = document.getElementById('AgregarSupervisor');
+
+  formulario.addEventListener('submit', function (event) {
+    event.preventDefault(); // Evita que se realice el submit por defecto del formulario
+  });
+}
+
+// ------------------------------------ End Agregar Supervisor ------------------------------------ //
 
 
 // ------------------------------------------- Administrador ------------------------------------------- //
@@ -357,27 +390,48 @@ if (currentUrl == "/templates/admin/adm_adm.html") {
 
 
 // ----------------------------------------- Contraseñas ----------------------------------------- //
-
-function checkPasswordMatch1() { //administrador
+if (currentUrl == "/templates/admin/adm_adm.html") {
+function checkPasswordMatch() { //administrador
   var password = document.getElementById("contraAd").value;
-  var confirmPassword = document.getElementById("confirmPassword").value;
+  var confirmPassword = document.getElementById("contraAd_confirm").value;
   
   if (password !== confirmPassword) {
-    document.getElementById("confirmPassword").setCustomValidity("Las contraseñas no coinciden");
+    document.getElementById("contraAd_confirm").setCustomValidity("Las contraseñas no coinciden");
   } else {
-    document.getElementById("confirmPassword").setCustomValidity("");
+    document.getElementById("contraAd_confirm").setCustomValidity("");
   }
 }
+}
+if (currentUrl == "/templates/admin/adm_super.html") {
 
 function checkPasswordMatch() { //supervisor
-  var password = document.getElementById("contraSup").value;
-  var confirmPassword = document.getElementById("confirmPasswordSu").value;
+  var password = document.getElementById("contraAd").value;
+  var confirmPassword = document.getElementById("contraSup_confirm").value;
   
   if (password !== confirmPassword) {
-    document.getElementById("confirmPasswordSu").setCustomValidity("Las contraseñas no coinciden");
+    document.getElementById("contraSup_confirm").setCustomValidity("Las contraseñas no coinciden");
   } else {
-    document.getElementById("confirmPasswordSu").setCustomValidity("");
+    document.getElementById("contraSup_confirm").setCustomValidity("");
   }
+}
 }
 
 // ----------------------------------------- End Contraseñas ----------------------------------------- //
+
+/* para boton de ocultar contraseña */  //administrador
+  function togglePasswordVisibility(inputId, buttonId) {
+    var passwordInput = document.getElementById(inputId);
+    var toggleButton = document.getElementById(buttonId);
+    
+    if (passwordInput.type === "password") {
+      passwordInput.type = "text";
+      toggleButton.textContent = "Ocultar";
+    } else {
+      passwordInput.type = "password";
+      toggleButton.textContent = "Mostrar";
+    }
+  }
+
+
+
+/* para confirmar la contraseñaaaaa y para ver  */   

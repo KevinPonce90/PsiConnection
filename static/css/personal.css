@@ -560,3 +560,17 @@ hr {
   border-color: red;
 }
 /* -------------------------------- End Input hora -------------------------------- */
+.password-toggle-container {
+  position: relative;
+}
+
+.password-toggle-button {
+  position: absolute;
+  right: 19px;
+  top: 68%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  padding: 0 5px;
+  background-color: transparent;
+  border: none;
+}
