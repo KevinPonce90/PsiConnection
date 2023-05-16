@@ -325,7 +325,7 @@ if (currentUrl == "/templates/paciente/agenda_cita.html") {
     const selectedHour = parseInt(selectedTime.split(':')[0], 10);
 
     if (selectedHour < 8 || selectedHour > 20) {
-      timeInput.setCustomValidity('La hora debe estar entre las 8:00 y las 20:00');
+      timeInput.setCustomValidity('Elija una hora valida');
       timeInput.value = '';
       timeError.style.display = 'block';
 
