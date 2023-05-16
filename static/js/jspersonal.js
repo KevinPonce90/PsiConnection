@@ -73,30 +73,30 @@ if (currentUrl == "/templates/supervisor/agregar_practicante.html") {
 
 
 // ------------------------------------  loadMoreBtn ------------------------------------ //
-if (currentUrl == "/templates/paciente/agenda_cita.html") {
-  // Seleccionamos el botón y obtenemos las clases originales
-  const loadMoreBtn = document.querySelector('#loadMoreBtn');
+// if (currentUrl == "/templates/paciente/agenda_cita.html") {
+//   // Seleccionamos el botón y obtenemos las clases originales
+//   const loadMoreBtn = document.querySelector('#loadMoreBtn');
 
-  // Función para intercambiar las clases del botón
-  function toggleClasses() {
+//   // Función para intercambiar las clases del botón
+//   function toggleClasses() {
 
-    if (window.innerWidth <= 993) {
-      if (window.innerWidth >= 723) {
-        loadMoreBtn.classList.remove('w-25');
-        loadMoreBtn.classList.add('w-sm-25');
-        loadMoreBtn.classList.remove('w-sm-100');
-      } else if (window.innerWidth < 723) {
-        loadMoreBtn.classList.add('w-sm-100');
-      }
-    } else if (window.innerWidth > 993) {
-      loadMoreBtn.classList.remove('w-sm-25');
-      loadMoreBtn.classList.add('w-25');
-    }
-  }
-  // Al cargar la página y al cambiar el tamaño de la pantalla, llamamos a la función toggleClasses
-  window.addEventListener('load', toggleClasses);
-  window.addEventListener('resize', toggleClasses);
-}
+//     if (window.innerWidth <= 993) {
+//       if (window.innerWidth >= 723) {
+//         loadMoreBtn.classList.remove('w-25');
+//         loadMoreBtn.classList.add('w-sm-25');
+//         loadMoreBtn.classList.remove('w-sm-100');
+//       } else if (window.innerWidth < 723) {
+//         loadMoreBtn.classList.add('w-sm-100');
+//       }
+//     } else if (window.innerWidth > 993) {
+//       loadMoreBtn.classList.remove('w-sm-25');
+//       loadMoreBtn.classList.add('w-25');
+//     }
+//   }
+//   // Al cargar la página y al cambiar el tamaño de la pantalla, llamamos a la función toggleClasses
+//   window.addEventListener('load', toggleClasses);
+//   window.addEventListener('resize', toggleClasses);
+// }
 // ------------------------------------ End loadMoreBtn ------------------------------------ //
 
 
@@ -172,24 +172,39 @@ if (currentUrl == "/templates/paciente/agenda_cita.html") {
   $('a.link-card-practicante').click(function () {
 
     const form = document.querySelector('#elegir');
-    const card = $(this).closest('a').data('id');
+    const idPrac  = $(this).closest('a').data('id');
 
+    // Inputs
     const FidPrac     = form.querySelector('input[name="idPrac"]');
     const FidPaci     = form.querySelector('input[name="idPaci"]');
     const FnombrePrac = form.querySelector('input[name="nombrePrac"]');
     const FapellidoP  = form.querySelector('input[name="apellidoPPrac"]');
     const FapellidoM  = form.querySelector('input[name="apellidoMPrac"]');
 
-    const idPaci        = document.getElementById('idPaci').textContent;      
+      // Inputs correo
+      const FcorreoPrac  = form.querySelector('input[name="correoPrac"]');
+      const FcorreoPaci  = form.querySelector('input[name="correoPaci"]');
+      
+      // Texto correo
+      const correoPaci   = document.getElementById('correoPaci').textContent;      
+      const correoPrac   = document.getElementById('correoPrac').textContent; 
+      
+      // Asignacion correo
+      FcorreoPrac.value  = correoPaci;
+      FcorreoPaci.value  = correoPrac;
+
+
+    const idPaci        = document.getElementById('idPaci').textContent;     
     const nombrePrac    = document.getElementById('nombrePrac').textContent;     
     const apellidoPPrac = document.getElementById('apellidoPPrac').textContent;
     const apellidoMPrac = document.getElementById('apellidoMPrac').textContent;
     
+
     document.getElementById('Fnombre').textContent        = document.getElementById('nombrePrac').textContent;  
     document.getElementById('FapellidoPPrac').textContent = document.getElementById('apellidoPPrac').textContent;
 
-    FidPrac.value = card;
-    
+
+    FidPrac.value     = idPrac;
     FidPaci.value     = idPaci;      
     FnombrePrac.value = nombrePrac;   
     FapellidoP.value  = apellidoPPrac;

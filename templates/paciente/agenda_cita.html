@@ -55,7 +55,7 @@
                 </div>
                 <div class="d-lg-flex align-items-center ms-auto dropdown">
                     <button class="dropbtn">
-                        Nombre
+                        {{username}}
                     </button>
                     <div class="dropdown-content">
                         <div class="inte-content">
@@ -100,7 +100,7 @@
                         <div class="hero-text">
                             <div class="espacio"></div>
                             <div class="hero-title-wrap d-flex align-items-center mb-4">
-                                <h1 class="hero-title ms-3 mb-0">Bienvenido!</h1>
+                                <h1 class="hero-title ms-3 mb-0">¡Bienvenido!</h1>
                             </div>
                             <h2 class="text-center">{{username}}</h2>
                         </div>
@@ -141,25 +141,32 @@
                     <div class="card card-practicante">
                         <img src="/static/img/persona.jpg" class="card-img-top" alt="...">
                         <div class="card-body">
-                            <h5 class="card-title text-center">Practicante
-                            </h5>
+                            <h5 class="card-title text-center">Practicante</h5>
                             <p id="nombrePrac" class="text-center mt-2">{{cita.nombrePrac}}</p>
                             <p id="apellidoPPrac" style="display: none;">{{cita.apellidoPPrac}}</p>
                             <p id="apellidoMPrac" style="display: none;">{{cita.apellidoMPrac}}</p>
+
+                            <p id="correoPrac" style="display: none;">{{cita.correoPrac}}</p>
+                            <p id="correoPaci" style="display: none;">{{cita.correoPaci}}</p>
+
                             <p id="idPaci" style="display: none;">{{cita.idPaci}}</p>
                         </div>
                     </div>
                 </a>
                 <!--  {% for   in   %}-->
-                <a data-id="{{cita.idPaci}}" href="#Elegi" class="link-card-practicante" data-bs-toggle="modal" data-bs-target="#Elegi">
+                <a data-id="{{cita.idPrac}}" href="#Elegi" class="link-card-practicante" data-bs-toggle="modal" data-bs-target="#Elegi">
                     <div class="card card-practicante">
                         <img src="/static/img/persona.jpg" class="card-img-top" alt="...">
                         <div class="card-body">
-                            <h5 class="card-title text-center">Practicante
-                            </h5>
+                            <h5 class="card-title text-center">Practicante</h5>
+
                             <p id="nombrePrac" class="text-center mt-2">{{cita.nombrePrac}}</p>
                             <p id="apellidoPPrac" style="display: none;">{{cita.apellidoPPrac}}</p>
                             <p id="apellidoMPrac" style="display: none;">{{cita.apellidoMPrac}}</p>
+
+                            <p id="correoPrac" style="display: none;">{{cita.correoPrac}}</p>
+                            <p id="correoPaci" style="display: none;">{{cita.correoPaci}}</p>
+
                             <p id="idPaci" style="display: none;">{{cita.idPaci}}</p>
                         </div>
                     </div>
@@ -264,10 +271,10 @@
                     </div>
                 </a>
             </div>
-            <div class="row align-items-center justify-content-center">
+            <!-- <div class="row align-items-center justify-content-center">
                 <button id="loadMoreBtn" class="btn btn-a" style="background-color: #00817d; color: white;">Cargar más
                     practicantes</button>
-            </div>
+            </div> -->
 
             <!-- Edit Modal HTML -->
             <div id="Elegi" class="modal fade">
@@ -282,10 +289,16 @@
                             <form id="elegir" action="/AgendarCita" method="POST" enctype="multipart/form-data">
 
                                 <input type="hidden" name="csrf_token" value="{{csrf_token() }}">
+
+                                <!-- IDs -->
                                 <input type="text" name="idPaci" value="">
                                 <input type="text" name="idPrac" value="">
-                                <p id="Fnombre"></p>
-                                <p id="FapellidoPPrac"></p>
+
+                                <!-- Correos -->
+                                <input type="text" name="correoPrac" value="">
+                                <input type="text" name="correoPaci" value="">
+                                <p id="Fnombre" class="text-center"></p>
+                                <p id="FapellidoPPrac"  class="text-center"></p>
 
 
                                 <div class="form-group mb-3">
@@ -314,7 +327,7 @@
                         </div>
 
                         <div class="modal-footer">
-                            <input type="button" class="btn btn-default" data-bs-dismiss="modal" value="Cancel">
+                            <input type="button" class="btn btn-default" data-bs-dismiss="modal" value="Cancelar">
                             <input type="submit" class="btn btn-info" value="Guardar" id="submit-btn">
                         </div>
                         </form>
