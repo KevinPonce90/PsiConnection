@@ -137,18 +137,34 @@
             <h2 class="text-center">Elija al practicante</h2>
             <div class="sectmycard2 row">
 
-                <a href="#Elegi" class="link-card-practicante" data-bs-toggle="modal" data-bs-target="#Elegi">
+                <a data-id="1" href="#Elegi" class="link-card-practicante" data-bs-toggle="modal" data-bs-target="#Elegi">
                     <div class="card card-practicante">
                         <img src="/static/img/persona.jpg" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title text-center">Practicante
                             </h5>
-                            <p class="text-center mt-2">{{ cita.nombrePrac }}</p>
-                            <p class="text-center mt-2">123456789 123456789</p>
+                            <p id="nombrePrac" class="text-center mt-2">{{cita.nombrePrac}}</p>
+                            <p id="apellidoPPrac" style="display: none;">{{cita.apellidoPPrac}}</p>
+                            <p id="apellidoMPrac" style="display: none;">{{cita.apellidoMPrac}}</p>
+                            <p id="idPaci" style="display: none;">{{cita.idPaci}}</p>
                         </div>
                     </div>
                 </a>
-
+                <!--  {% for   in   %}-->
+                <a data-id="{{cita.idPaci}}" href="#Elegi" class="link-card-practicante" data-bs-toggle="modal" data-bs-target="#Elegi">
+                    <div class="card card-practicante">
+                        <img src="/static/img/persona.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title text-center">Practicante
+                            </h5>
+                            <p id="nombrePrac" class="text-center mt-2">{{cita.nombrePrac}}</p>
+                            <p id="apellidoPPrac" style="display: none;">{{cita.apellidoPPrac}}</p>
+                            <p id="apellidoMPrac" style="display: none;">{{cita.apellidoMPrac}}</p>
+                            <p id="idPaci" style="display: none;">{{cita.idPaci}}</p>
+                        </div>
+                    </div>
+                </a>
+                <!--  {% endfor  %} -->
                 <a href="#Elegi" class="link-card-practicante" data-bs-toggle="modal" data-bs-target="#Elegi">
                     <div class="card card-practicante">
                         <img src="/static/img/persona.jpg" class="card-img-top" alt="...">
@@ -266,8 +282,10 @@
                             <form id="elegir" action="/AgendarCita" method="POST" enctype="multipart/form-data">
 
                                 <input type="hidden" name="csrf_token" value="{{csrf_token() }}">
-                                <input type="hidden" name="idPac" value="{{a.idPac}}">
-                                <input type="hidden" name="idPrac" value="{{a.idPrac}}">
+                                <input type="text" name="idPaci" value="">
+                                <input type="text" name="idPrac" value="">
+                                <p id="Fnombre"></p>
+                                <p id="FapellidoPPrac"></p>
 
 
                                 <div class="form-group mb-3">
@@ -288,12 +306,11 @@
                                     <select id="modalidad" name="modalidad"
                                         class="form-select form-select-sm form-control border border-dark"
                                         aria-label="form-select-sm example" required>
-                                        <option selected disabled>Elija un opcion:</option>
+                                        <option selected disabled value="">Elija un opcion:</option>
                                         <option value="Presencial">Presencial</option>
                                         <option value="Virtual">Virtual</option>
                                     </select>
                                 </div>
-
                         </div>
 
                         <div class="modal-footer">

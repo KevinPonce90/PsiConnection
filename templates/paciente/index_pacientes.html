@@ -56,7 +56,7 @@
                 </div>
                 <div class="d-lg-flex align-items-center ms-auto dropdown">
                     <button class="dropbtn">
-                        Nombre
+                        {{username}}
                     </button>
                     <div class="dropdown-content">
                         <div class="inte-content">
@@ -168,48 +168,17 @@
                             </tr>
                         </thead>
                         <tbody>
+                            <!--  {% for   in   %}-->
                             <tr>
-                                <td>{{ cita.nombrePrac }}</td>
-                                <td>{{ cita.fecha }</td>
-                                <td>{{ cita.hora }</td>
-                                <td>{{ cita.modalidad}</td>
-                                <td>{{ cita.lugar }</td>
+                                <td>{{cita.nombrePrac }}</td>
+                                <td>{{cita.fecha }}</td>
+                                <td>{{cita.hora }}</td>
+                                <td>{{cita.modalidad}}</td>
+                                <td>{{cita.lugar}}</td>
                             </tr>
-                            <tr>
+                             <!--  {% endfor  %} -->
 
-                                <td>2</td>
-                                <td>2_@mail.com</td>
-                                <td>2, Guadalajara, MEX</td>
-                                <td>222222222</td>
-                                <td>2</td>
-                            </tr>
-                            <tr>
-
-                                <td>3</td>
-                                <td>3_@mail.com</td>
-                                <td>3, Guadalajara, MEX</td>
-                                <td>233333333</td>
-                                <td>3</td>
-
-                            </tr>
-                            <tr>
-
-                                <td>4</td>
-                                <td>4_@mail.com</td>
-                                <td>4, Guadalajara, MEX</td>
-                                <td>244444444</td>
-                                <td>4</td>
-
-                            </tr>
-                            <tr>
-
-                                <td>5</td>
-                                <td>5_@mail.com</td>
-                                <td>5, Guadalajara, MEX</td>
-                                <td>255555555</td>
-                                <td>5</td>
-
-                            </tr>
+                        
                         </tbody>
                     </table>
                 </div>
