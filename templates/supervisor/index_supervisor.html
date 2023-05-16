@@ -167,6 +167,38 @@
                         </tr>
                     </thead>
                     <tbody>
+
+                        <!--  {% for   in   %}-->
+                        <!-- id de algun supervisor -->
+                        <!-- <tr data-id="{{ idSup }}"> -->
+                        <tr data-id="1">
+
+                            <td>{{a.nombrePrac}}</td>
+                            <td>{{a.apellidoPPrac}}</td>
+                            <td>{{a.apellidoMSPrac}}</td>
+                            <td>{{a.correoPrac}}</td>
+                            <td>
+                                <a href="/templates/supervisor/encuestas.html" class="btn btn-success">
+                                    <img class="Icono" src="/static/img/encuesta.svg" alt="">
+                                    <span>Encuestas</span>
+                                </a>
+                            </td>
+                            <td>
+                                <!-- ------------------------ Tomar este para todos los botones ------------------------ -->
+
+                                <a href="#editEmployeeModal" class="btn-edit edit linkIcono" data-bs-toggle="modal">
+                                    <img class="Icono" src="/static/img/edit.svg" alt="Editar">
+                                </a>
+                                <a href="#deleteEmployeeModal" class="delete linkIcono" data-bs-toggle="modal">
+                                    <img class="Icono" src="/static/img/trash.svg" alt="Editar">
+                                </a>
+
+                                <!-- ------------------------ Tomar este para todos los botones ------------------------ -->
+
+                            </td>
+                        </tr>
+                        <!--  {% endfor  %}-->
+
                         <tr>
 
                             <td>Thomas </td>
@@ -186,12 +218,11 @@
                             </td>
 
                             <td>
-                                <a href="#editEmployeeModal" class="edit linkIcono" data-bs-toggle="modal">
+                                <a href="#editEmployeeModal" class="btn-edit edit linkIcono" data-bs-toggle="modal">
                                     <img class="Icono" src="/static/img/edit.svg" alt="Editar">
                                 </a>
-
                                 <a href="#deleteEmployeeModal" class="delete linkIcono" data-bs-toggle="modal">
-                                    <img class="Icono" src="/static/img/trash.svg" alt="Eliminar">
+                                    <img class="Icono" src="/static/img/trash.svg" alt="Editar">
                                 </a>
                             </td>
                             <!-- ------------------------ Tomar este para todos los botones ------------------------ -->
@@ -305,54 +336,34 @@
                     </div>
 
                     <div class="modal-body">
-                        <form action="/ActualizarPracticante" method="POST" enctype="multipart/form-data">
+                        <form id="editPrac" action="/ActualizarPracticante" method="POST" enctype="multipart/form-data">
 
                             <input type="hidden" name="csrf_token" value="{{csrf_token() }}">
-                            <input type="hidden" name="idSup" value="{{a.idSup}}">
-                            <input type="hidden" name="idPrac" value="{{a.idPrac}}">
+                            <input type="hidden" name="idSup" value="">
+                            <input type="hidden" name="idPrac" value="">
 
                             <h2 class="textoPresentacion text-center">Datos Personales</h2>
 
                             <div class="form-group">
                                 <label for="nombrePrac" class="form-label">Nombre</label>
-                                <input name="nombrePrac" id="nombrePrac" type="text" 
-
-                                value=""
-                                
+                                <input name="nombrePrac" id="nombrePrac" type="text" value=""
                                     class="form-control border border-dark" required
                                     pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'\-]{2,35}"
                                     title="Solo letras Minimo 2 Maximo 35" class="form-control" />
                             </div>
                             <div class="form-group">
                                 <label for="apellidoPPrac" class="form-label">Apellido Paterno</label>
-                                <input name="apellidoPPrac" id="apellidoPPrac" type="text" 
-
-                                value=""
-                                
+                                <input name="apellidoPPrac" id="apellidoPPrac" type="text" value=""
                                     class="form-control border border-dark" required
                                     pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'\-]{2,25}"
                                     title="Solo letras Minimo 2 Maximo 25" class="form-control" />
                             </div>
                             <div class="form-group">
                                 <label for="apellidoMPrac" class="form-label">Apellido Materno</label>
-                                <input name="apellidoMPrac" id="apellidoMPrac" type="text" 
-
-                                value=""
-
+                                <input name="apellidoMPrac" id="apellidoMPrac" type="text" value=""
                                     class="form-control border border-dark" required
                                     pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'\-]{2,25}"
                                     title="Solo letras Minimo 2 Maximo 25" class="form-control" />
-                            </div>
-
-                            <div class="form-group">
-                                <label for="contraPrac" class="form-label">Contraseña</label>
-                                <input name="contraPrac" id="contraPrac" type="password" 
-
-                                value=""
-
-                                    class="form-control border border-dark" required
-                                    pattern="^(?=.*?[A-Z])(?=(.*[a-z]){1,})(?=(.*[\d]){1,})(?=(.*[\W]){1,})(?!.*\s).{8,}$"
-                                    title="Escriba al menos 8 caracteres, 1 digito, 1 mayúscula, 1 minúscula, 1 carácter especial" />
                             </div>
                     </div>
                     <div class="modal-footer">
@@ -374,10 +385,10 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true"></button>
                     </div>
                     <div class="modal-body">
-                        <form action="/EliminarPracticante" method="POST">
+                        <form id="deletePrac" action="/EliminarPracticante" method="POST">
 
                             <input type="hidden" name="csrf_token" value="{{csrf_token() }}">
-                            <input type="hidden" name="idPrac" value="{{a.idPrac}}">
+                            <input type="hidden" name="idPrac" value="">
 
                             <div class="container">
                                 <div class="row">
@@ -391,6 +402,7 @@
                                     </div>
                                 </div>
                             </div>
+                            <input disabled type="text" name="nombre">
                             <p class="text-warning"><small>Esta accion no se puede deshacer.</small></p>
                     </div>
 

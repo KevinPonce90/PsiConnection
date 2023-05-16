@@ -37,6 +37,7 @@ if (currentUrl == "/templates/admin/index_admin.html") {
 }
 // ------------------------------------ End Cards index admin ------------------------------------ //
 
+
 // ------------------------------------ Agregar practicante ------------------------------------ //
 if (currentUrl == "/templates/supervisor/agregar_practicante.html") {
   console.log(currentUrl);
@@ -66,29 +67,28 @@ if (currentUrl == "/templates/supervisor/agregar_practicante.html") {
   formulario.addEventListener('submit', function (event) {
     event.preventDefault(); // Evita que se realice el submit por defecto del formulario
   });
-}
 
-/* para confirmar la contraseñaaaaa y para ver  */
+  
+  // ------------------------------------ Contraseña practicante ------------------------------------ //
+
+  function checkPasswordMatch() {
+    var password = document.getElementById("contraPrac").value;
+    var confirmPassword = document.getElementById("confirmPassword").value;
+
+    if (password !== confirmPassword) {
+      document.getElementById("confirmPassword").setCustomValidity("Las contraseñas no coinciden");
+    } else {
+      document.getElementById("confirmPassword").setCustomValidity("");
+    }
+  }
 
 
-                    function checkPasswordMatch() {
-                      var password = document.getElementById("password").value;
-                      var confirmPassword = document.getElementById("confirmPassword").value;
-                      
-                      if (password !== confirmPassword) {
-                        document.getElementById("confirmPassword").setCustomValidity("Las contraseñas no coinciden");
-                      } else {
-                        document.getElementById("confirmPassword").setCustomValidity("");
-                      }
-                    }
+  /* para boton de ocultar contraseña */
 
-                    
-              /* para boton de ocultar contraseña */    
-                
   function togglePasswordVisibility(inputId, buttonId) {
     var passwordInput = document.getElementById(inputId);
     var toggleButton = document.getElementById(buttonId);
-    
+
     if (passwordInput.type === "password") {
       passwordInput.type = "text";
       toggleButton.textContent = "Ocultar";
@@ -97,193 +97,351 @@ if (currentUrl == "/templates/supervisor/agregar_practicante.html") {
       toggleButton.textContent = "Mostrar";
     }
   }
-                  
-                
-                  
-
-
-
-
-
+  // ------------------------------------ End Contraseña practicante ------------------------------------ //
+}
 // ------------------------------------ End Agregar practicante ------------------------------------ //
 
 
-///////////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////////////
-///Hora y fecha
+// ----------------------------------------- Contraseñas Administrador ----------------------------------------- //
+if( currentUrl == "/templates/admin/adm_adm.html")
+function checkPasswordMatch1() { //administrador
+  var password = document.getElementById("contraAd").value;
+  var confirmPassword = document.getElementById("confirmPassword").value;
+  
+  if (password !== confirmPassword) {
+    document.getElementById("confirmPassword").setCustomValidity("Las contraseñas no coinciden");
+  } else {
+    document.getElementById("confirmPassword").setCustomValidity("");
+  }
+}
 
-// const fechaInput = document.getElementById('fecha');
-// const horaInput = document.getElementById('hora');
+function checkPasswordMatch() { //supervisor
+  var password = document.getElementById("contraSup").value;
+  var confirmPassword = document.getElementById("confirmPasswordSu").value;
+  
+  if (password !== confirmPassword) {
+    document.getElementById("confirmPasswordSu").setCustomValidity("Las contraseñas no coinciden");
+  } else {
+    document.getElementById("confirmPasswordSu").setCustomValidity("");
+  }
+}
 
-// // Añadir evento "change" al input de fecha
-// fechaInput.addEventListener('change', () => {
-//   const fechaSeleccionada = new Date(fechaInput.value);
-//   const hoy = new Date();
-
-//   // Validar que la fecha seleccionada sea mayor o igual a la fecha actual
-//   if (fechaSeleccionada < hoy) {
-//     fechaInput.setCustomValidity('La fecha debe ser mayor o igual a la fecha actual');
-//   } else {
-//     fechaInput.setCustomValidity('');
-//   }
-// });
-
-// // Añadir evento "change" al input de hora
-// horaInput.addEventListener('change', () => {
-//   const horaSeleccionada = horaInput.value;
-
-//   // Obtener las horas y minutos de la hora seleccionada
-//   const hora = parseInt(horaSeleccionada.substring(0, 2));
-//   const minutos = parseInt(horaSeleccionada.substring(3));
-
-//   // Validar que la hora seleccionada sea entre las 8am y las 7pm
-//   if (hora < 8 || hora > 19) {
-//     horaInput.setCustomValidity('La hora seleccionada no es válida');
-//     horaInput.classList.add('hora-invalida');
-//   } else {
-//       horaInput.setCustomValidity('');
-//     horaInput.classList.remove('hora-invalida');
-//   }
-// });
-
-
-// const fechaHoraInput = document.getElementById("fecha-hora");
-// const submitBtn = document.getElementById("submit-btn");
-
-// fechaHoraInput.addEventListener("input", function() {
-//   const fechaHoraSeleccionada = new Date(fechaHoraInput.value);
-//   const horaSeleccionada = fechaHoraSeleccionada.getHours();
-
-//   // Verificar si la hora seleccionada es válida
-//   if (horaSeleccionada < 8 || horaSeleccionada > 19) {
-//     // Hora inválida: deshabilitar botón de submit y cambiar color de fondo del input
-//     submitBtn.disabled = true;
-//     fechaHoraInput.style.backgroundColor = "red";
-//   } else {
-//     // Hora válida: habilitar botón de submit y restaurar color de fondo del input
-//     submitBtn.disabled = false;
-//     fechaHoraInput.style.backgroundColor = "white";
-//   }
-// });
-///////////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////////////
-//    Tranferir datos a modal Administrador
-
-// Obtener la tabla y el modal
-// var table = document.getElementById("AdminTable");
-// var modal = document.getElementById("editEmployeeModal");
-
-// // Obtener los elementos del formulario
-// var nombreInput    = document.getElementById("nombreAd");
-// var apellidoPInput = document.getElementById("apellidoPAd");
-// var apellidoMInput = document.getElementById("apellidoMAd");
-// var correoInput    = document.getElementById("correoAd");
-
-// // Función para abrir el modal y llenar el formulario
-// function editar(button) {
-//   // Obtener la fila de la tabla
-//   var row = button.parentNode.parentNode;
-//   // Obtener los valores de las celdas
-//   var nombre    = row.cells[0].innerHTML;
-//   var apellidoP = row.cells[1].innerHTML;
-//   var apellidoM = row.cells[2].innerHTML;
-//   var correo    = row.cells[3].innerHTML;
-//   // Llenar el formulario con los valores de las celdas
-//   nombreInput.value      = nombre;
-//   apellidoPInput.value   = apellidoP;
-//   apellidoMInput.value   = apellidoM;
-//   correoInput.value      = correo;
-//   // Mostrar el modal
-//   modal.style.display = "block";
-// }
-
-// // Función para guardar los cambios
-// function guardar() {
-//   // Obtener los valores del formulario
-//   var nombre    = nombreInput.value;
-//   var apellidoP = apellidoPInput.value;
-//   var apellidoM = apellidoMInput.value;
-//   var correo    = correoInput.value;
-//   // Actualizar la fila de la tabla con los nuevos valores
-//   var row = table.getElementsByTagName("tr")[1];
-//   row.cells[0].innerHTML = nombre;
-//   row.cells[1].innerHTML = apellidoP;
-//   row.cells[2].innerHTML = apellidoM;
-//   row.cells[3].innerHTML = correo;
-//   // Cerrar el modal
-//   modal.style.display = "none";
-// }
-
-// // Función para cerrar el modal
-// var span = document.getElementsByClassName("btn-close")[0];
-// span.onclick = function() {
-//   modal.style.display = "none";
-// }
+// ----------------------------------------- End Contraseñas Administrador ----------------------------------------- //
 
 
 
+// ------------------------------------ Correo Supervisor ------------------------------------ //
+if (currentUrl == "/templates/admin/adm_super.html") {
+  console.log(currentUrl);
+  const editableInput = document.getElementById('input-editable');
+  const readonlyInput = document.getElementById('input-readonly');
+  const combinedInput = document.getElementById('correoSup');
+
+  // Función para combinar los valores de los dos inputs
+  function combineInputs() {
+    const editableValue = editableInput.value;
+    const readonlyValue = readonlyInput.value;
+    combinedInput.value = `${editableValue}${readonlyValue}`;
+    console.log(combinedInput.value);
+  }
+
+  // Asignar el valor del input combinado antes de hacer el submit
+  document.getElementById('AgregarSupervisor').addEventListener('submit', function (event) {
+    combineInputs();
+  });
+
+  // Escuchar cambios en los dos inputs y actualizar el input combinado
+  editableInput.addEventListener('input', combineInputs);
+  readonlyInput.addEventListener('input', combineInputs);
+
+  const formulario = document.getElementById('AgregarSupervisor');
+
+  formulario.addEventListener('submit', function (event) {
+    event.preventDefault(); // Evita que se realice el submit por defecto del formulario
+  });
+}
+// ------------------------------------ End Correo Supervisor ------------------------------------ //
+
+
+// ------------------------------------------- Administrador ------------------------------------------- //
+// ------------------------------------------- Administrador ------------------------------------------- //
+// ------------------------------------------- Administrador ------------------------------------------- //
+
+// ------------------------------------ Modificar datos administrador ------------------------------------ //
+// Espera a que se haga clic en el botón "Modificar datos"
+if (currentUrl == "/templates/admin/adm_adm.html") {
+  console.log('Amin');
+  $('a.btn-edit').click(function () {
+
+    const form = document.querySelector('#editAdmin');
+    const filaId = $(this).closest('tr').data('id');
+    const fila = document.querySelector(`tr[data-id="${filaId}"]`);
+
+    const idAd = form.querySelector('input[name="idAd"]');
+    const Fnombre = form.querySelector('input[name="nombreAd"]');
+    const FapellidoP = form.querySelector('input[name="apellidoPAd"]');
+    const FapellidoM = form.querySelector('input[name="apellidoMAd"]');
+
+    // Acceder a las celdas específicas por índice
+    const celda0 = fila.cells[0]; // Primera celda
+    const celda1 = fila.cells[1]; // Segunda celda
+    const celda2 = fila.cells[2]; // Tercera celda
+
+
+    // Obtener los valores de las celdas
+    const valor0 = celda0.textContent;
+    const valor1 = celda1.textContent;
+    const valor2 = celda2.textContent;
+
+    // ID del administrador a editar
+    idAd.value = filaId
+
+    Fnombre.value = valor0;
+    FapellidoP.value = valor1;
+    FapellidoM.value = valor2;
+  });
+  // ------------------------------------ End Modificar datos administrador ------------------------------------ //
+
+  // ------------------------------------ Eliminar administrador ------------------------------------ //
+  $('a.delete').click(function () {
+
+    const form = document.querySelector('#deleteAdmin');
+    const filaId = $(this).closest('tr').data('id');
+    const fila = document.querySelector(`tr[data-id="${filaId}"]`);
+
+    const idAd = form.querySelector('input[name="idAd"]');
+    const Fnombre = form.querySelector('input[name="nombre"]');
+
+
+    // Acceder a las celdas específicas por índice
+    const celda0 = fila.cells[0]; // Primera celda
+    const celda1 = fila.cells[1]; // Segunda celda
+
+
+    // Obtener los valores de las celdas
+    const valor0 = celda0.textContent + ' ' + celda1.textContent;
+    // ID del administrador a editar
+    idAd.value = filaId;
+    Fnombre.value = valor0;
+    Fnombre.size = Fnombre.value.length;
+
+  });
+}
+// ------------------------------------ End Eliminar administrador ------------------------------------ //
+
+// ------------------------------------------- End Administrador ------------------------------------------- //
+// ------------------------------------------- End Administrador ------------------------------------------- //
+// ------------------------------------------- End Administrador ------------------------------------------- //
 
 
 
-// var table = document.getElementById("AdminTable");
-// var form = document.getElementById("editAdmin");
+// ------------------------------------------- Supervisor ------------------------------------------- //
+// ------------------------------------------- Supervisor ------------------------------------------- //
+// ------------------------------------------- Supervisor ------------------------------------------- //
 
-// // Agregar un evento "click" a cada fila de la tabla
-// for (var i = 0; i < table.rows.length; i++) {
-//   table.rows[i].addEventListener("click", function() {
-//     // Obtener los datos de la fila seleccionada
-//     var nombre = this.cells[0].innerHTML;
-//     var apellidoP = this.cells[1].innerHTML;
-//     var apellidoM = this.cells[2].innerHTML;
-//     var correo = this.cells[3].innerHTML;
+// ------------------------------------ Modificar datos Supervisor ------------------------------------ //
+// Espera a que se haga clic en el botón "Modificar datos"
 
-//     // Asignar los datos a los campos del formulario
-//     form.elements["nombreAd"].value    = nombre;
-//     form.elements["apellidoPAd"].value = apellidoP;
-//     form.elements["apellidoMAd"].value = apellidoM;
-//     form.elements["correoAd"].value    = correo;
-//   });
-// }
+if (currentUrl == "/templates/admin/adm_super.html") {
+  console.log('Sup');
+  $('a.btn-edit').click(function () {
 
+    const form = document.querySelector('#editSup');
+    const filaId = $(this).closest('tr').data('id');
+    const fila = document.querySelector(`tr[data-id="${filaId}"]`);
 
+    const id = form.querySelector('input[name="idSup"]');
+    const FnombreSup = form.querySelector('input[name="nombreSup"]');
+    const FapellidoPSup = form.querySelector('input[name="apellidoPSup"]');
+    const FapellidoMSup = form.querySelector('input[name="apellidoMSup"]');
 
-
-
-
-// Obtener elementos de la tabla y del formulario
-// const tabla = document.getElementById("AdminTable");
-// const form = document.querySelector("#editEmployeeModal form");
-// const nombreInput = form.querySelector("#nombreAd");
-// const apellidoPInput = form.querySelector("#apellidoPAd");
-// const apellidoMInput = form.querySelector("#apellidoMAd");
-// const correoInput = form.querySelector("#correoAd");
+    // Acceder a las celdas específicas por índice
+    const celda0 = fila.cells[0]; // Primera celda
+    const celda1 = fila.cells[1]; // Segunda celda
+    const celda2 = fila.cells[2]; // Tercera celda
 
 
-// // Función para mostrar el modal y transferir los datos de la fila correspondiente
-// function mostrarFormulario(boton) {
-//   // Obtener la fila correspondiente al botón presionado
-//   const fila = boton.closest("tr");
+    // Obtener los valores de las celdas
+    const valor0 = celda0.textContent;
+    const valor1 = celda1.textContent;
+    const valor2 = celda2.textContent;
 
-//   // Obtener los datos de la fila y asignarlos a los campos del formulario
-//   const nombre = fila.querySelector("td:nth-child(1)").textContent;
-//   const apellidoP = fila.querySelector("td:nth-child(2)").textContent;
-//   const apellidoM = fila.querySelector("td:nth-child(3)").textContent;
-//   const correo = fila.querySelector("td:nth-child(4)").textContent;
+    // ID del administrador a editar
+    id.value = filaId;
 
-//   nombreInput.value = nombre;
-//   apellidoPInput.value = apellidoP;
-//   apellidoMInput.value = apellidoM;
-//   correoInput.value = correo;
+    FnombreSup.value = valor0;
+    FapellidoPSup.value = valor1;
+    FapellidoMSup.value = valor2;
+  });
+  // ------------------------------------ End Modificar datos Supervisor ------------------------------------ //
+
+  // ------------------------------------ Eliminar Supervisor ------------------------------------ //
+  $('a.delete').click(function () {
+
+    const form = document.querySelector('#deleteSup');
+    const table = document.querySelector('#SupTable');
+    const filaId = $(this).closest('tr').data('id');
+    const fila = document.querySelector(`tr[data-id="${filaId}"]`);
+
+    const id = form.querySelector('input[name="idSup"]');
+    const Fnombre = form.querySelector('input[name="nombre"]');
+
+    // Acceder a las celdas específicas por índice
+    const celda0 = fila.cells[0]; // Primera celda
+    const celda1 = fila.cells[1]; // Segunda celda
 
 
-//   // Mostrar el modal
-//   const modal = document.getElementById("editEmployeeModal");
-//   modal.style.display = "block";
-// }
+    // Obtener los valores de las celdas
+    const valor0 = celda0.textContent + ' ' + celda1.textContent;
+    // ID del supervisor a editar
+    id.value = filaId;
+    Fnombre.value = valor0;
+    Fnombre.size = Fnombre.value.length;
 
-// // Cerrar el modal cuando se envíe el formulario
-// form.addEventListener("submit", (event) => {
-//   event.preventDefault();
-//   const modal = document.getElementById("editEmployeeModal");
-//   modal.style.display = "none";
-// });
+  });
+}
+// ------------------------------------ End Eliminar Supervisor ------------------------------------ //
+
+// ------------------------------------------- End Supervisor ------------------------------------------- //
+// ------------------------------------------- End Supervisor ------------------------------------------- //
+// ------------------------------------------- End Supervisor ------------------------------------------- //
+
+
+
+// ------------------------------------------- Practicante ------------------------------------------- //
+// ------------------------------------------- Practicante ------------------------------------------- //
+// ------------------------------------------- Practicante ------------------------------------------- //
+
+// ------------------------------------ Modificar datos practicante ------------------------------------ //
+// Espera a que se haga clic en el botón "Modificar datos"
+
+if ((currentUrl == "/templates/admin/adm_pract.html") || (currentUrl == "/templates/supervisor/index_supervisor.html")) {
+  console.log('Prac');
+  $('a.btn-edit').click(function () {
+
+    const form = document.querySelector('#editPrac');
+    const filaId = $(this).closest('tr').data('id');
+    const fila = document.querySelector(`tr[data-id="${filaId}"]`);
+
+    const id = form.querySelector('input[name="idPrac"]');
+    const FnombrePrac = form.querySelector('input[name="nombrePrac"]');
+    const FapellidoPPrac = form.querySelector('input[name="apellidoPPrac"]');
+    const FapellidoMPrac = form.querySelector('input[name="apellidoMPrac"]');
+
+    // Acceder a las celdas específicas por índice
+    const celda0 = fila.cells[0]; // Primera celda
+    const celda1 = fila.cells[1]; // Segunda celda
+    const celda2 = fila.cells[2]; // Tercera celda
+
+    // Obtener los valores de las celdas
+    const valor0 = celda0.textContent;
+    const valor1 = celda1.textContent;
+    const valor2 = celda2.textContent;
+
+    // ID del Practicante a editar
+    id.value = filaId;
+
+    FnombrePrac.value = valor0;
+    FapellidoPPrac.value = valor1;
+    FapellidoMPrac.value = valor2;
+  });
+  // ------------------------------------ End Modificar datos practicante  ------------------------------------ //
+
+  // ------------------------------------ Eliminar practicante  ------------------------------------ //
+  $('a.delete').click(function () {
+
+    const form = document.querySelector('#deletePrac');
+    const filaId = $(this).closest('tr').data('id');
+    const fila = document.querySelector(`tr[data-id="${filaId}"]`);
+
+    const id = form.querySelector('input[name="idPrac"]');
+    const Fnombre = form.querySelector('input[name="nombre"]');
+
+    // Acceder a las celdas específicas por índice
+    const celda0 = fila.cells[0]; // Primera celda
+    const celda1 = fila.cells[1]; // Segunda celda
+
+    // Obtener los valores de las celdas
+    const valor0 = celda0.textContent + ' ' + celda1.textContent;
+    // ID del supervisor a editar
+    id.value = filaId;
+    Fnombre.value = valor0;
+    Fnombre.size = Fnombre.value.length;
+
+  });
+}
+// ------------------------------------ End Eliminar practicante  ------------------------------------ //
+
+// ------------------------------------------- End practicante  ------------------------------------------- //
+// ------------------------------------------- End practicante  ------------------------------------------- //
+// ------------------------------------------- End practicante  ------------------------------------------- //
+
+
+
+
+// ------------------------------------------- Paciente ------------------------------------------- //
+// ------------------------------------------- Paciente ------------------------------------------- //
+// ------------------------------------------- Paciente ------------------------------------------- //
+
+// ------------------------------------ Modificar datos Paciente ------------------------------------ //
+// Espera a que se haga clic en el botón "Modificar datos"
+
+if (currentUrl == "/templates/admin/adm_pacie.html") {
+  console.log('Paci');
+  $('a.btn-edit').click(function () {
+
+    const form = document.querySelector('#editPaci');
+    const filaId = $(this).closest('tr').data('id');
+    const fila = document.querySelector(`tr[data-id="${filaId}"]`);
+
+    const id = form.querySelector('input[name="idPaci"]');
+    const FnombrePac = form.querySelector('input[name="nombrePaci"]');
+    const FapellidoPPac = form.querySelector('input[name="apellidoPPaci"]');
+    const FapellidoMPac = form.querySelector('input[name="apellidoMPaci"]');
+
+    // Acceder a las celdas específicas por índice
+    const celda0 = fila.cells[0]; // Primera celda
+    const celda1 = fila.cells[1]; // Segunda celda
+    const celda2 = fila.cells[2]; // Tercera celda
+
+    // Obtener los valores de las celdas
+    const valor0 = celda0.textContent;
+    const valor1 = celda1.textContent;
+    const valor2 = celda2.textContent;
+
+    // ID del Paciente a editar
+    id.value = filaId;
+
+    FnombrePac.value = valor0;
+    FapellidoPPac.value = valor1;
+    FapellidoMPac.value = valor2;
+  });
+  // ------------------------------------ End Modificar datos Paciente  ------------------------------------ //
+
+  // ------------------------------------ Eliminar Paciente  ------------------------------------ //
+  $('a.delete').click(function () {
+
+    const form = document.querySelector('#deletePaci');
+    const filaId = $(this).closest('tr').data('id');
+    const fila = document.querySelector(`tr[data-id="${filaId}"]`);
+
+    const id = form.querySelector('input[name="idPaci"]');
+    const Fnombre = form.querySelector('input[name="nombre"]');
+
+    // Acceder a las celdas específicas por índice
+    const celda0 = fila.cells[0]; // Primera celda
+    const celda1 = fila.cells[1]; // Segunda celda
+
+    // Obtener los valores de las celdas
+    const valor0 = celda0.textContent + ' ' + celda1.textContent;
+    // ID del Paciente a editar
+    id.value = filaId;
+    Fnombre.value = valor0;
+    Fnombre.size = Fnombre.value.length;
+  });
+}
+// ------------------------------------ End Eliminar Paciente  ------------------------------------ //
+
+// ------------------------------------------- End Paciente  ------------------------------------------- //
+// ------------------------------------------- End Paciente  ------------------------------------------- //
+// ------------------------------------------- End Paciente  ------------------------------------------- //
