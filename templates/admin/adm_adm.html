@@ -194,88 +194,22 @@
                         </tr>
                     </thead>
                     <tbody>
-
-
-
-
-                        <!--  {% for   in   %}-->
-                        <!-- id de algun administrador -->
-                        <!-- <tr data-id="{{ idAd }}"> -->
-                        <tr data-id="1">
-
-                            <td>{{a.nombreAd}}</td>
-                            <td>{{a.apellidoPAd}}</td>
-                            <td>{{a.apellidoMAd}}</td>
-                            <td>{{a.correoAd}}</td>
-
+                        <!--  {% for adm  in   %}-->
+                        <tr data-id="{{adm.idAd}}">
+                            <td>{{adm.nombreAd}}</td>
+                            <td>{{adm.apellidoPAd}}</td>
+                            <td>{{adm.apellidoMAd}}</td>
+                            <td>{{adm.correoAd}}</td>
                             <td>
-                                <!-- ------------------------ Tomar este para todos los botones ------------------------ -->
-
                                 <a href="#editEmployeeModal" class="btn-edit edit linkIcono" data-bs-toggle="modal">
                                     <img class="Icono" src="/static/img/edit.svg" alt="Editar">
                                 </a>
                                 <a href="#deleteEmployeeModal" class="delete linkIcono" data-bs-toggle="modal">
                                     <img class="Icono" src="/static/img/trash.svg" alt="Editar">
                                 </a>
-
-                                <!-- ------------------------ Tomar este para todos los botones ------------------------ -->
-
                             </td>
                         </tr>
                         <!--  {% endfor  %}-->
-
-                        <tr>
-
-                            <td>Dominique Perrier</td>
-                            <td>dominiqueperrier@mail.com</td>
-                            <td>Obere Str. 57, Berlin, Germany</td>
-                            <td>(313) 555-5735</td>
-                            <td>
-                                <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons"
-                                        data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                                <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i
-                                        class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-                            </td>
-                        </tr>
-                        <tr>
-
-                            <td>Maria Anders</td>
-                            <td>mariaanders@mail.com</td>
-                            <td>25, rue Lauriston, Paris, France</td>
-                            <td>(503) 555-9931</td>
-                            <td>
-                                <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons"
-                                        data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                                <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i
-                                        class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-                            </td>
-                        </tr>
-                        <tr>
-
-                            <td>Fran Wilson</td>
-                            <td>franwilson@mail.com</td>
-                            <td>C/ Araquil, 67, Madrid, Spain</td>
-                            <td>(204) 619-5731</td>
-                            <td>
-                                <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons"
-                                        data-toggle="tooltip" title="Edit" data-id="a.idAd">&#xE254;</i></a>
-                                <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i
-                                        class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-                            </td>
-                        </tr>
-                        <tr>
-
-                            <td>Martin Blank</td>
-                            <td>martinblank@mail.com</td>
-                            <td>Via Monte Bianco 34, Turin, Italy</td>
-                            <td>(480) 631-2097</td>
-                            <td>
-                                <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons"
-                                        data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                                <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i
-                                        class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-                            </td>
-                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -442,7 +376,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <input disabled type="text" name="nombre">
+                            <p id="nombreModal"></p>
                             <p class="text-warning"><small>Esta accion no se puede deshacer.</small></p>
                     </div>
                     <div class="modal-footer">

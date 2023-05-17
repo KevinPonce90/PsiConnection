@@ -129,7 +129,6 @@ if (currentUrl == "/templates/admin/adm_adm.html") {
     const celda1 = fila.cells[1]; // Segunda celda
     const celda2 = fila.cells[2]; // Tercera celda
 
-
     // Obtener los valores de las celdas
     const valor0 = celda0.textContent;
     const valor1 = celda1.textContent;
@@ -151,22 +150,16 @@ if (currentUrl == "/templates/admin/adm_adm.html") {
     const filaId = $(this).closest('tr').data('id');
     const fila = document.querySelector(`tr[data-id="${filaId}"]`);
     
-    const idAd = form.querySelector('input[name="idAd"]');
-    const Fnombre = form.querySelector('input[name="nombre"]');
-    
-    
+    const idAd = form.querySelector('input[name="idAd"]'); 
     // Acceder a las celdas específicas por índice
     const celda0 = fila.cells[0]; // Primera celda
     const celda1 = fila.cells[1]; // Segunda celda
-    
     
     // Obtener los valores de las celdas
     const valor0 = celda0.textContent + ' ' + celda1.textContent;
     // ID del administrador a editar
     idAd.value = filaId;
-    Fnombre.value = valor0;
-    Fnombre.size = Fnombre.value.length;
-    
+    document.getElementById('nombreModal').textContent = valor0;
   });
 }
   // ------------------------------------ End Eliminar administrador ------------------------------------ //
@@ -190,6 +183,7 @@ if (currentUrl == "/templates/admin/adm_adm.html") {
 
       const form = document.querySelector('#editSup');
       const filaId = $(this).closest('tr').data('id');
+  
       const fila = document.querySelector(`tr[data-id="${filaId}"]`);
 
       const id = form.querySelector('input[name="idSup"]');
@@ -226,19 +220,16 @@ if (currentUrl == "/templates/admin/adm_adm.html") {
     const fila = document.querySelector(`tr[data-id="${filaId}"]`);
     
     const id = form.querySelector('input[name="idSup"]');
-    const Fnombre = form.querySelector('input[name="nombre"]');
 
     // Acceder a las celdas específicas por índice
     const celda0 = fila.cells[0]; // Primera celda
     const celda1 = fila.cells[1]; // Segunda celda
 
-
     // Obtener los valores de las celdas
     const valor0 = celda0.textContent + ' ' + celda1.textContent;
     // ID del supervisor a editar
     id.value = filaId;
-    Fnombre.value = valor0;
-    Fnombre.size = Fnombre.value.length;
+    document.getElementById('nombreModal').textContent = valor0;
     
   });
 }
@@ -297,7 +288,6 @@ if (currentUrl == "/templates/admin/adm_adm.html") {
     const fila = document.querySelector(`tr[data-id="${filaId}"]`);
     
     const id = form.querySelector('input[name="idPrac"]');
-    const Fnombre = form.querySelector('input[name="nombre"]');
 
     // Acceder a las celdas específicas por índice
     const celda0 = fila.cells[0]; // Primera celda
@@ -307,9 +297,7 @@ if (currentUrl == "/templates/admin/adm_adm.html") {
     const valor0 = celda0.textContent + ' ' + celda1.textContent;
     // ID del supervisor a editar
     id.value = filaId;
-    Fnombre.value = valor0;
-    Fnombre.size = Fnombre.value.length;
-    
+    document.getElementById('nombreModal').textContent = valor0;
   });
 }
 // ------------------------------------ End Eliminar practicante  ------------------------------------ //
@@ -368,8 +356,6 @@ if (currentUrl == "/templates/admin/adm_adm.html") {
     const fila = document.querySelector(`tr[data-id="${filaId}"]`);
     
     const id = form.querySelector('input[name="idPaci"]');
-    const Fnombre = form.querySelector('input[name="nombre"]');
-
     // Acceder a las celdas específicas por índice
     const celda0 = fila.cells[0]; // Primera celda
     const celda1 = fila.cells[1]; // Segunda celda
@@ -378,8 +364,7 @@ if (currentUrl == "/templates/admin/adm_adm.html") {
     const valor0 = celda0.textContent + ' ' + celda1.textContent;
     // ID del Paciente a editar
     id.value = filaId;
-    Fnombre.value = valor0;
-    Fnombre.size = Fnombre.value.length;
+    document.getElementById('nombreModal').textContent = valor0;
   });
 }
 // ------------------------------------ End Eliminar Paciente  ------------------------------------ //
