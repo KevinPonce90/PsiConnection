@@ -1,5 +1,6 @@
 // Obtenemos la URL actual de la página
 var currentUrl = window.location.pathname;
+console.log(currentUrl);
 // Obtenemos todos los enlaces de la barra de navegación
 var navLinks = document.querySelectorAll('.nav-link.click-scroll');
 
@@ -71,37 +72,6 @@ if (currentUrl == "/templates/supervisor/agregar_practicante.html") {
 // ------------------------------------ End Agregar practicante ------------------------------------ //
 
 
-
-// ------------------------------------  loadMoreBtn ------------------------------------ //
-// if (currentUrl == "/templates/paciente/agenda_cita.html") {
-//   // Seleccionamos el botón y obtenemos las clases originales
-//   const loadMoreBtn = document.querySelector('#loadMoreBtn');
-
-//   // Función para intercambiar las clases del botón
-//   function toggleClasses() {
-
-//     if (window.innerWidth <= 993) {
-//       if (window.innerWidth >= 723) {
-//         loadMoreBtn.classList.remove('w-25');
-//         loadMoreBtn.classList.add('w-sm-25');
-//         loadMoreBtn.classList.remove('w-sm-100');
-//       } else if (window.innerWidth < 723) {
-//         loadMoreBtn.classList.add('w-sm-100');
-//       }
-//     } else if (window.innerWidth > 993) {
-//       loadMoreBtn.classList.remove('w-sm-25');
-//       loadMoreBtn.classList.add('w-25');
-//     }
-//   }
-//   // Al cargar la página y al cambiar el tamaño de la pantalla, llamamos a la función toggleClasses
-//   window.addEventListener('load', toggleClasses);
-//   window.addEventListener('resize', toggleClasses);
-// }
-// ------------------------------------ End loadMoreBtn ------------------------------------ //
-
-
-// --------------------------- Fecha hora --------------------------- //
-
 if (currentUrl == "/templates/paciente/agenda_cita.html") {
 
   // ---------------------------- Validacion fecha ---------------------------- //
@@ -158,7 +128,7 @@ if (currentUrl == "/templates/paciente/agenda_cita.html") {
   });
 
   const form = document.getElementById('elegir');
-  const modalidadSelect = document.getElementById('modalidad');
+  const modalidadSelect = document.getElementById('tipoCita');
 
   form.addEventListener("submit", (event) => {
     if (modalidadSelect.value === "") {
@@ -166,50 +136,48 @@ if (currentUrl == "/templates/paciente/agenda_cita.html") {
     }
   });
   //---------------------------- End Validacion hora ---------------------------- //
-  // --------------------------- End Fecha hora --------------------------- //
 
   // --------------------------- Modal agenda cita --------------------------- //
   $('a.link-card-practicante').click(function () {
 
     const form = document.querySelector('#elegir');
-    const idPrac  = $(this).closest('a').data('id');
-
-    // Inputs
-    const FidPrac     = form.querySelector('input[name="idPrac"]');
-    const FidPaci     = form.querySelector('input[name="idPaci"]');
-    const FnombrePrac = form.querySelector('input[name="nombrePrac"]');
-    const FapellidoP  = form.querySelector('input[name="apellidoPPrac"]');
-    const FapellidoM  = form.querySelector('input[name="apellidoMPrac"]');
-
-      // Inputs correo
-      const FcorreoPrac  = form.querySelector('input[name="correoPrac"]');
-      const FcorreoPaci  = form.querySelector('input[name="correoPaci"]');
-      
-      // Texto correo
-      const correoPaci   = document.getElementById('correoPaci').textContent;      
-      const correoPrac   = document.getElementById('correoPrac').textContent; 
-      
-      // Asignacion correo
-      FcorreoPrac.value  = correoPaci;
-      FcorreoPaci.value  = correoPrac;
-
-
-    const idPaci        = document.getElementById('idPaci').textContent;     
-    const nombrePrac    = document.getElementById('nombrePrac').textContent;     
-    const apellidoPPrac = document.getElementById('apellidoPPrac').textContent;
-    const apellidoMPrac = document.getElementById('apellidoMPrac').textContent;
+    const lista  = $(this).closest('a').data('id');
     
+    const elemento = lista.split(',')
 
-    document.getElementById('Fnombre').textContent        = document.getElementById('nombrePrac').textContent;  
-    document.getElementById('FapellidoPPrac').textContent = document.getElementById('apellidoPPrac').textContent;
+    const FcorreoPrac  = form.querySelector('input[name="correoPrac"]');
+    const FidPrac     = form.querySelector('input[name="idPrac"]');
 
-
-    FidPrac.value     = idPrac;
-    FidPaci.value     = idPaci;      
-    FnombrePrac.value = nombrePrac;   
-    FapellidoP.value  = apellidoPPrac;
-    FapellidoM.value  = apellidoMPrac; 
+    // Asignacion correo
+    FidPrac.value     = elemento[0];
+    FcorreoPrac.value  = elemento[1];
   });
 }
   // --------------------------- End Modal agenda cita --------------------------- //
+
+// ------------------------------------ Modal eliminar cita practicante ------------------------------------ //
+// if (currentUrl == "/indexPracticante") {
+  $('a.delete').click(function () {
+
+    const form = document.querySelector('#borrarCita');
+    const cita = $(this).closest('tr').data('id');
+    const fila = document.querySelector(`tr[data-id="${cita}"]`);
+
+    const FidCita = form.querySelector('input[name="idCita"]');
+
+
+    // Acceder a las celdas específicas por índice
+    const celda0 = fila.cells[0]; // Primera celda
+    const celda1 = fila.cells[1]; // Segunda celda
+
+
+    // Obtener los valores de las celdas
+    const valor0 = celda0.textContent + ' ' + celda1.textContent;
+    // ID del administrador a editar
+    FidCita.value = cita;
+    document.getElementById('nombreModal').textContent = valor0;
+
+  });
+// }
+// ------------------------------------ End Modal eliminar cita practicante ------------------------------------ //
 

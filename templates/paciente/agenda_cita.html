@@ -137,144 +137,18 @@
             <h2 class="text-center">Elija al practicante</h2>
             <div class="sectmycard2 row">
 
-                <a data-id="1" href="#Elegi" class="link-card-practicante" data-bs-toggle="modal" data-bs-target="#Elegi">
-                    <div class="card card-practicante">
-                        <img src="/static/img/persona.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title text-center">Practicante</h5>
-                            <p id="nombrePrac" class="text-center mt-2">{{cita.nombrePrac}}</p>
-                            <p id="apellidoPPrac" style="display: none;">{{cita.apellidoPPrac}}</p>
-                            <p id="apellidoMPrac" style="display: none;">{{cita.apellidoMPrac}}</p>
-
-                            <p id="correoPrac" style="display: none;">{{cita.correoPrac}}</p>
-                            <p id="correoPaci" style="display: none;">{{cita.correoPaci}}</p>
-
-                            <p id="idPaci" style="display: none;">{{cita.idPaci}}</p>
-                        </div>
-                    </div>
-                </a>
                 <!--  {% for   in   %}-->
-                <a data-id="{{cita.idPrac}}" href="#Elegi" class="link-card-practicante" data-bs-toggle="modal" data-bs-target="#Elegi">
+                <a data-id="{{cita.idPrac}},{{cita.correoPrac}}" href="#Elegi" class="link-card-practicante" data-bs-toggle="modal" data-bs-target="#Elegi">
                     <div class="card card-practicante">
                         <img src="/static/img/persona.jpg" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title text-center">Practicante</h5>
 
                             <p id="nombrePrac" class="text-center mt-2">{{cita.nombrePrac}}</p>
-                            <p id="apellidoPPrac" style="display: none;">{{cita.apellidoPPrac}}</p>
-                            <p id="apellidoMPrac" style="display: none;">{{cita.apellidoMPrac}}</p>
-
-                            <p id="correoPrac" style="display: none;">{{cita.correoPrac}}</p>
-                            <p id="correoPaci" style="display: none;">{{cita.correoPaci}}</p>
-
-                            <p id="idPaci" style="display: none;">{{cita.idPaci}}</p>
                         </div>
                     </div>
                 </a>
                 <!--  {% endfor  %} -->
-                <a href="#Elegi" class="link-card-practicante" data-bs-toggle="modal" data-bs-target="#Elegi">
-                    <div class="card card-practicante">
-                        <img src="/static/img/persona.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title text-center">Practicante
-                            </h5>
-
-                            <p class="text-center mt-2">12345678 12345678 12345678 123456</p>
-                        </div>
-                    </div>
-                </a>
-                <a href="#Elegi" class="link-card-practicante" data-bs-toggle="modal" data-bs-target="#Elegi">
-                    <div class="card card-practicante">
-                        <img src="/static/img/persona.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title text-center">Practicante
-                            </h5>
-                            <p class="text-center mt-2">1234567 1234567 1234567 1234567</p>
-                        </div>
-                    </div>
-                </a>
-
-                <a href="#Elegi" class="link-card-practicante" data-bs-toggle="modal" data-bs-target="#Elegi">
-                    <div class="card card-practicante">
-                        <img src="/static/img/persona.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title text-center">Practicante
-                            </h5>
-                            <p class="text-center mt-2">12345678 12345678 12345678 12345678</p>
-                        </div>
-                    </div>
-                </a>
-                <a href="#Elegi" class="link-card-practicante" data-bs-toggle="modal" data-bs-target="#Elegi">
-                    <div class="card card-practicante">
-                        <img src="/static/img/persona.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title text-center">Practicante
-                            </h5>
-                            <p class="text-center mt-2">12345678 123456 12345678 123456</p>
-                        </div>
-                    </div>
-                </a>
-                <a href="#Elegi" class="link-card-practicante" data-bs-toggle="modal" data-bs-target="#Elegi">
-                    <div class="card card-practicante">
-                        <img src="/static/img/persona.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title text-center">Practicante
-                            </h5>
-                            <p class="text-center mt-2">Ricardo Fabian Velazquez Gomez</p>
-                        </div>
-                    </div>
-                </a>
-                <a href="#Elegi" class="link-card-practicante" data-bs-toggle="modal" data-bs-target="#Elegi">
-                    <div class="card card-practicante">
-                        <img src="/static/img/persona.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title text-center">Practicante
-                            </h5>
-                            <p class="text-center mt-2">{{ cita.nombrePrac }}</p>
-                            <p class="text-center mt-2">Ricardo Fabian Velazquez Gomez</p>
-                        </div>
-                    </div>
-                </a>
-                <a href="#Elegi" class="link-card-practicante" data-bs-toggle="modal" data-bs-target="#Elegi">
-                    <div class="card card-practicante">
-                        <img src="/static/img/persona.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title text-center">Practicante
-                            </h5>
-                            <p class="text-center mt-2">{{ cita.nombrePrac }}</p>
-                            <p class="text-center mt-2">Ricardo Fabian Velazquez Gomez</p>
-                        </div>
-                    </div>
-                </a>
-                <a href="#Elegi" class="link-card-practicante" data-bs-toggle="modal" data-bs-target="#Elegi">
-                    <div class="card card-practicante">
-                        <img src="/static/img/persona.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title text-center">Practicante
-                            </h5>
-                            <p class="text-center mt-2">{{ cita.nombrePrac }}</p>
-                            <p class="text-center mt-2">Ricardo Fabian Velazquez Gomez</p>
-                        </div>
-                    </div>
-                </a>
-
-
-                <a href="#Elegi" class="link-card-practicante" data-bs-toggle="modal" data-bs-target="#Elegi">
-                    <div class="card card-practicante">
-                        <img src="/static/img/persona.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title text-center">Practicante
-                            </h5>
-                            <p class="text-center mt-2">{{ cita.nombrePrac }}</p>
-                            <p class="text-center mt-2">Ricardo Fabian Velazquez Gomez</p>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <!-- <div class="row align-items-center justify-content-center">
-                <button id="loadMoreBtn" class="btn btn-a" style="background-color: #00817d; color: white;">Cargar más
-                    practicantes</button>
-            </div> -->
 
             <!-- Edit Modal HTML -->
             <div id="Elegi" class="modal fade">
@@ -286,20 +160,13 @@
                                 aria-hidden="true"></button>
                         </div>
                         <div class="modal-body">
-                            <form id="elegir" action="/AgendarCita" method="POST" enctype="multipart/form-data">
+                            <form id="elegir" action="/CrearCita" method="POST" enctype="multipart/form-data">
 
                                 <input type="hidden" name="csrf_token" value="{{csrf_token() }}">
-
                                 <!-- IDs -->
-                                <input type="text" name="idPaci" value="">
                                 <input type="text" name="idPrac" value="">
-
                                 <!-- Correos -->
                                 <input type="text" name="correoPrac" value="">
-                                <input type="text" name="correoPaci" value="">
-                                <p id="Fnombre" class="text-center"></p>
-                                <p id="FapellidoPPrac"  class="text-center"></p>
-
 
                                 <div class="form-group mb-3">
                                     <label for="fecha" class="form-label">Fecha de Cita</label>
@@ -316,7 +183,7 @@
 
                                 <div class="form-group">
                                     <label for="modalidad" class="form-label">Modalidad</label>
-                                    <select id="modalidad" name="modalidad"
+                                    <select id="modalidad" name="tipoCita"
                                         class="form-select form-select-sm form-control border border-dark"
                                         aria-label="form-select-sm example" required>
                                         <option selected disabled value="">Elija un opcion:</option>
