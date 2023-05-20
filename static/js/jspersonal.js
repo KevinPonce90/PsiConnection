@@ -1,5 +1,6 @@
 // Obtenemos la URL actual de la página
 var currentUrl = window.location.pathname;
+console.log(currentUrl);
 // Obtenemos todos los enlaces de la barra de navegación
 var navLinks = document.querySelectorAll('.nav-link.click-scroll');
 
@@ -71,14 +72,16 @@ if (currentUrl == "/templates/supervisor/agregar_practicante.html") {
 // ------------------------------------ End Agregar practicante ------------------------------------ //
 
 
+
+// ------------------------------------ Modal eliminar cita practicante ------------------------------------ //
+if (currentUrl == "/templates/practicante/index_practicante.html"){
 $('a.delete').click(function () {
-    
-  const form = document.querySelector('#borrarCita');
-  const filaId = $(this).closest('tr').data('id');
-  const fila = document.querySelector(`tr[data-id="${filaId}"]`);
   
-  const idAd = form.querySelector('input[name="idAd"]');
-  const Fnombre = form.querySelector('input[name="nombre"]');
+  const form = document.querySelector('#borrarCita');
+  const cita = $(this).closest('tr').data('id');
+  const fila = document.querySelector(`tr[data-id="${cita}"]`);
+  
+  const FidCita = form.querySelector('input[name="idCita"]');
   
   
   // Acceder a las celdas específicas por índice
@@ -89,8 +92,9 @@ $('a.delete').click(function () {
   // Obtener los valores de las celdas
   const valor0 = celda0.textContent + ' ' + celda1.textContent;
   // ID del administrador a editar
-  idAd.value = filaId;
-  Fnombre.value = valor0;
-  Fnombre.size = Fnombre.value.length;
+  FidCita.value = cita;
+  document.getElementById('nombreModal').textContent = valor0;
   
 });
+}
+// ------------------------------------ End Modal eliminar cita practicante ------------------------------------ //
