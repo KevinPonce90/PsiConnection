@@ -10,8 +10,6 @@ for (var i = 0; i < navLinks.length; i++) {
   if (navLinks[i].getAttribute('href') == currentUrl) {
     // Si la URL del enlace coincide con la URL actual de la página, agregamos la clase 'active'
     navLinks[i].classList.add('active');
-
-
   }
 }
 // ------------------------------------ Cards index admin ------------------------------------ //
@@ -72,7 +70,7 @@ if (currentUrl == "/templates/supervisor/agregar_practicante.html") {
 // ------------------------------------ End Agregar Practicante ------------------------------------ //
 
 // ------------------------------------ Agregar Supervidor ------------------------------------ //
-if (currentUrl == "/templates/supervisor/AgregarSupervisor.html") {
+if (currentUrl == "/templates/admin/adm_super.html") {
   console.log(currentUrl);
   const editableInput = document.getElementById('input-editable');
   const readonlyInput = document.getElementById('input-readonly');
@@ -94,12 +92,6 @@ if (currentUrl == "/templates/supervisor/AgregarSupervisor.html") {
   // Escuchar cambios en los dos inputs y actualizar el input combinado
   editableInput.addEventListener('input', combineInputs);
   readonlyInput.addEventListener('input', combineInputs);
-
-  const formulario = document.getElementById('AgregarSupervisor');
-
-  formulario.addEventListener('submit', function (event) {
-    event.preventDefault(); // Evita que se realice el submit por defecto del formulario
-  });
 }
 
 // ------------------------------------ End Agregar Supervisor ------------------------------------ //
@@ -161,6 +153,35 @@ if (currentUrl == "/templates/admin/adm_adm.html") {
     idAd.value = filaId;
     document.getElementById('nombreModal').textContent = valor0;
   });
+  // ------------------------------------ Correo Supervisor ------------------------------------ //
+const editableInputAdm  = document.getElementById('input-editable');
+const readonlyInputAdm  = document.getElementById('input-readonly');
+const combinedInputAdm  = document.getElementById('correoAd');
+
+// Función para combinar los valores de los dos inputs
+function combineInputs() {
+  const editableValue = editableInputAdm.value;
+  const readonlyValue = readonlyInputAdm.value;
+  combinedInputAdm.value = `${editableValue}${readonlyValue}`;
+  console.log(combinedInputAdm.value);
+}
+
+// Asignar el valor del input combinado antes de hacer el submit
+document.getElementById('AgregarAdministrador').addEventListener('submit', function (event) {
+  combineInputs();
+});
+
+// Escuchar cambios en los dos inputs y actualizar el input combinado
+editableInputAdm.addEventListener('input', combineInputs);
+readonlyInputAdm.addEventListener('input', combineInputs);
+
+const formularioSup = document.getElementById('AgregarAdministrador');
+
+formularioSup.addEventListener('submit', function (event) {
+  event.preventDefault(); // Evita que se realice el submit por defecto del formulario
+});
+
+// ------------------------------------ End Correo Supervisor ------------------------------------ //
 }
   // ------------------------------------ End Eliminar administrador ------------------------------------ //
 
@@ -387,10 +408,11 @@ function checkPasswordMatch() { //administrador
   }
 }
 }
+// ----------------------------------------- Supervisor Contraseñas ----------------------------------------- //
 if (currentUrl == "/templates/admin/adm_super.html") {
 
 function checkPasswordMatch() { //supervisor
-  var password = document.getElementById("contraAd").value;
+  var password = document.getElementById("contraSup").value;
   var confirmPassword = document.getElementById("contraSup_confirm").value;
   
   if (password !== confirmPassword) {
@@ -400,8 +422,11 @@ function checkPasswordMatch() { //supervisor
   }
 }
 }
+// ----------------------------------------- End Supervisor Contraseñas ----------------------------------------- //
 
 // ----------------------------------------- End Contraseñas ----------------------------------------- //
+
+// ----------------------------------------- Ocultar ----------------------------------------- //
 
 /* para boton de ocultar contraseña */  //administrador
   function togglePasswordVisibility(inputId, buttonId) {
@@ -416,7 +441,5 @@ function checkPasswordMatch() { //supervisor
       toggleButton.textContent = "Mostrar";
     }
   }
-
-
-
-/* para confirmar la contraseñaaaaa y para ver  */   
+  
+  // ----------------------------------------- End Ocultar ----------------------------------------- //
