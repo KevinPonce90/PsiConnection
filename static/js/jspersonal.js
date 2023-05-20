@@ -114,7 +114,8 @@ if (currentUrl == "/templates/admin/adm_adm.html") {
       document.getElementById("confirmPassword").setCustomValidity("");
     }
   }
-
+}
+  if (currentUrl == "/templates/admin/adm_super.html") {
   function checkPasswordMatch() { //supervisor
     var password = document.getElementById("contraSup").value;
     var confirmPassword = document.getElementById("confirmPasswordSu").value;
@@ -365,8 +366,7 @@ if ((currentUrl == "/templates/admin/adm_pract.html") || (currentUrl == "/templa
     const valor0 = celda0.textContent + ' ' + celda1.textContent;
     // ID del supervisor a editar
     id.value = filaId;
-    Fnombre.value = valor0;
-    Fnombre.size = Fnombre.value.length;
+    document.getElementById('nombreModal').textContent = valor0;
 
   });
 }
