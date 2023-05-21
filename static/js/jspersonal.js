@@ -445,3 +445,32 @@ if (currentUrl == "/templates/admin/adm_pacie.html") {
 // ------------------------------------------- End Paciente  ------------------------------------------- //
 // ------------------------------------------- End Paciente  ------------------------------------------- //
 // ------------------------------------------- End Paciente  ------------------------------------------- //
+
+
+// -----------------------------------------fecha de nacimiento---------------------------------------- //
+
+var fechaActual = new Date();
+
+  // Restar 18 años a la fecha actual
+  var fechaHace18Anios = new Date(fechaActual.getFullYear() - 18, fechaActual.getMonth(), fechaActual.getDate());
+
+  // Obtener el campo de entrada de fecha
+  var fechaInput = document.getElementById('fechaPrac');
+
+  // Establecer la fecha máxima permitida en el campo de entrada
+  fechaInput.max = fechaHace18Anios.toISOString().split('T')[0];
+
+  // Validar la fecha seleccionada cada vez que cambie el valor del campo de entrada
+  fechaInput.addEventListener('input', function () {
+    var fechaSeleccionada = new Date(this.value);
+
+    if (fechaSeleccionada > fechaHace18Anios) {
+      // La fecha seleccionada es menor a 18 años antes de la fecha actual
+      console.log('La fecha seleccionada no cumple con la restricción de edad mínima.');
+      // Aquí puedes agregar acciones adicionales, como mostrar un mensaje de error al usuario.
+    } else {
+      // La fecha seleccionada es mayor o igual a 18 años antes de la fecha actual
+      console.log('La fecha seleccionada cumple con la restricción de edad mínima.');
+      // Aquí puedes realizar las acciones adicionales necesarias en caso de que la fecha sea válida.
+    }
+  });
